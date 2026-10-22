@@ -1,0 +1,194 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageLayout from '../../components/PageLayout.astro';
+import Icon from '../../components/Icon.astro';
+
+const emblem = [
+  { icon: 'book', title: 'The Book', text: 'Refers to knowledge and truthfulness' },
+  { icon: 'candle', title: 'Candle', text: 'Giving light to the world, dispelling darkness' },
+  { icon: 'flower', title: 'Lily Flowers', text: 'Symbolises Purity' },
+  { icon: 'globe', title: 'Globe', text: 'Serve The World' },
+  { icon: 'award', title: 'Hence the Motto', text: '"Growing in Truth and Purity"' },
+];
+
+const aims = [
+  { title: 'Faith Formation', img: '/about/donbosco-4.jpg', points: [
+    'To develop in all our students a strong and living faith in God, so as to help them find meaning in life and equip them with values in self-sacrifice, love and service to others.',
+    'To help our students to be persons of prayer who realize their total dependence on God and seek complete fulfillment in him.',
+    'To inspire our students to be morally upright, capable of making right decisions in life based on Gospel values.',
+  ] },
+  { title: 'Social Formation', img: '/about/donbosco-2.jpg', points: [
+    'To help our students to be catalysts of social change bringing about justice, liberation and peace in society.',
+    'To create a sense of belonging and commitment for community service.',
+    'To develop a spirit of patriotism towards the motherland within the framework of a united world community.',
+  ] },
+  { title: 'Intellectual Formation', img: '/about/donbosco-1.jpg', points: [
+    "To help our students to develop their talents creatively, integrate knowledge with life, evaluate ideas and events constructively and be resourceful in life's varied situations.",
+  ] },
+  { title: 'Emotional Development', img: '/about/donbosco-3.jpg', points: [
+    'To develop in our students maturity helping them to face the ups and downs of life in a balanced and stable manner radiating joy and contentment all around.',
+  ] },
+];
+---
+
+<Layout title="Know Your Don Bosco – Don Bosco School Shirva">
+  <PageLayout title="Know Your <span>Don Bosco</span>" subtitle="Emblem · Vision · Mission" breadcrumb="About Us" currentPage="Know Your Don Bosco">
+
+    <!-- Emblem -->
+    <section class="section">
+      <div class="container">
+        <div class="sec-head">
+          <div class="sec-meta" data-reveal><span class="sec-index">(01)</span><span class="eyebrow">Our Identity</span></div>
+          <div class="sec-title-wrap"><h2 class="h2" data-split>School <em>Emblem</em></h2></div>
+        </div>
+
+        <div class="emblem-grid">
+          <div class="emblem-visual" data-reveal>
+            <div class="emblem-disc">
+              <img src="/about/emblem.jpg" alt="Don Bosco School Emblem" loading="lazy" />
+            </div>
+            <span class="emblem-orbit" aria-hidden="true"></span>
+          </div>
+
+          <ol class="emblem-list">
+            {emblem.map((e, i) => (
+              <li class:list={['emblem-item', { 'is-motto': i === emblem.length - 1 }]} data-reveal style={`--d:${i * 0.07}s`}>
+                <span class="ei-num">{String(i + 1).padStart(2, '0')}</span>
+                <span class="ei-icon"><Icon name={e.icon} size={22} /></span>
+                <div>
+                  <h3 class="ei-title">{e.title}</h3>
+                  <p class="ei-text">{e.text}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- Vision & Mission -->
+    <section class="section deep vm">
+      <div class="container">
+        <div class="sec-head">
+          <div class="sec-meta" data-reveal><span class="sec-index">(02)</span><span class="eyebrow">Our Purpose</span></div>
+          <div class="sec-title-wrap"><h2 class="h2" data-split>Vision <em>and</em> Mission</h2></div>
+        </div>
+        <div class="vm-grid">
+          <article class="vm-card" data-reveal>
+            <div class="vm-top"><span class="vm-icon"><Icon name="eye" size={24} /></span><span class="vm-label">Vision</span></div>
+            <p class="vm-text">To impart value-based education that will liberate, humanize and transform every student into persons of <strong>Character, Competence, Conscience, Commitment and Compassion.</strong></p>
+            <ul class="vm-pills">
+              {['Character', 'Competence', 'Conscience', 'Commitment', 'Compassion'].map((c) => <li>{c}</li>)}
+            </ul>
+          </article>
+          <article class="vm-card" data-reveal style="--d:.12s">
+            <div class="vm-top"><span class="vm-icon"><Icon name="target" size={24} /></span><span class="vm-label">Mission</span></div>
+            <p class="vm-text">Our endeavour is to establish a student-friendly school with active and creative minds, where every student feels loved, welcomed, respected, affirmed and valued. We stress the total development of each child: spiritual, moral, intellectual, social, emotional and physical.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Aims & Objectives -->
+    <section class="section">
+      <div class="container">
+        <div class="sec-head">
+          <div class="sec-meta" data-reveal><span class="sec-index">(03)</span><span class="eyebrow">What We Strive For</span></div>
+          <div class="sec-title-wrap">
+            <h2 class="h2" data-split>Aims &amp; <em>Objectives</em></h2>
+            <p class="lead" data-reveal>Drawing inspiration from the life and teachings of Christ, we aim at the total development of the human person through the following objectives:</p>
+          </div>
+        </div>
+
+        <div class="aims">
+          {aims.map((a, i) => (
+            <article class:list={['aim', { 'is-reverse': i % 2 === 1 }]}>
+              <div class="media aim-media" data-reveal="clip">
+                <img src={a.img} alt={a.title} loading="lazy" />
+              </div>
+              <div class="aim-body" data-reveal>
+                <span class="aim-num">{String(i + 1).padStart(2, '0')} / {String(aims.length).padStart(2, '0')}</span>
+                <h3 class="h3">{a.title}</h3>
+                <ul class="aim-points">
+                  {a.points.map((p) => <li>{p}</li>)}
+                </ul>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+  </PageLayout>
+</Layout>
+
+<style>
+  /* Emblem */
+  .emblem-grid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(2.5rem, 6vw, 6rem); align-items: center; }
+  .emblem-visual { position: relative; max-width: 460px; width: 100%; margin-inline: auto; aspect-ratio: 1; display: grid; place-items: center; }
+  .emblem-disc {
+    width: 82%; aspect-ratio: 1; border-radius: 50%;
+    background: #fff; display: grid; place-items: center;
+    box-shadow: var(--shadow); border: 1px solid var(--line);
+  }
+  .emblem-disc img { width: 70%; height: auto; }
+  .emblem-orbit {
+    position: absolute; inset: 0; border-radius: 50%;
+    border: 1px dashed var(--line-strong);
+    animation: orbit 60s linear infinite;
+  }
+  .emblem-orbit::after {
+    content: ""; position: absolute; top: 50%; left: -7px; width: 14px; height: 14px; border-radius: 50%; background: var(--gold);
+  }
+  @keyframes orbit { to { transform: rotate(360deg); } }
+
+  .emblem-list { border-top: 1px solid var(--line-strong); }
+  .emblem-item {
+    display: grid; grid-template-columns: 2.5rem 52px 1fr; gap: 1.25rem; align-items: center;
+    padding: 1.35rem 0; border-bottom: 1px solid var(--line-strong);
+  }
+  .ei-num { font-family: var(--font-display); font-style: italic; color: var(--muted); }
+  .ei-icon { width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center; background: var(--surface); border: 1px solid var(--line); color: var(--gold-text); transition: background .4s, color .4s; }
+  .emblem-item:hover .ei-icon { background: var(--gold); color: #101216; }
+  .ei-title { font-size: 1.45rem; }
+  .ei-text { color: var(--muted); }
+  .is-motto .ei-text { font-family: var(--font-display); font-style: italic; font-size: 1.25rem; color: var(--gold-text); }
+
+  /* Vision & Mission */
+  .vm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+  .vm-card {
+    background: var(--surface); border: 1px solid var(--on-deep-line);
+    border-radius: var(--r-lg);
+    padding: clamp(1.75rem, 4vw, 3rem);
+    display: flex; flex-direction: column; gap: 1.75rem;
+  }
+  .vm-top { display: flex; align-items: center; justify-content: space-between; }
+  .vm-icon { width: 56px; height: 56px; border-radius: 50%; background: var(--gold); color: #101216; display: grid; place-items: center; }
+  .vm-label { font-family: var(--font-display); font-style: italic; font-size: 1.1rem; color: var(--on-deep-muted); }
+  .vm-text { font-family: var(--font-display); font-size: clamp(1.3rem, 2vw, 1.65rem); line-height: 1.4; font-weight: 300; color: var(--on-deep); }
+  .vm-text strong { font-weight: 500; color: var(--gold); }
+  .vm-pills { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: auto; }
+  .vm-pills li { padding: .4rem .9rem; border-radius: var(--r-pill); border: 1px solid var(--on-deep-line); font-size: .78rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--on-deep-muted); }
+
+  /* Aims */
+  .aims { display: flex; flex-direction: column; gap: clamp(3rem, 7vw, 6rem); }
+  .aim { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 6vw, 5.5rem); align-items: center; }
+  .aim.is-reverse .aim-media { order: 2; }
+  .aim-media { aspect-ratio: 4 / 3; border-radius: var(--r-lg); }
+  .aim-body { display: flex; flex-direction: column; gap: 1.25rem; }
+  .aim-num { font-family: var(--font-display); font-style: italic; color: var(--gold-text); }
+  .aim-points { display: flex; flex-direction: column; gap: 1rem; }
+  .aim-points li { position: relative; padding-left: 1.75rem; color: var(--muted); }
+  .aim-points li::before { content: ""; position: absolute; left: 0; top: .72em; width: 14px; height: 1px; background: var(--gold-text); }
+
+  @media (max-width: 992px) {
+    .emblem-grid, .vm-grid, .aim { grid-template-columns: 1fr; }
+    .aim.is-reverse .aim-media { order: 0; }
+    .emblem-visual { max-width: 360px; }
+  }
+  @media (max-width: 560px) {
+    .emblem-item { grid-template-columns: 44px 1fr; }
+    .ei-num { display: none; }
+    .ei-icon { width: 44px; height: 44px; }
+  }
+</style>

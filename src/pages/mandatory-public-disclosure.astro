@@ -1,0 +1,2005 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import {
+  generalInfo,
+  complianceDocuments,
+  academicDisclosures,
+  resultsClassX,
+  resultsClassXII,
+  staffInfo,
+  infrastructureData,
+  inspectionVideo
+} from '../data/mandatory-disclosure';
+---
+
+<Layout 
+  title="Mandatory Public Disclosure (CBSE Appendix IX) - Don Bosco School Shirva"
+  description="Official Mandatory Public Disclosure for Don Bosco English Medium School Shirva as mandated by CBSE (Affiliation No. 830838, School Code: 45731) under Appendix IX. Access official certificates, academic results, faculty disclosures, and campus infrastructure data."
+>
+  <Header />
+
+  <!-- Hero Section -->
+  <section class="page-hero on-image">
+    <div class="ph-media" data-parallax="-0.12">
+      <img src="/about/old-school.jpg" alt="Don Bosco School Shirva Campus" fetchpriority="high" />
+    </div>
+    <div class="ph-shade" aria-hidden="true"></div>
+    <div class="container ph-inner">
+      <nav class="breadcrumb" aria-label="Breadcrumb" data-reveal="fade">
+        <a href="/">Home</a>
+        <span aria-hidden="true">/</span>
+        <span>CBSE</span>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page" class="crumb-current">Mandatory Public Disclosure</span>
+      </nav>
+      
+      <div class="hero-badges" data-reveal="fade">
+        <span class="badge-pill">CBSE AFFILIATION NO: 830838</span>
+        <span class="badge-pill">SCHOOL CODE: 45731</span>
+        <span class="badge-pill badge-gold">APPENDIX IX COMPLIANT</span>
+      </div>
+
+      <h1 class="h1 ph-title" data-split>MANDATORY PUBLIC <em>DISCLOSURE</em></h1>
+      <p class="ph-subtitle" data-reveal="fade">
+        Statutory institutional disclosures under the Central Board of Secondary Education (CBSE) Affiliation Bye-Laws. Complete documentation of official approvals, faculty roster, student outcomes, safety certifications, and infrastructure.
+      </p>
+
+      <!-- Quick Jump Navigation -->
+      <div class="quick-nav" data-reveal="fade">
+        <a href="#general-info" class="quick-nav-pill">
+          <span class="pill-num">01</span> General Info
+        </a>
+        <a href="#documents" class="quick-nav-pill">
+          <span class="pill-num">02</span> Documents & Certs
+        </a>
+        <a href="#academics" class="quick-nav-pill">
+          <span class="pill-num">03</span> Results & Academics
+        </a>
+        <a href="#staff" class="quick-nav-pill">
+          <span class="pill-num">04</span> Teaching Staff
+        </a>
+        <a href="#infrastructure" class="quick-nav-pill">
+          <span class="pill-num">05</span> Infrastructure
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Metrics Bar -->
+  <section class="metrics-bar" aria-label="Key School Metrics">
+    <div class="container">
+      <div class="metrics-grid">
+        <div class="metric-card" data-reveal>
+          <div class="mc-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          </div>
+          <div class="mc-content">
+            <span class="mc-val">830838</span>
+            <span class="mc-label">CBSE Affiliation No</span>
+          </div>
+        </div>
+
+        <div class="metric-card" data-reveal>
+          <div class="mc-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <div class="mc-content">
+            <span class="mc-val">100%</span>
+            <span class="mc-label">Class X Pass Record (3 Yrs)</span>
+          </div>
+        </div>
+
+        <div class="metric-card" data-reveal>
+          <div class="mc-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div class="mc-content">
+            <span class="mc-val">45</span>
+            <span class="mc-label">Qualified Teachers (30:1 Ratio)</span>
+          </div>
+        </div>
+
+        <div class="metric-card" data-reveal>
+          <div class="mc-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+          </div>
+          <div class="mc-content">
+            <span class="mc-val">8,093 m²</span>
+            <span class="mc-label">Total Campus Area</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Sections -->
+  <main class="main-content section">
+    <div class="container disclosures-wrapper">
+
+      <!-- SECTION 1: GENERAL INFORMATION -->
+      <section id="general-info" class="disclosure-card-section" data-reveal>
+        <div class="section-title-wrap">
+          <div class="section-badge">SECTION A</div>
+          <h2 class="h2 section-title">1. GENERAL INFORMATION</h2>
+          <p class="section-desc">Key institutional credentials, administrative contact points, and principal details.</p>
+        </div>
+
+        <div class="info-grid">
+          {generalInfo.map((item) => (
+            <div class="info-card">
+              <div class="ic-num">#{item.no}</div>
+              <div class="ic-body">
+                <span class="ic-label">{item.label}</span>
+                {item.link ? (
+                  <a href={item.link} class="ic-value ic-link">
+                    {item.value}
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                  </a>
+                ) : (
+                  <strong class="ic-value">{item.value}</strong>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <!-- CBSE Standard Table Layout -->
+        <div class="table-responsive standard-table-box">
+          <table class="disclosure-table">
+            <thead>
+              <tr>
+                <th scope="col" style="width: 80px;">SL. NO</th>
+                <th scope="col" style="width: 35%;">INFORMATION</th>
+                <th scope="col">DETAILS</th>
+              </tr>
+            </thead>
+            <tbody>
+              {generalInfo.map((row) => (
+                <tr>
+                  <td class="td-num">{row.no}</td>
+                  <td class="td-key"><strong>{row.label}</strong></td>
+                  <td class="td-val">
+                    {row.link ? (
+                      <a href={row.link} class="table-contact-link">{row.value}</a>
+                    ) : (
+                      <span>{row.value}</span>
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- SECTION 2: DOCUMENTS AND INFORMATION -->
+      <section id="documents" class="disclosure-card-section" data-reveal>
+        <div class="section-title-wrap">
+          <div class="section-badge">SECTION B</div>
+          <h2 class="h2 section-title">2. DOCUMENTS AND INFORMATION</h2>
+          <p class="section-desc">
+            Statutory certifications, registration letters, government approvals, and safety compliances. All documents can be viewed online or downloaded directly.
+          </p>
+        </div>
+
+        <div class="docs-grid">
+          {complianceDocuments.map((doc) => (
+            <div class="doc-item-card">
+              <div class="doc-card-top">
+                <div class="doc-sl">DOC #{doc.no}</div>
+                <span class="doc-tag">{doc.tag}</span>
+              </div>
+              <h3 class="h4 doc-title">{doc.title}</h3>
+              <p class="doc-auth">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                {doc.authority}
+              </p>
+              
+              <div class="doc-card-bottom">
+                <div class="doc-meta">
+                  <span class="doc-fmt">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                    PDF
+                  </span>
+                  <span class="doc-size">{doc.fileSize}</span>
+                </div>
+                
+                <div class="doc-actions">
+                  <button 
+                    type="button" 
+                    class="btn-doc-view" 
+                    data-preview-url={doc.fileUrl}
+                    data-preview-title={doc.title}
+                    aria-label={`Preview ${doc.title}`}
+                  >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                    Preview
+                  </button>
+                  <a 
+                    href={doc.fileUrl} 
+                    download 
+                    class="btn-doc-download"
+                    aria-label={`Download ${doc.title}`}
+                  >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Download
+                  </a>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <!-- CBSE Table representation -->
+        <div class="table-responsive standard-table-box">
+          <table class="disclosure-table">
+            <thead>
+              <tr>
+                <th scope="col" style="width: 80px;">SL. NO</th>
+                <th scope="col">DOCUMENTS / INFORMATION</th>
+                <th scope="col" style="width: 260px; text-align: right;">UPLOAD DOCUMENTS</th>
+              </tr>
+            </thead>
+            <tbody>
+              {complianceDocuments.map((doc) => (
+                <tr>
+                  <td class="td-num">{doc.no}</td>
+                  <td class="td-doc-desc">
+                    <strong>{doc.title}</strong>
+                    <span class="td-auth-sub">{doc.authority}</span>
+                  </td>
+                  <td class="td-action-cell">
+                    <div class="table-action-group">
+                      <button 
+                        type="button" 
+                        class="table-view-btn" 
+                        data-preview-url={doc.fileUrl}
+                        data-preview-title={doc.title}
+                      >
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                        View
+                      </button>
+                      <a href={doc.fileUrl} target="_blank" rel="noopener noreferrer" class="table-dl-btn" download>
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        Download ({doc.fileSize})
+                      </a>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- SECTION 3: RESULTS AND ACADEMICS -->
+      <section id="academics" class="disclosure-card-section" data-reveal>
+        <div class="section-title-wrap">
+          <div class="section-badge">SECTION C</div>
+          <h2 class="h2 section-title">3. RESULTS AND ACADEMICS</h2>
+          <p class="section-desc">Institutional disclosures including fee framework, academic calendar, administrative committees, and multi-year board examination outcomes.</p>
+        </div>
+
+        <!-- Academic Institutional Links Grid -->
+        <div class="academic-cards-grid">
+          {academicDisclosures.map((item) => (
+            <div class="acad-item-card">
+              <div class="acad-card-top">
+                <span class="acad-num">#{item.no}</span>
+                <span class="acad-tag">MANDATORY</span>
+              </div>
+              <h3 class="h4 acad-title">{item.title}</h3>
+              <p class="acad-desc">{item.description}</p>
+              
+              <div class="acad-action">
+                {item.isDownload ? (
+                  <a href={item.url} download class="acad-btn-primary">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    {item.linkText}
+                  </a>
+                ) : (
+                  <a href={item.url} class="acad-btn-primary">
+                    <span>{item.linkText}</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                  </a>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <!-- Institutional Links Table -->
+        <div class="table-responsive standard-table-box">
+          <table class="disclosure-table">
+            <thead>
+              <tr>
+                <th scope="col" style="width: 80px;">SL. NO</th>
+                <th scope="col">DOCUMENTS / INFORMATION</th>
+                <th scope="col" style="width: 220px; text-align: right;">UPLOAD DOCUMENTS</th>
+              </tr>
+            </thead>
+            <tbody>
+              {academicDisclosures.map((row) => (
+                <tr>
+                  <td class="td-num">{row.no}</td>
+                  <td class="td-doc-desc">
+                    <strong>{row.title}</strong>
+                    <span class="td-auth-sub">{row.description}</span>
+                  </td>
+                  <td class="td-action-cell">
+                    <a href={row.url} class="table-view-btn" {...(row.isDownload ? { download: true } : {})}>
+                      {row.isDownload ? (
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                      ) : (
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                      )}
+                      {row.linkText}
+                    </a>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Board Results: Class X & XII -->
+        <div class="results-container">
+          <!-- Class X Results -->
+          <div class="result-subsection">
+            <div class="res-subhead">
+              <div>
+                <h3 class="h3 res-title">RESULT CLASS: X (SECONDARY SCHOOL EXAMINATION)</h3>
+                <p class="res-desc">Three consecutive academic years of 100% pass performance in All India Secondary School Examination.</p>
+              </div>
+              <span class="pill-distinction">100% PASS RATE</span>
+            </div>
+
+            <div class="table-responsive standard-table-box">
+              <table class="disclosure-table">
+                <thead>
+                  <tr>
+                    <th scope="col" style="width: 80px;">SL. NO</th>
+                    <th scope="col">ACADEMIC YEAR</th>
+                    <th scope="col">NO. OF REGISTERED STUDENTS</th>
+                    <th scope="col">NO. OF STUDENTS PASSED</th>
+                    <th scope="col" class="th-accent">PASS PERCENTAGE</th>
+                    <th scope="col">REMARKS</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {resultsClassX.map((item, idx) => (
+                    <tr>
+                      <td class="td-num">{idx + 1}</td>
+                      <td><strong class="font-year">{item.year}</strong></td>
+                      <td>{item.registered}</td>
+                      <td><strong>{item.passed}</strong></td>
+                      <td><span class="pass-badge-100">{item.passPercentage}</span></td>
+                      <td class="td-muted">{item.remarks}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Class XII Results -->
+          <div class="result-subsection">
+            <div class="res-subhead">
+              <div>
+                <h3 class="h3 res-title">RESULT CLASS: XII (SENIOR SCHOOL CERTIFICATE EXAMINATION)</h3>
+                <p class="res-desc">Academic excellence across Science and Commerce streams in Senior Secondary Examinations.</p>
+              </div>
+              <span class="pill-distinction">CBSE SENIOR SECONDARY</span>
+            </div>
+
+            <div class="table-responsive standard-table-box">
+              <table class="disclosure-table">
+                <thead>
+                  <tr>
+                    <th scope="col" style="width: 80px;">SL. NO</th>
+                    <th scope="col">ACADEMIC YEAR</th>
+                    <th scope="col">NO. OF REGISTERED STUDENTS</th>
+                    <th scope="col">NO. OF STUDENTS PASSED</th>
+                    <th scope="col" class="th-accent">PASS PERCENTAGE</th>
+                    <th scope="col">REMARKS</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {resultsClassXII.map((item, idx) => (
+                    <tr>
+                      <td class="td-num">{idx + 1}</td>
+                      <td><strong class="font-year">{item.year}</strong></td>
+                      <td>{item.registered}</td>
+                      <td><strong>{item.passed}</strong></td>
+                      <td>
+                        <span class={item.passPercentage === '100%' ? 'pass-badge-100' : 'pass-badge-high'}>
+                          {item.passPercentage}
+                        </span>
+                      </td>
+                      <td class="td-muted">{item.remarks}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 4: STAFF (TEACHING) -->
+      <section id="staff" class="disclosure-card-section" data-reveal>
+        <div class="section-title-wrap">
+          <div class="section-badge">SECTION D</div>
+          <h2 class="h2 section-title">4. STAFF (TEACHING)</h2>
+          <p class="section-desc">Faculty roster details, qualification distribution, teacher-student section ratio, and student wellness support.</p>
+        </div>
+
+        <!-- Faculty Quick Cards -->
+        <div class="staff-cards-grid">
+          <div class="staff-hero-card">
+            <div class="shc-role">PRINCIPAL & HEAD OF INSTITUTION</div>
+            <h3 class="h3 shc-name">{staffInfo.principal.name}</h3>
+            <span class="shc-qual">{staffInfo.principal.qualifications}</span>
+            <p class="shc-bio">Leading academic and pastoral excellence at Don Bosco School Shirva with dedicated student mentoring.</p>
+          </div>
+
+          <div class="staff-stat-card">
+            <span class="ssc-label">TOTAL TEACHERS</span>
+            <strong class="ssc-val">{staffInfo.totalTeachers}</strong>
+            <div class="ssc-pills">
+              <span class="ssc-pill"><strong>{staffInfo.breakdown.pgt}</strong> PGT</span>
+              <span class="ssc-pill"><strong>{staffInfo.breakdown.tgt}</strong> TGT</span>
+              <span class="ssc-pill"><strong>{staffInfo.breakdown.prt}</strong> PRT</span>
+            </div>
+          </div>
+
+          <div class="staff-stat-card">
+            <span class="ssc-label">TEACHER-SECTION RATIO</span>
+            <strong class="ssc-val">{staffInfo.sectionRatio}</strong>
+            <p class="ssc-note">Optimal class attention compliant with CBSE national benchmarks.</p>
+          </div>
+
+          <div class="staff-stat-card">
+            <span class="ssc-label">WELLNESS & COUNSELLING</span>
+            <strong class="ssc-val">{staffInfo.counsellors}</strong>
+            <p class="ssc-note">Full-time counsellors & wellness teachers guiding psychological and academic health.</p>
+          </div>
+        </div>
+
+        <!-- Teaching Staff Table -->
+        <div class="table-responsive standard-table-box">
+          <table class="disclosure-table">
+            <thead>
+              <tr>
+                <th scope="col" style="width: 80px;">SL. NO</th>
+                <th scope="col" style="width: 45%;">INFORMATION</th>
+                <th scope="col">DETAILS</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="td-num">1</td>
+                <td class="td-key"><strong>PRINCIPAL</strong></td>
+                <td class="td-val">
+                  <strong>{staffInfo.principal.name}</strong>
+                  <span class="td-sub-detail">{staffInfo.principal.qualifications}</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="td-num">2</td>
+                <td class="td-key"><strong>TOTAL NO. OF TEACHERS</strong></td>
+                <td class="td-val"><strong>{staffInfo.totalTeachers}</strong></td>
+              </tr>
+              <tr class="tr-sub">
+                <td class="td-num-sub">a</td>
+                <td class="td-key-sub">PGT (Post Graduate Teachers)</td>
+                <td class="td-val"><strong>{staffInfo.breakdown.pgt}</strong></td>
+              </tr>
+              <tr class="tr-sub">
+                <td class="td-num-sub">b</td>
+                <td class="td-key-sub">TGT (Trained Graduate Teachers)</td>
+                <td class="td-val"><strong>{staffInfo.breakdown.tgt}</strong></td>
+              </tr>
+              <tr class="tr-sub">
+                <td class="td-num-sub">c</td>
+                <td class="td-key-sub">PRT (Primary Teachers)</td>
+                <td class="td-val"><strong>{staffInfo.breakdown.prt}</strong></td>
+              </tr>
+              <tr>
+                <td class="td-num">3</td>
+                <td class="td-key"><strong>TEACHERS SECTION RATIO</strong></td>
+                <td class="td-val"><span class="ratio-pill">{staffInfo.sectionRatio}</span></td>
+              </tr>
+              <tr>
+                <td class="td-num">4</td>
+                <td class="td-key"><strong>DETAILS OF SPECIAL EDUCATOR</strong></td>
+                <td class="td-val">
+                  <span>{staffInfo.specialEducators}</span>
+                  <span class="td-sub-detail">Supported via inclusive faculty network & remedial programs</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="td-num">5</td>
+                <td class="td-key"><strong>DETAILS OF COUNSELLOR AND WELLNESS TEACHER</strong></td>
+                <td class="td-val"><strong>0{staffInfo.counsellors} Qualified Mentors</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- SECTION 5: SCHOOL INFRASTRUCTURE -->
+      <section id="infrastructure" class="disclosure-card-section" data-reveal>
+        <div class="section-title-wrap">
+          <div class="section-badge">SECTION E</div>
+          <h2 class="h2 section-title">5. SCHOOL INFRASTRUCTURE</h2>
+          <p class="section-desc">Physical campus metrics, laboratories, sanitation provisions, and video walkthrough documentation.</p>
+        </div>
+
+        <!-- Infrastructure Cards Grid -->
+        <div class="infra-cards-grid">
+          {infrastructureData.map((item) => (
+            <div class="infra-card">
+              <div class="ic-head">
+                <span class="ic-num">#{item.no}</span>
+                {item.metric && <span class="ic-metric">{item.metric}</span>}
+              </div>
+              <h3 class="h4 ic-param">{item.parameter}</h3>
+              <p class="ic-detail">{item.detail}</p>
+            </div>
+          ))}
+        </div>
+
+        <!-- Inspection Video Showcase -->
+        <div class="video-showcase-card">
+          <div class="video-info-side">
+            <span class="vsc-badge">OFFICIAL VIDEO INSPECTION</span>
+            <h3 class="h3 vsc-title">{inspectionVideo.title}</h3>
+            <p class="vsc-desc">{inspectionVideo.description}</p>
+            <div class="vsc-points">
+              <div class="vsc-point">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                Classroom ventilation and digital boards
+              </div>
+              <div class="vsc-point">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                Science & Computer laboratories demonstration
+              </div>
+              <div class="vsc-point">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                Fire safety & student hygiene facilities
+              </div>
+            </div>
+            <a href={inspectionVideo.youtubeUrl} target="_blank" rel="noopener noreferrer" class="btn-yt-external">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+              Watch Inspection on YouTube
+            </a>
+          </div>
+
+          <div class="video-embed-side">
+            <div class="video-wrapper">
+              <iframe 
+                src={inspectionVideo.embedUrl} 
+                title={inspectionVideo.title}
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+        </div>
+
+        <!-- Infrastructure Table Representation -->
+        <div class="table-responsive standard-table-box">
+          <table class="disclosure-table">
+            <thead>
+              <tr>
+                <th scope="col" style="width: 80px;">SL. NO</th>
+                <th scope="col" style="width: 48%;">INFORMATION</th>
+                <th scope="col">DETAILS</th>
+              </tr>
+            </thead>
+            <tbody>
+              {infrastructureData.map((row) => (
+                <tr>
+                  <td class="td-num">{row.no}</td>
+                  <td class="td-key"><strong>{row.parameter}</strong></td>
+                  <td class="td-val">
+                    <span class="infra-val-tag">{row.detail}</span>
+                  </td>
+                </tr>
+              ))}
+              <tr>
+                <td class="td-num">7</td>
+                <td class="td-key">
+                  <strong>LINK OF YOUTUBE VIDEO OF THE INSPECTION OF SCHOOL COVERING THE INFRASTRUCTURE OF THE SCHOOL</strong>
+                </td>
+                <td class="td-val">
+                  <a href={inspectionVideo.youtubeUrl} target="_blank" rel="noopener noreferrer" class="table-yt-link">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    View Inspection Video
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Interactive Document Preview Modal -->
+  <div id="pdf-modal" class="pdf-modal" aria-hidden="true" role="dialog" aria-labelledby="modal-doc-title">
+    <div class="modal-backdrop" id="modal-backdrop"></div>
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title-box">
+          <span class="modal-badge">CBSE DISCLOSURE DOCUMENT</span>
+          <h3 id="modal-doc-title" class="modal-heading">Document Preview</h3>
+        </div>
+        <div class="modal-controls">
+          <a id="modal-download-btn" href="#" download class="modal-ctrl-btn" title="Download Document">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span class="sr-only">Download</span>
+          </a>
+          <a id="modal-newtab-btn" href="#" target="_blank" rel="noopener noreferrer" class="modal-ctrl-btn" title="Open in New Tab">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            <span class="sr-only">Open New Tab</span>
+          </a>
+          <button type="button" id="modal-close-btn" class="modal-close-btn" aria-label="Close Preview">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+      </div>
+      
+      <div class="modal-body">
+        <iframe id="modal-iframe" src="" title="PDF Viewer"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <Footer />
+</Layout>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('pdf-modal');
+    const modalIframe = document.getElementById('modal-iframe');
+    const modalTitle = document.getElementById('modal-doc-title');
+    const modalDownloadBtn = document.getElementById('modal-download-btn');
+    const modalNewTabBtn = document.getElementById('modal-newtab-btn');
+    const modalCloseBtn = document.getElementById('modal-close-btn');
+    const modalBackdrop = document.getElementById('modal-backdrop');
+
+    function openModal(url, title) {
+      if (!modal || !modalIframe) return;
+      modalIframe.src = url;
+      if (modalTitle) modalTitle.textContent = title || 'Document Preview';
+      if (modalDownloadBtn) modalDownloadBtn.href = url;
+      if (modalNewTabBtn) modalNewTabBtn.href = url;
+      
+      modal.setAttribute('aria-hidden', 'false');
+      modal.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      if (!modal || !modalIframe) return;
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+      modalIframe.src = '';
+      document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('[data-preview-url]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const url = btn.getAttribute('data-preview-url');
+        const title = btn.getAttribute('data-preview-title');
+        if (url) openModal(url, title);
+      });
+    });
+
+    if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeModal);
+    if (modalBackdrop) modalBackdrop.addEventListener('click', closeModal);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal && modal.classList.contains('is-open')) {
+        closeModal();
+      }
+    });
+  });
+</script>
+
+<style>
+  /* =========================================================
+     HERO SECTION
+     ========================================================= */
+  .page-hero {
+    position: relative;
+    min-height: clamp(520px, 68vh, 720px);
+    display: flex;
+    align-items: flex-end;
+    color: #fff;
+    overflow: hidden;
+    isolation: isolate;
+    background: #0b0d10;
+  }
+  .ph-media {
+    position: absolute;
+    inset: -10% 0;
+    z-index: -2;
+  }
+  .ph-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.78);
+  }
+  .ph-shade {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(
+      180deg,
+      rgba(8, 10, 13, 0.85) 0%,
+      rgba(8, 10, 13, 0.62) 40%,
+      rgba(8, 10, 13, 0.96) 100%
+    );
+  }
+  .ph-inner {
+    padding-top: calc(var(--header-h) + 60px);
+    padding-bottom: clamp(2.5rem, 6vw, 4.5rem);
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  .breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.68);
+  }
+  .breadcrumb a {
+    color: rgba(255, 255, 255, 0.88);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .breadcrumb a:hover {
+    color: var(--gold);
+  }
+  .crumb-current {
+    color: var(--gold);
+  }
+
+  .hero-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    align-items: center;
+  }
+  .badge-pill {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    padding: 0.35rem 0.85rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+  .badge-gold {
+    background: rgba(197, 160, 89, 0.2);
+    color: var(--gold);
+    border-color: rgba(197, 160, 89, 0.5);
+  }
+
+  .ph-title {
+    color: #fff;
+    max-width: 20ch;
+    margin: 0;
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    line-height: 1.1;
+  }
+  .ph-title :global(em) {
+    color: var(--gold);
+    font-style: normal;
+  }
+  .ph-subtitle {
+    color: rgba(255, 255, 255, 0.88);
+    max-width: 75ch;
+    margin: 0;
+    font-size: clamp(1rem, 1.8vw, 1.15rem);
+    line-height: 1.6;
+  }
+
+  /* Quick Jump Pills */
+  .quick-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+  }
+  .quick-nav-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 44px;
+    padding: 0.45rem 1rem;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 999px;
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    backdrop-filter: blur(10px);
+  }
+  .quick-nav-pill:hover {
+    background: var(--gold);
+    color: #111;
+    border-color: var(--gold);
+    transform: translateY(-2px);
+  }
+  .pill-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    font-size: 0.7rem;
+    font-weight: 700;
+  }
+  .quick-nav-pill:hover .pill-num {
+    background: #000;
+    color: #fff;
+  }
+
+  /* =========================================================
+     METRICS BAR
+     ========================================================= */
+  .metrics-bar {
+    background: var(--bg-alt);
+    border-bottom: 1px solid var(--line);
+    padding-block: 2rem;
+  }
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+  }
+  .metric-card {
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+  .metric-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--gold);
+  }
+  .mc-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: rgba(197, 160, 89, 0.12);
+    color: var(--gold-text);
+    flex-shrink: 0;
+  }
+  .mc-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+  .mc-val {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  .mc-label {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--muted);
+  }
+
+  /* =========================================================
+     MAIN CONTENT & SECTIONS
+     ========================================================= */
+  .main-content {
+    padding-block: clamp(3.5rem, 6vw, 6rem);
+    background: var(--bg);
+  }
+  .disclosures-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 4.5rem;
+  }
+
+  .disclosure-card-section {
+    scroll-margin-top: calc(var(--header-h) + 40px);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .section-title-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .section-badge {
+    display: inline-block;
+    width: fit-content;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    color: var(--gold-text);
+    text-transform: uppercase;
+    background: rgba(197, 160, 89, 0.12);
+    padding: 0.25rem 0.65rem;
+    border-radius: 4px;
+  }
+  .section-title {
+    color: var(--ink);
+    margin: 0;
+    font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+  }
+  .section-desc {
+    color: var(--muted);
+    margin: 0;
+    max-width: 78ch;
+    font-size: 1.02rem;
+    line-height: 1.6;
+  }
+
+  /* SECTION 1: INFO GRID */
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.25rem;
+  }
+  .info-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.2rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    padding: 1.5rem;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.02);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+  .info-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--gold);
+  }
+  .ic-num {
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: var(--gold-text);
+    background: var(--bg-alt);
+    padding: 0.35rem 0.6rem;
+    border-radius: 6px;
+    border: 1px solid var(--line);
+    flex-shrink: 0;
+  }
+  .ic-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    min-width: 0;
+  }
+  .ic-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+  }
+  .ic-value {
+    font-size: 1.02rem;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.45;
+    word-break: break-word;
+  }
+  .ic-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--gold-text);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .ic-link:hover {
+    text-decoration: underline;
+    color: var(--ink);
+  }
+
+  /* SECTION 2: DOCS GRID */
+  .docs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 1.5rem;
+  }
+  .doc-item-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    padding: 1.75rem;
+    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.03);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+  .doc-item-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--gold);
+  }
+  .doc-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 0.9rem;
+  }
+  .doc-sl {
+    font-size: 0.78rem;
+    font-weight: 800;
+    color: var(--gold-text);
+  }
+  .doc-tag {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 0.25rem 0.65rem;
+    border-radius: 999px;
+    background: var(--bg-alt);
+    border: 1px solid var(--line);
+    color: var(--muted);
+  }
+  .doc-title {
+    color: var(--ink);
+    margin: 0 0 0.75rem 0;
+    font-size: 1.08rem;
+    line-height: 1.45;
+  }
+  .doc-auth {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin: 0 0 1.5rem 0;
+    line-height: 1.4;
+  }
+  .doc-auth svg {
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: var(--gold);
+  }
+  .doc-card-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--line);
+  }
+  .doc-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--muted);
+  }
+  .doc-fmt {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.2rem 0.45rem;
+    border-radius: 4px;
+    background: rgba(220, 53, 69, 0.1);
+    color: #dc3545;
+    font-weight: 700;
+    font-size: 0.75rem;
+  }
+  .doc-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .btn-doc-view {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    min-height: 44px;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    background: var(--bg-alt);
+    border: 1px solid var(--line);
+    color: var(--ink);
+    font-size: 0.86rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .btn-doc-view:hover {
+    background: var(--gold) !important;
+    color: #101216 !important;
+    border-color: var(--gold) !important;
+  }
+  .btn-doc-view:hover * {
+    color: #101216 !important;
+  }
+  .btn-doc-download {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    min-height: 44px;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    background: var(--gold) !important;
+    border: 1px solid var(--gold) !important;
+    color: #101216 !important;
+    font-size: 0.86rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  .btn-doc-download:hover {
+    background: #0B0D12 !important;
+    color: #ffffff !important;
+    border-color: #0B0D12 !important;
+  }
+  .btn-doc-download:hover * {
+    color: #ffffff !important;
+  }
+  :global([data-theme="dark"]) .btn-doc-download {
+    background: var(--gold) !important;
+    color: #0b0c0f !important;
+    border-color: var(--gold) !important;
+  }
+  :global([data-theme="dark"]) .btn-doc-download:hover {
+    background: #ffffff !important;
+    color: #0b0c0f !important;
+    border-color: #ffffff !important;
+  }
+  :global([data-theme="dark"]) .btn-doc-download:hover * {
+    color: #0b0c0f !important;
+  }
+
+  /* SECTION 3: ACADEMIC LINKS GRID */
+  .academic-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  .acad-item-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    padding: 1.75rem;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.02);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+  .acad-item-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--gold);
+  }
+  .acad-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+  }
+  .acad-num {
+    font-size: 0.82rem;
+    font-weight: 800;
+    color: var(--gold-text);
+  }
+  .acad-tag {
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 0.2rem 0.55rem;
+    background: var(--bg-alt);
+    border-radius: 4px;
+    color: var(--muted);
+  }
+  .acad-title {
+    color: var(--ink);
+    margin: 0 0 0.5rem 0;
+    font-size: 1.12rem;
+    line-height: 1.4;
+  }
+  .acad-desc {
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 0 0 1.5rem 0;
+  }
+  .acad-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    min-height: 44px;
+    padding: 0.65rem 1.25rem;
+    border-radius: 8px;
+    background: var(--bg-alt);
+    border: 1px solid var(--line);
+    color: var(--ink);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  .acad-btn-primary:hover {
+    background: var(--gold);
+    color: #fff;
+    border-color: var(--gold);
+  }
+
+  /* Results Container */
+  .results-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    margin-top: 1rem;
+  }
+  .result-subsection {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  .res-subhead {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .res-title {
+    color: var(--ink);
+    margin: 0 0 0.25rem 0;
+    font-size: 1.22rem;
+  }
+  .res-desc {
+    color: var(--muted);
+    margin: 0;
+    font-size: 0.9rem;
+  }
+  .pill-distinction {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    padding: 0.4rem 0.85rem;
+    border-radius: 999px;
+    background: rgba(197, 160, 89, 0.15);
+    color: var(--gold-text);
+    border: 1px solid rgba(197, 160, 89, 0.4);
+  }
+  .pass-badge-100 {
+    display: inline-block;
+    padding: 0.25rem 0.6rem;
+    background: rgba(46, 125, 50, 0.12);
+    color: #2e7d32;
+    border: 1px solid rgba(46, 125, 50, 0.3);
+    border-radius: 6px;
+    font-weight: 800;
+    font-size: 0.95rem;
+  }
+  .pass-badge-high {
+    display: inline-block;
+    padding: 0.25rem 0.6rem;
+    background: rgba(197, 160, 89, 0.15);
+    color: var(--gold-text);
+    border: 1px solid rgba(197, 160, 89, 0.3);
+    border-radius: 6px;
+    font-weight: 800;
+    font-size: 0.95rem;
+  }
+
+  /* SECTION 4: STAFF */
+  .staff-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+  .staff-hero-card {
+    grid-column: span 1;
+    background: linear-gradient(135deg, rgba(197, 160, 89, 0.15) 0%, rgba(197, 160, 89, 0.04) 100%);
+    border: 1px solid rgba(197, 160, 89, 0.35);
+    border-radius: var(--r-lg);
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .shc-role {
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    color: var(--gold-text);
+    text-transform: uppercase;
+  }
+  .shc-name {
+    color: var(--ink);
+    margin: 0;
+    font-size: 1.3rem;
+  }
+  .shc-qual {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--muted);
+  }
+  .shc-bio {
+    font-size: 0.88rem;
+    color: var(--ink);
+    margin: 0.6rem 0 0 0;
+    line-height: 1.5;
+  }
+
+  .staff-stat-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.02);
+  }
+  .ssc-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .ssc-val {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--ink);
+    line-height: 1;
+  }
+  .ssc-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.4rem;
+  }
+  .ssc-pill {
+    font-size: 0.82rem;
+    background: var(--bg-alt);
+    border: 1px solid var(--line);
+    padding: 0.25rem 0.6rem;
+    border-radius: 6px;
+    color: var(--ink);
+  }
+  .ssc-pill strong {
+    color: var(--gold-text);
+  }
+  .ssc-note {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin: 0;
+    line-height: 1.45;
+  }
+  .ratio-pill {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: rgba(197, 160, 89, 0.12);
+    color: var(--gold-text);
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.95rem;
+  }
+
+  /* SECTION 5: INFRASTRUCTURE */
+  .infra-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+  }
+  .infra-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02);
+  }
+  .ic-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .ic-metric {
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: var(--gold-text);
+    background: rgba(197, 160, 89, 0.1);
+    padding: 0.2rem 0.55rem;
+    border-radius: 4px;
+  }
+  .ic-param {
+    color: var(--ink);
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+  .ic-detail {
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin: 0;
+    line-height: 1.45;
+  }
+
+  /* Video Showcase Card */
+  .video-showcase-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    align-items: center;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    padding: clamp(1.75rem, 3.5vw, 3rem);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.03);
+  }
+  .video-info-side {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .vsc-badge {
+    display: inline-block;
+    width: fit-content;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    color: var(--gold-text);
+    text-transform: uppercase;
+    background: rgba(197, 160, 89, 0.12);
+    padding: 0.3rem 0.75rem;
+    border-radius: 999px;
+  }
+  .vsc-title {
+    color: var(--ink);
+    margin: 0;
+    font-size: 1.4rem;
+    line-height: 1.3;
+  }
+  .vsc-desc {
+    color: var(--muted);
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+  .vsc-points {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-block: 0.25rem;
+  }
+  .vsc-point {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .vsc-point svg {
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+  .btn-yt-external {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    width: fit-content;
+    min-height: 48px;
+    padding: 0.75rem 1.5rem;
+    border-radius: 999px;
+    background: #ff0000;
+    color: #fff;
+    font-size: 0.92rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform 0.2s ease, filter 0.2s ease;
+  }
+  .btn-yt-external:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+  }
+  .video-embed-side {
+    width: 100%;
+  }
+  .video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    height: 0;
+    overflow: hidden;
+    border-radius: var(--r-md);
+    border: 1px solid var(--line);
+    background: #000;
+  }
+  .video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* =========================================================
+     STANDARDIZED CBSE COMPLIANT TABLES
+     ========================================================= */
+  .standard-table-box {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .disclosure-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+    min-width: 680px;
+    text-align: left;
+  }
+  .disclosure-table th {
+    background: var(--bg-alt);
+    color: var(--ink);
+    font-weight: 800;
+    font-size: 0.82rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 1.1rem 1.25rem;
+    border-bottom: 2px solid var(--line);
+  }
+  .disclosure-table td {
+    padding: 1.1rem 1.25rem;
+    border-bottom: 1px solid var(--line);
+    color: var(--ink);
+    vertical-align: middle;
+  }
+  .disclosure-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+  .disclosure-table tbody tr:hover {
+    background: color-mix(in srgb, var(--gold) 4%, transparent);
+  }
+  .td-num {
+    font-weight: 700;
+    color: var(--muted);
+  }
+  .td-key strong {
+    color: var(--ink);
+    font-size: 0.95rem;
+  }
+  .td-contact-link, .table-contact-link {
+    color: var(--gold-text);
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .table-contact-link:hover {
+    text-decoration: underline;
+    color: var(--ink);
+  }
+  .td-doc-desc {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .td-doc-desc strong {
+    color: var(--ink);
+    font-size: 0.95rem;
+  }
+  .td-auth-sub {
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+  .td-action-cell {
+    text-align: right;
+  }
+  .table-action-group {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .table-view-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    min-height: 38px;
+    padding: 0.4rem 0.85rem;
+    background: var(--bg-alt);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    font-size: 0.84rem;
+    font-weight: 600;
+    color: var(--ink);
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  .table-view-btn:hover {
+    background: var(--gold);
+    color: #fff;
+    border-color: var(--gold);
+  }
+  .table-dl-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    min-height: 38px;
+    padding: 0.4rem 0.85rem;
+    background: rgba(197, 160, 89, 0.12);
+    border: 1px solid rgba(197, 160, 89, 0.3);
+    border-radius: 6px;
+    font-size: 0.84rem;
+    font-weight: 600;
+    color: var(--gold-text);
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  .table-dl-btn:hover {
+    background: var(--gold);
+    color: #fff;
+    border-color: var(--gold);
+  }
+  .table-yt-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: #ff0000;
+    font-weight: 700;
+    text-decoration: none;
+    transition: filter 0.2s;
+  }
+  .table-yt-link:hover {
+    filter: brightness(1.2);
+    text-decoration: underline;
+  }
+  .font-year {
+    font-size: 1rem;
+    color: var(--ink);
+  }
+  .td-sub-detail {
+    display: block;
+    font-size: 0.82rem;
+    color: var(--muted);
+    margin-top: 0.2rem;
+  }
+  .tr-sub td {
+    background: color-mix(in srgb, var(--bg-alt) 40%, transparent);
+  }
+  .td-num-sub {
+    font-weight: 700;
+    color: var(--gold-text);
+    padding-left: 2rem;
+  }
+  .td-key-sub {
+    color: var(--muted);
+    font-size: 0.92rem;
+  }
+  .infra-val-tag {
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  /* =========================================================
+     MODAL PREVIEW STYLES
+     ========================================================= */
+  .pdf-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+  }
+  .pdf-modal.is-open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+  }
+  .modal-dialog {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 960px;
+    height: 88vh;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 1.75rem;
+    border-bottom: 1px solid var(--line);
+    background: var(--bg-alt);
+  }
+  .modal-title-box {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+  .modal-badge {
+    font-size: 0.7rem;
+    font-weight: 800;
+    color: var(--gold-text);
+    letter-spacing: 0.06em;
+  }
+  .modal-heading {
+    margin: 0;
+    font-size: 1.15rem;
+    color: var(--ink);
+    max-width: 55ch;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .modal-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .modal-ctrl-btn, .modal-close-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    color: var(--ink);
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .modal-ctrl-btn:hover, .modal-close-btn:hover {
+    background: var(--gold);
+    color: #fff;
+    border-color: var(--gold);
+  }
+  .modal-body {
+    flex: 1;
+    width: 100%;
+    background: #2a2a2a;
+    position: relative;
+  }
+  .modal-body iframe {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Accessibility screen-reader only */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  /* =========================================================
+     RESPONSIVE MEDIA QUERIES (Mobile-First standard)
+     ========================================================= */
+  @media (max-width: 992px) {
+    .video-showcase-card {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .page-hero {
+      min-height: 480px;
+    }
+    .ph-inner {
+      padding-top: calc(var(--header-h) + 40px);
+      gap: 1rem;
+    }
+    .ph-title {
+      font-size: 2rem;
+    }
+    .ph-subtitle {
+      font-size: 0.95rem;
+    }
+    .quick-nav {
+      overflow-x: auto;
+      flex-wrap: nowrap;
+      padding-bottom: 0.5rem;
+      -webkit-overflow-scrolling: touch;
+      max-width: 100%;
+    }
+    .quick-nav-pill {
+      flex-shrink: 0;
+    }
+    .metrics-bar {
+      padding-block: 1.5rem;
+    }
+    .disclosures-wrapper {
+      gap: 3.5rem;
+    }
+    .info-grid, .docs-grid, .academic-cards-grid, .staff-cards-grid, .infra-cards-grid {
+      grid-template-columns: 1fr;
+    }
+    .disclosure-table th, .disclosure-table td {
+      padding: 0.85rem 1rem;
+    }
+    .pdf-modal {
+      padding: 0.5rem;
+    }
+    .modal-dialog {
+      height: 94vh;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .page-hero { min-height: 420px; }
+    .doc-item-card, .info-card, .acad-item-card, .staff-stat-card, .infra-card { padding: 1.15rem; }
+    .staff-hero-card { padding: 1.25rem; flex-direction: column; align-items: flex-start; }
+    .vsc-points { gap: 0.5rem; }
+    .btn-yt-external { width: 100%; justify-content: center; }
+  }
+
+  /* =========================================================
+     DARK MODE HIGH-CONTRAST FIXES
+     (Addressing user feedback: "headings are hardly visible in dark mode")
+     ========================================================= */
+  :global([data-theme="dark"]) .section-title,
+  :global([data-theme="dark"]) .doc-title,
+  :global([data-theme="dark"]) .acad-title,
+  :global([data-theme="dark"]) .res-title,
+  :global([data-theme="dark"]) .shc-name,
+  :global([data-theme="dark"]) .vsc-title,
+  :global([data-theme="dark"]) .ic-param,
+  :global([data-theme="dark"]) .modal-heading,
+  :global([data-theme="dark"]) .disclosure-table th,
+  :global([data-theme="dark"]) .td-key strong,
+  :global([data-theme="dark"]) .td-doc-desc strong,
+  :global([data-theme="dark"]) .font-year,
+  :global([data-theme="dark"]) .vsc-point,
+  :global([data-theme="dark"]) .infra-val-tag,
+  :global([data-theme="dark"]) .shc-bio,
+  :global([data-theme="dark"]) .mc-val,
+  :global([data-theme="dark"]) .ssc-val {
+    color: #F8F6F0 !important;
+  }
+
+  :global([data-theme="dark"]) .section-desc,
+  :global([data-theme="dark"]) .doc-auth,
+  :global([data-theme="dark"]) .acad-desc,
+  :global([data-theme="dark"]) .res-desc,
+  :global([data-theme="dark"]) .vsc-desc,
+  :global([data-theme="dark"]) .ic-detail,
+  :global([data-theme="dark"]) .td-auth-sub,
+  :global([data-theme="dark"]) .td-sub-detail,
+  :global([data-theme="dark"]) .td-key-sub,
+  :global([data-theme="dark"]) .shc-qual,
+  :global([data-theme="dark"]) .ssc-note,
+  :global([data-theme="dark"]) .doc-meta {
+    color: #BDB9B0 !important;
+  }
+
+  :global([data-theme="dark"]) .info-card,
+  :global([data-theme="dark"]) .doc-item-card,
+  :global([data-theme="dark"]) .acad-item-card,
+  :global([data-theme="dark"]) .staff-stat-card,
+  :global([data-theme="dark"]) .infra-card,
+  :global([data-theme="dark"]) .video-showcase-card,
+  :global([data-theme="dark"]) .standard-table-box,
+  :global([data-theme="dark"]) .metric-card,
+  :global([data-theme="dark"]) .modal-dialog {
+    background: #14171F !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+  }
+
+  :global([data-theme="dark"]) .disclosure-table th,
+  :global([data-theme="dark"]) .modal-header {
+    background: #1B1F2A !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+  }
+
+  :global([data-theme="dark"]) .disclosure-table td {
+    color: #D8D4CC !important;
+    border-color: rgba(255, 255, 255, 0.06) !important;
+  }
+
+  :global([data-theme="dark"]) .tr-sub td {
+    background: #171B24 !important;
+  }
+
+  :global([data-theme="dark"]) .btn-doc-view,
+  :global([data-theme="dark"]) .acad-btn-primary,
+  :global([data-theme="dark"]) .table-view-btn,
+  :global([data-theme="dark"]) .modal-ctrl-btn,
+  :global([data-theme="dark"]) .modal-close-btn {
+    background: #1E2330 !important;
+    color: #F8F6F0 !important;
+    border-color: rgba(255, 255, 255, 0.12) !important;
+  }
+
+  :global([data-theme="dark"]) .btn-doc-view:hover,
+  :global([data-theme="dark"]) .acad-btn-primary:hover,
+  :global([data-theme="dark"]) .table-view-btn:hover,
+  :global([data-theme="dark"]) .modal-ctrl-btn:hover,
+  :global([data-theme="dark"]) .modal-close-btn:hover {
+    background: var(--gold) !important;
+    color: #111 !important;
+    border-color: var(--gold) !important;
+  }
+
+  :global([data-theme="dark"]) .staff-hero-card {
+    background: linear-gradient(135deg, rgba(197, 160, 89, 0.2) 0%, rgba(197, 160, 89, 0.06) 100%) !important;
+    border-color: rgba(197, 160, 89, 0.4) !important;
+  }
+
+  :global([data-theme="dark"]) .metrics-bar {
+    background: #0E1015 !important;
+    border-color: rgba(255, 255, 255, 0.06) !important;
+  }
+
+  :global([data-theme="dark"]) .main-content {
+    background: #0B0D12 !important;
+  }
+</style>

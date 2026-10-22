@@ -1,0 +1,99 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageLayout from '../../components/PageLayout.astro';
+import Icon from '../../components/Icon.astro';
+
+const hms = [
+  { name: 'Mrs Irine Rodrigues', role: 'Primary (1983-2016)', img: '/about/principal-1.jpg' },
+  { name: 'Mrs Juliet Gretta Noronha', role: 'High School (1998-2016)', img: '/about/principal-2.jpg' }
+];
+
+const principals = [
+  { name: 'Rev Fr Mahesh Dsouza', period: '2016-2019', img: '/about/principal-3.jpg' },
+  { name: 'Ms Myrtle L F Lewis', period: '2019-2022', img: '/about/principal-4.jpg' },
+  { name: 'Rev Fr Rolwyn Joy Aranha', period: '2022-present', img: '/about/principal-5.jpg', current: true }
+];
+---
+
+<Layout title="Principal – Don Bosco School Shirva">
+  <PageLayout
+    title='Our <span>Principals</span>'
+    subtitle="Leadership"
+    currentPage="Principal"
+    breadcrumb="About Us"
+  >
+    <section class="section">
+      <div class="container">
+        <div class="sec-head">
+          <div class="sec-meta" data-reveal><span class="sec-index">(01)</span><span class="eyebrow">Headmistresses</span></div>
+          <div class="sec-title-wrap"><h2 class="h2" data-split>HM's Of Our <em>School</em></h2></div>
+        </div>
+        <div class="leaders two">
+          {hms.map((hm, i) => (
+            <figure class="leader" data-reveal style={`--d:${i * 0.08}s`}>
+              <div class="media leader-photo"><img src={hm.img} alt={hm.name} loading="lazy" /></div>
+              <figcaption>
+                <span class="leader-role">{hm.role}</span>
+                <span class="leader-name">{hm.name}</span>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <div class="sec-head">
+          <div class="sec-meta" data-reveal><span class="sec-index">(02)</span><span class="eyebrow">Since 2016</span></div>
+          <div class="sec-title-wrap"><h2 class="h2" data-split>Principals Of <em>CBSE School</em></h2></div>
+        </div>
+        <div class="leaders three">
+          {principals.map((p, i) => (
+            <figure class:list={['leader', { 'is-current': p.current }]} data-reveal style={`--d:${i * 0.08}s`}>
+              <div class="media leader-photo">
+                <img src={p.img} alt={p.name} loading="lazy" />
+                {p.current && <span class="tag tag-gold leader-tag">Present</span>}
+              </div>
+              <figcaption>
+                <span class="leader-role">{p.period}</span>
+                <span class="leader-name">{p.name}</span>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+        <div class="leaders-cta" data-reveal>
+          <a href="/about/messages/principal-message" class="btn btn-gold">Read the Principal's Message <Icon name="arrow" class="arrow" /></a>
+        </div>
+      </div>
+    </section>
+  </PageLayout>
+</Layout>
+
+<style>
+  .leaders { display: grid; gap: clamp(1rem, 2.5vw, 2rem); }
+  .leaders.two { grid-template-columns: repeat(2, minmax(0, 380px)); }
+  .leaders.three { grid-template-columns: repeat(3, 1fr); }
+  .leader { margin: 0; display: flex; flex-direction: column; gap: 1.1rem; }
+  .leader-photo { aspect-ratio: 4 / 5; border-radius: 999px 999px var(--r-lg) var(--r-lg); }
+  .leader-photo img { object-position: top; filter: grayscale(.2); transition: filter .6s, transform 1s var(--ease); }
+  .leader:hover .leader-photo img { filter: none; transform: scale(1.04); }
+  .leader.is-current .leader-photo { box-shadow: 0 0 0 2px var(--gold); }
+  .leader.is-current .leader-photo img { filter: none; }
+  .leader-tag { position: absolute; left: 50%; bottom: 1rem; transform: translateX(-50%); }
+  .leader figcaption { display: flex; flex-direction: column; gap: .3rem; text-align: center; }
+  .leader-role { font-size: .74rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--gold-text); }
+  .leader-name { font-family: var(--font-display); font-size: clamp(1.25rem, 2vw, 1.6rem); line-height: 1.2; }
+  .leaders-cta { margin-top: clamp(2.5rem, 5vw, 4rem); display: flex; justify-content: center; }
+
+  @media (max-width: 768px) {
+    .leaders.two, .leaders.three { grid-template-columns: 1fr 1fr; }
+    .leaders.three .leader.is-current { grid-column: 1 / -1; max-width: 320px; justify-self: center; width: 100%; }
+  }
+
+  @media (max-width: 480px) {
+    .leaders.two, .leaders.three { grid-template-columns: 1fr; }
+    .leaders.three .leader.is-current { max-width: 100%; }
+    .leaders-cta .btn { width: 100%; justify-content: center; }
+  }
+</style>

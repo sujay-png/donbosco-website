@@ -1,0 +1,75 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageLayout from '../../components/PageLayout.astro';
+
+const stanzas = [
+  ['We the proud Bosconians', 'In Don Bosco brotherhood', 'Nursing in our hearts the joys', 'Of true knowledge and the good'],
+  ['Forward march with equal pace', "Through our country's sounding ways", 'Treading where our Fathers trod', 'In the glorious light of God'],
+  ['We who are the happy band', 'Will not shrink from sweat and strife', 'In the service of our land', 'For a brighter cleaner life'],
+  ['We will toil till out of gloom', 'Day shall dawn and dessert bloom', "And our country's blessed soil", 'Shall be green and gold for God'],
+];
+---
+
+<Layout title="School Anthem – Don Bosco School Shirva">
+  <PageLayout title="School <span>Anthem</span>" subtitle="We the proud Bosconians" breadcrumb="About Us" currentPage="School Anthem">
+    <section class="section anthem">
+      <div class="container">
+        <div class="anthem-grid">
+          <aside class="anthem-aside">
+            <div class="media anthem-media" data-reveal="clip">
+              <img src="/about/anthem.jpg" alt="School Anthem" loading="lazy" />
+            </div>
+          </aside>
+
+          <div class="anthem-lyrics">
+            <div class="sec-meta-inline" data-reveal>
+              <span class="sec-index">(01)</span>
+              <span class="eyebrow">The School Anthem</span>
+            </div>
+            {stanzas.map((s, i) => (
+              <div class="stanza" data-reveal style={`--d:${i * 0.08}s`}>
+                <span class="stanza-num">{['I', 'II', 'III', 'IV'][i]}</span>
+                <p>
+                  {s.map((line, j) => (<>{line}{j < s.length - 1 && <br />}</>))}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  </PageLayout>
+</Layout>
+
+<style>
+  .anthem-grid { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(2.5rem, 7vw, 7rem); align-items: start; }
+  .anthem-aside { position: sticky; top: 140px; }
+  .anthem-media { aspect-ratio: 3 / 4; border-radius: 999px 999px var(--r-lg) var(--r-lg); }
+  .js .anthem-media[data-reveal="clip"] { clip-path: inset(100% 0 0 0 round 999px 999px var(--r-lg) var(--r-lg)); }
+  .js .anthem-media[data-reveal="clip"].is-in { clip-path: inset(0 0 0 0 round 999px 999px var(--r-lg) var(--r-lg)); }
+
+  .anthem-lyrics { display: flex; flex-direction: column; }
+  .sec-meta-inline { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+  .stanza {
+    display: grid; grid-template-columns: 3.5rem 1fr; gap: 1.25rem;
+    padding: clamp(1.5rem, 3vw, 2.25rem) 0;
+    border-top: 1px solid var(--line-strong);
+  }
+  .stanza:last-child { border-bottom: 1px solid var(--line-strong); }
+  .stanza-num { font-family: var(--font-display); font-style: italic; color: var(--gold-text); font-size: 1.1rem; padding-top: .35rem; }
+  .stanza p {
+    font-family: var(--font-display);
+    font-size: clamp(1.45rem, 2.6vw, 2.2rem);
+    line-height: 1.35; letter-spacing: -0.015em; font-weight: 300;
+    color: var(--ink);
+  }
+  .stanza:first-of-type p::first-line { color: var(--gold-text); font-style: italic; }
+
+  @media (max-width: 992px) {
+    .anthem-grid { grid-template-columns: 1fr; }
+    .anthem-aside { position: static; max-width: 380px; margin-inline: auto; width: 100%; }
+  }
+  @media (max-width: 560px) {
+    .stanza { grid-template-columns: 2.25rem 1fr; gap: .75rem; }
+  }
+</style>

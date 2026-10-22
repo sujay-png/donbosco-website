@@ -1,0 +1,218 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const ptaData = [
+  ["1", "Very Rev Dr Leslie Clifford Dsouza", "Correspondent"],
+  ["2", "Rev Fr Rolwyn Joy Aranha", "Principal"],
+  ["3", "Mrs lrine Cardoza", "Vice Principal"],
+  ["4", "Dr Grynel Dmello", "LKG"],
+  ["5", "Mrs Lorna Dsouza", "UKG"],
+  ["6", "Mrs Jenevive Reshma Mathias", "Grade I"],
+  ["7", "Mrs Neha Alfred Kasote", "Grade II"],
+  ["8", "Mrs Melani Scott", "Grade III"],
+  ["9", "Mrs Rubina", "Grade IV"],
+  ["10", "Mrs Kavitha M", "Grade V"],
+  ["11", "Mrs Diana Mendonca", "Grade VI"],
+  ["12", "Mrs Priya Ullal", "Grade VII"],
+  ["13", "Mrs Carol", "Grade VIII"],
+  ["14", "Mrs Mishell Menezes", "Grade IX"],
+  ["15", "Mrs Sowmya R", "Grade X"],
+  ["16", "Mrs Wilma Correa", "Grade XII"]
+];
+---
+
+<Layout title="Parent Teacher Association - Don Bosco School Shirva">
+  <Header />
+  
+  <section class="page-hero on-image">
+    <div class="ph-media" data-parallax="-0.12"><img src="/about/old-school.jpg" alt="" fetchpriority="high" /></div>
+    <div class="ph-shade" aria-hidden="true"></div>
+    <div class="container ph-inner">
+      <nav class="breadcrumb" aria-label="Breadcrumb" data-reveal="fade">
+        <a href="/">Home</a>
+        <span aria-hidden="true">/</span>
+        <span>Academics</span>
+        <span aria-hidden="true">/</span>
+        <span>Associations</span>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page" class="crumb-current">Parent Teacher Association</span>
+      </nav>
+      <h1 class="h1 ph-title" data-split>Parent Teacher <em>Association</em></h1>
+    </div>
+  </section>
+
+  <main class="inner-main section">
+    <div class="container pta-container">
+      <div class="intro-text" data-reveal>
+        <h2 class="h2">PTA Executive Committee</h2>
+        <p class="muted">The Parent Teacher Association (PTA) plays a vital role in fostering strong relationships between parents and educators, ensuring the holistic development of our students.</p>
+      </div>
+
+      <div class="tables-wrapper">
+        <div class="table-section" data-reveal>
+          <div class="table-header">
+            <h3 class="h3">Committee Members</h3>
+          </div>
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th class="col-sl">SI.No</th>
+                  <th>Name</th>
+                  <th>Class / Designation</th>
+                </tr>
+              </thead>
+              <tbody>
+                {ptaData.map((row) => (
+                  <tr>
+                    <td class="col-sl">{row[0]}</td>
+                    <td>{row[1]}</td>
+                    <td>{row[2]}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+  <Footer />
+</Layout>
+
+<style>
+  /* Hero Styles */
+  .page-hero {
+    position: relative;
+    min-height: clamp(460px, 62vh, 640px);
+    display: flex; align-items: flex-end;
+    color: #fff;
+    overflow: hidden;
+    isolation: isolate;
+    background: #0b0d10;
+  }
+  .ph-media { position: absolute; inset: -10% 0; z-index: -2; }
+  .ph-media img { width: 100%; height: 100%; object-fit: cover; animation: phZoom 2.2s var(--ease) both; }
+  @keyframes phZoom { from { transform: scale(1.12); } to { transform: scale(1); } }
+  .ph-shade {
+    position: absolute; inset: 0; z-index: -1;
+    background: linear-gradient(180deg, rgba(8,10,13,.78) 0%, rgba(8,10,13,.55) 45%, rgba(8,10,13,.92) 100%);
+  }
+  .ph-inner {
+    padding-top: calc(var(--header-h) + 90px);
+    padding-bottom: clamp(2.5rem, 6vw, 4.5rem);
+    display: flex; flex-direction: column; gap: 1.1rem;
+  }
+  .breadcrumb {
+    display: flex; flex-wrap: wrap; align-items: center; gap: .6rem;
+    font-size: .8rem; font-weight: 600; letter-spacing: .04em;
+    color: rgba(255,255,255,.6);
+  }
+  .breadcrumb a { color: rgba(255,255,255,.85); transition: color .2s; min-height: 32px; display: inline-flex; align-items: center; }
+  .breadcrumb a:hover { color: var(--gold); }
+  .crumb-current { color: var(--gold); }
+  .ph-title { color: #fff; max-width: 18ch; text-transform: uppercase; }
+  .ph-title :global(em) { color: var(--gold); }
+
+  /* Page Styles */
+  .inner-main { width: 100%; overflow-x: clip; padding-block: clamp(3rem, 6vw, 5rem); }
+  
+  .intro-text {
+    text-align: center;
+    max-width: 800px;
+    margin-inline: auto;
+    margin-bottom: clamp(2rem, 5vw, 4rem);
+  }
+  .intro-text .h2 {
+    margin-bottom: 1.5rem;
+    color: var(--gold-text);
+  }
+  .intro-text .muted {
+    font-size: 1.1rem;
+    line-height: 1.7;
+  }
+
+  .pta-container {
+    max-width: 1000px;
+    margin-inline: auto;
+  }
+  
+  .tables-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+  }
+  
+  .table-header {
+    background-color: var(--gold);
+    padding: 0.8rem;
+    text-align: center;
+    border-radius: var(--r) var(--r) 0 0;
+  }
+  
+  .table-header h3 {
+    color: #101216;
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 800;
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+  }
+
+  .table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border: 1px solid var(--line);
+    border-top: none;
+    border-radius: 0 0 var(--r) var(--r);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--surface);
+    font-size: 0.95rem;
+    min-width: 600px;
+  }
+  
+  .table th,
+  .table td {
+    padding: 0.9rem 1.25rem;
+    border-bottom: 1px solid var(--line);
+    text-align: left;
+  }
+  
+  .table th {
+    background-color: color-mix(in srgb, var(--gold) 15%, transparent);
+    font-weight: 700;
+    color: var(--ink);
+    font-size: 0.85rem;
+  }
+  
+  .table tr:last-child td {
+    border-bottom: none;
+  }
+  
+  .table tr:nth-child(even) {
+    background-color: color-mix(in srgb, var(--bg-alt) 30%, transparent);
+  }
+  
+  .table tr:hover {
+    background-color: color-mix(in srgb, var(--gold) 5%, transparent);
+  }
+
+  .col-sl {
+    width: 80px;
+    text-align: center !important;
+  }
+  
+  @media (max-width: 768px) {
+    .page-hero { min-height: 420px; }
+    .ph-inner { padding-top: calc(var(--header-h) + 60px); }
+    .table th, .table td { padding: 0.75rem 1rem; }
+  }
+</style>

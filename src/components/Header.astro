@@ -1,0 +1,581 @@
+---
+import Icon from './Icon.astro';
+
+type NavItem = { label: string; href: string; children?: NavItem[] };
+
+const nav: NavItem[] = [
+  { label: 'Home', href: '/' },
+  {
+    label: 'About Us',
+    href: '/about/know-your-don-bosco',
+    children: [
+      { label: 'Know your Don Bosco', href: '/about/know-your-don-bosco' },
+      { label: 'School Anthem', href: '/about/school-anthem' },
+      { label: 'History', href: '/about/history' },
+      { label: 'School Management', href: '/about/school-management' },
+      { label: 'Correspondents', href: '/about/correspondents' },
+      { label: 'Principal', href: '/about/principal' },
+      {
+        label: 'Messages',
+        href: '/about/messages/principal-message',
+        children: [{ label: "Principal's Message", href: '/about/messages/principal-message' }],
+      },
+      { label: 'Awards and Recognition', href: '#' },
+    ],
+  },
+  {
+    label: 'CBSE',
+    href: '#',
+    children: [
+      { label: 'Mandatory Public Disclosure', href: '/mandatory-public-disclosure' },
+      { label: 'CBSE Requirements', href: '/cbse-requirements' },
+    ],
+  },
+  { label: 'Facilities', href: '/facilities' },
+  {
+    label: 'Academics',
+    href: '#',
+    children: [
+      { label: 'Admission', href: '/admission' },
+      { label: 'Academic Calendar', href: '/academic-calendar.pdf' },
+      { label: 'Annual Report', href: '/annual-report' },
+      { label: 'Curriculum', href: '/textbooks' },
+      {
+        label: 'Activities',
+        href: '#',
+        children: [
+          { label: 'Co Curricular Activities', href: '/extra-curricular-activities' },
+          { label: 'Associations & Clubs', href: '/associations-clubs' },
+          { label: 'Sports & Games', href: '/sports-games' },
+        ],
+      },
+      {
+        label: 'Staff',
+        href: '#',
+        children: [
+          { label: 'Teaching Staff', href: '/teaching-staff' },
+          { label: 'Auxiliary Staff', href: '#' },
+        ],
+      },
+      { label: 'Associations', href: '#', children: [{ label: 'PTA', href: '/parent-teacher-association' }] },
+      { label: 'Achievements', href: '/achievements' },
+      { label: 'Board Results', href: '/board-results' },
+    ],
+  },
+  {
+    label: 'News & Events',
+    href: '/news-events',
+    children: [
+      {
+        label: 'Events',
+        href: '/news-events',
+        children: [
+          { label: 'Activities', href: '/news-events#activities' },
+          { label: 'KG Activities', href: '/news-events#kg-activities' },
+        ],
+      },
+      { label: 'Students Gallery', href: '/students-gallery' },
+      {
+        label: 'Gallery',
+        href: '/#gallery',
+        children: [
+          { label: 'Photo Gallery', href: '/#gallery' },
+          { label: 'Video Gallery', href: '/#gallery' },
+        ],
+      },
+      { label: 'Academic Calendar', href: '/academic-calendar.pdf' },
+      { label: 'School Magazine', href: '/school-magazine' },
+    ],
+  },
+  { label: 'Contact', href: '/contact' },
+  {
+    label: 'Alumni',
+    href: '#',
+    children: [
+      { label: 'Alumni Testimonials', href: '/alumni-testimonials' },
+      { label: 'Alumni Achievers Hall of Fame', href: '#' },
+    ],
+  },
+];
+
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isActive = (item: NavItem): boolean => {
+  const h = item.href.replace(/\/$/, '') || '/';
+  if (h === '/' ) return path === '/';
+  if (h.startsWith('/about') && path.startsWith('/about')) return true;
+  return (item.children || []).some(isActive);
+};
+---
+<header class="site-header is-top" data-header>
+  <!-- Utility bar -->
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <div class="topbar-left">
+        <a href="tel:+918722089715"><Icon name="phone" size={14} /> +91 87220 89715</a>
+        <a href="mailto:shirvadonboscoschool@gmail.com"><Icon name="mail" size={14} /> shirvadonboscoschool@gmail.com</a>
+      </div>
+      <div class="topbar-right">
+        <span class="topbar-motto">Growing in Truth and Purity</span>
+        <span class="topbar-sep" aria-hidden="true"></span>
+        <a href="https://www.facebook.com/donboscocbseshirva" aria-label="Facebook" target="_blank" rel="noopener"><Icon name="facebook" size={14} /></a>
+        <a href="https://x.com/DonBoscoSchoolShirva" aria-label="X (Twitter)" target="_blank" rel="noopener"><Icon name="x" size={13} /></a>
+        <a href="https://www.instagram.com/donboscoshoolshirva/" aria-label="Instagram" target="_blank" rel="noopener"><Icon name="instagram" size={14} /></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main bar -->
+  <div class="navbar">
+    <div class="container navbar-inner">
+      <a href="/" class="brand" aria-label="Don Bosco English Medium School Shirva — Home">
+        <span class="brand-mark"><img src="/logo.jpg" alt="" width="48" height="48" /></span>
+        <span class="brand-text">
+          <span class="brand-name">Don Bosco</span>
+          <span class="brand-sub">English Medium School · Shirva</span>
+        </span>
+      </a>
+
+      <nav class="desk-nav" aria-label="Primary">
+        <ul class="menu">
+          {nav.map((item) => (
+            <li class:list={['menu-item', { 'has-sub': item.children, 'is-active': isActive(item) }]}>
+              <a href={item.href} class="menu-link">
+                <span>{item.label}</span>
+                {item.children && (
+                  <svg class="menu-caret" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                )}
+              </a>
+              {item.children && (
+                <div class="dropdown">
+                  <ul class="dropdown-list">
+                    {item.children.map((child) => (
+                      <li class:list={['dd-item', { 'has-sub': child.children }]}>
+                        <a 
+                          href={child.href} 
+                          class="dd-link"
+                          target={child.href.endsWith('.pdf') ? '_blank' : undefined}
+                          rel={child.href.endsWith('.pdf') ? 'noopener noreferrer' : undefined}
+                        >
+                          <span>{child.label}</span>
+                          {child.href.endsWith('.pdf') && (
+                            <span class="pdf-tag" aria-label="PDF Document">PDF</span>
+                          )}
+                          {child.children && (
+                            <svg class="dd-caret" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                              <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                          )}
+                        </a>
+                        {child.children && (
+                          <ul class="flyout">
+                            {child.children.map((g) => (
+                              <li>
+                                <a 
+                                  href={g.href} 
+                                  class="dd-link"
+                                  target={g.href.endsWith('.pdf') ? '_blank' : undefined}
+                                  rel={g.href.endsWith('.pdf') ? 'noopener noreferrer' : undefined}
+                                >
+                                  <span>{g.label}</span>
+                                  {g.href.endsWith('.pdf') && (
+                                    <span class="pdf-tag" aria-label="PDF Document">PDF</span>
+                                  )}
+                                </a>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle colour theme">
+          <span class="tt-icon tt-sun"><Icon name="sun" size={18} /></span>
+          <span class="tt-icon tt-moon"><Icon name="moon" size={17} /></span>
+        </button>
+        <a href="/admission" class="btn btn-gold nav-cta">
+          Admissions
+          <Icon name="arrow" class="arrow" />
+        </a>
+        <button class="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" data-burger>
+          <span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile / tablet full-screen menu -->
+<div class="mobile-menu" id="mobile-menu" data-mobile-menu aria-hidden="true" data-lenis-prevent>
+  <div class="mm-inner">
+    <ul class="mm-list">
+      {nav.map((item, i) => (
+        <li class="mm-item" style={`--i:${i}`}>
+          {item.children ? (
+            <details class="mm-group">
+              <summary class="mm-link">
+                <span class="mm-num">{String(i + 1).padStart(2, '0')}</span>
+                <span class="mm-label">{item.label}</span>
+                <span class="mm-plus">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </span>
+              </summary>
+              <ul class="mm-sub">
+                {item.children.map((child) => (
+                  <li>
+                    <a 
+                      href={child.href}
+                      target={child.href.endsWith('.pdf') ? '_blank' : undefined}
+                      rel={child.href.endsWith('.pdf') ? 'noopener noreferrer' : undefined}
+                    >
+                      {child.label}
+                      {child.href.endsWith('.pdf') && <span class="pdf-tag">PDF</span>}
+                    </a>
+                    {child.children && (
+                      <ul class="mm-sub2">
+                        {child.children.map((g) => (
+                          <li>
+                            <a 
+                              href={g.href}
+                              target={g.href.endsWith('.pdf') ? '_blank' : undefined}
+                              rel={g.href.endsWith('.pdf') ? 'noopener noreferrer' : undefined}
+                            >
+                              {g.label}
+                              {g.href.endsWith('.pdf') && <span class="pdf-tag">PDF</span>}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </details>
+          ) : (
+            <a class="mm-link" href={item.href}>
+              <span class="mm-num">{String(i + 1).padStart(2, '0')}</span>
+              <span class="mm-label">{item.label}</span>
+            </a>
+          )}
+        </li>
+      ))}
+    </ul>
+    <div class="mm-foot">
+      <a href="/admission" class="btn btn-gold">Admissions Open <Icon name="arrow" class="arrow" /></a>
+      <div class="mm-contact">
+        <a href="tel:+918722089715">+91 87220 89715</a>
+        <a href="mailto:shirvadonboscoschool@gmail.com">shirvadonboscoschool@gmail.com</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const header = document.querySelector<HTMLElement>('[data-header]');
+  const burger = document.querySelector<HTMLButtonElement>('[data-burger]');
+  const menu = document.querySelector<HTMLElement>('[data-mobile-menu]');
+
+  // Header state: transparent at top, solid after, hides on scroll down
+  let lastY = window.scrollY;
+  const onScroll = () => {
+    const y = window.scrollY;
+    if (!header) return;
+    header.classList.toggle('is-top', y < 40);
+    header.classList.toggle('is-scrolled', y >= 40);
+    const menuOpen = document.body.classList.contains('menu-open');
+    if (!menuOpen) header.classList.toggle('is-hidden', y > lastY && y > 400);
+    lastY = y;
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Mobile menu
+  const setMenu = (open: boolean) => {
+    document.body.classList.toggle('menu-open', open);
+    burger?.setAttribute('aria-expanded', String(open));
+    burger?.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    menu?.setAttribute('aria-hidden', String(!open));
+    const lenis = (window as any).__lenis;
+    if (lenis) open ? lenis.stop() : lenis.start();
+    document.documentElement.style.overflow = open ? 'hidden' : '';
+  };
+  burger?.addEventListener('click', () => setMenu(!document.body.classList.contains('menu-open')));
+  menu?.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setMenu(false)));
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(false); });
+  window.addEventListener('resize', () => { if (window.innerWidth > 1260) setMenu(false); });
+</script>
+
+<style>
+  .site-header {
+    position: fixed;
+    inset: 0 0 auto 0;
+    z-index: 100;
+    color: var(--ink);
+    transition: transform .6s var(--ease), background-color .4s var(--ease), color .4s var(--ease), box-shadow .4s var(--ease);
+  }
+  .site-header.is-hidden { transform: translateY(-100%); }
+  .site-header.is-scrolled {
+    background: var(--header-bg);
+    backdrop-filter: saturate(160%) blur(18px);
+    -webkit-backdrop-filter: saturate(160%) blur(18px);
+    box-shadow: 0 1px 0 var(--line);
+  }
+  .site-header.is-top { color: #fff; }
+  :global(body.menu-open) .site-header { color: var(--ink); background: transparent; box-shadow: none; backdrop-filter: none; transform: none; }
+
+  /* Topbar */
+  .topbar {
+    font-size: .78rem;
+    font-weight: 600;
+    letter-spacing: .02em;
+    border-bottom: 1px solid rgba(255, 255, 255, .14);
+    overflow: hidden;
+    max-height: 44px;
+    transition: max-height .5s var(--ease), opacity .4s var(--ease), border-color .4s;
+  }
+  .is-scrolled .topbar, :global(body.menu-open) .topbar { max-height: 0; opacity: 0; border-color: transparent; }
+  .topbar-inner { display: flex; align-items: center; justify-content: space-between; height: 44px; gap: 1rem; }
+  .topbar-left, .topbar-right { display: flex; align-items: center; gap: 1.5rem; }
+  .topbar a { display: inline-flex; align-items: center; gap: .5rem; opacity: .82; transition: opacity .2s, color .2s; }
+  .topbar a:hover { opacity: 1; color: var(--gold); }
+  .topbar-right { gap: 1rem; }
+  .topbar-motto { font-family: var(--font-display); font-style: italic; font-weight: 400; font-size: .88rem; letter-spacing: 0; opacity: .82; }
+  .topbar-sep { width: 1px; height: 14px; background: currentColor; opacity: .3; }
+
+  /* Navbar */
+  .navbar-inner { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; height: var(--header-h); }
+
+  .brand { display: flex; align-items: center; gap: .85rem; flex-shrink: 0; min-height: 44px; }
+  .brand-mark {
+    width: 50px; height: 50px; border-radius: 50%;
+    background: #fff; display: grid; place-items: center;
+    box-shadow: 0 0 0 1px rgba(0,0,0,.06), 0 6px 18px -8px rgba(0,0,0,.35);
+    overflow: hidden;
+  }
+  .brand-mark img { width: 40px; height: 40px; object-fit: contain; }
+  .brand-text { display: flex; flex-direction: column; line-height: 1.1; }
+  .brand-name { font-family: var(--font-display); font-size: 1.4rem; font-weight: 500; letter-spacing: -0.02em; }
+  .brand-sub { font-size: .66rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; opacity: .7; margin-top: 3px; }
+
+  /* Desktop menu */
+  .menu { display: flex; align-items: center; gap: .15rem; }
+  .menu-item { position: relative; }
+  .menu-link {
+    position: relative;
+    display: inline-flex; align-items: center; gap: .3rem;
+    padding: .6rem .7rem;
+    min-height: 44px;
+    font-size: .88rem; font-weight: 600;
+    white-space: nowrap;
+    border-radius: var(--r-pill);
+    transition: color .25s;
+  }
+  .menu-link::after {
+    content: ""; position: absolute; left: .7rem; right: .7rem; bottom: .35rem; height: 1px;
+    background: var(--gold); transform: scaleX(0); transform-origin: right; transition: transform .45s var(--ease);
+  }
+  .menu-item:hover > .menu-link::after, .menu-item:focus-within > .menu-link::after, .menu-item.is-active > .menu-link::after { transform: scaleX(1); transform-origin: left; }
+  .menu-caret {
+    display: inline-block;
+    width: 13px;
+    height: 13px;
+    margin-left: .35rem;
+    color: currentColor;
+    opacity: .85;
+    flex-shrink: 0;
+    transition: transform .35s cubic-bezier(0.16, 1, 0.3, 1), color .2s, opacity .2s;
+  }
+  .menu-item:hover > .menu-link .menu-caret,
+  .menu-item:focus-within > .menu-link .menu-caret {
+    transform: rotate(180deg);
+    opacity: 1;
+    color: var(--gold);
+  }
+
+  .dd-caret {
+    display: inline-block;
+    width: 13px;
+    height: 13px;
+    margin-left: auto;
+    color: currentColor;
+    opacity: .75;
+    flex-shrink: 0;
+    transition: transform .25s var(--ease), color .2s, opacity .2s;
+  }
+  .dd-item:hover > .dd-link .dd-caret {
+    transform: translateX(3px);
+    opacity: 1;
+    color: var(--gold-text);
+  }
+
+  .pdf-tag {
+    display: inline-flex;
+    align-items: center;
+    margin-left: auto;
+    font-size: .65rem;
+    font-weight: 700;
+    line-height: 1;
+    padding: .2rem .45rem;
+    border-radius: 4px;
+    background: rgba(220, 38, 38, 0.12);
+    color: #ef4444;
+    border: 1px solid rgba(220, 38, 38, 0.28);
+    letter-spacing: .04em;
+  }
+
+  .dropdown {
+    position: absolute; top: 100%; left: -.5rem;
+    padding-top: .75rem;
+    opacity: 0; visibility: hidden; transform: translateY(8px);
+    transition: opacity .3s var(--ease), transform .4s var(--ease), visibility .3s;
+  }
+  .menu-item:hover > .dropdown, .menu-item:focus-within > .dropdown { opacity: 1; visibility: visible; transform: none; }
+  .dropdown-list, .flyout {
+    min-width: 260px;
+    padding: .5rem;
+    background: var(--surface);
+    color: var(--ink);
+    border: 1px solid var(--line);
+    border-radius: var(--r);
+    box-shadow: var(--shadow);
+  }
+  .dd-item { position: relative; }
+  .dd-link {
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    padding: .7rem .9rem; min-height: 44px;
+    border-radius: 10px;
+    font-size: .9rem; font-weight: 500; color: var(--ink-2);
+    transition: background .2s, color .2s, padding .3s var(--ease);
+  }
+  .dd-link:hover, .dd-link:focus-visible { background: var(--bg-alt); color: var(--ink); padding-left: 1.15rem; }
+  .dd-link:hover span { color: var(--gold-text); }
+  .flyout {
+    position: absolute; top: -.5rem; left: calc(100% + .25rem);
+    opacity: 0; visibility: hidden; transform: translateX(-6px);
+    transition: opacity .3s var(--ease), transform .4s var(--ease), visibility .3s;
+  }
+  .dd-item:hover > .flyout, .dd-item:focus-within > .flyout { opacity: 1; visibility: visible; transform: none; }
+
+  /* Actions */
+  .nav-actions { display: flex; align-items: center; gap: .6rem; }
+  .theme-toggle {
+    position: relative;
+    width: 46px; height: 46px; border-radius: 50%;
+    border: 1px solid currentColor;
+    border-color: color-mix(in srgb, currentColor 28%, transparent);
+    display: grid; place-items: center;
+    overflow: hidden;
+    transition: border-color .3s, background .3s;
+  }
+  .theme-toggle:hover { border-color: var(--gold); color: var(--gold); }
+  .tt-icon { position: absolute; display: grid; place-items: center; transition: transform .6s var(--ease), opacity .4s; }
+  .tt-moon { transform: translateY(140%) rotate(-40deg); opacity: 0; }
+  :global([data-theme="dark"]) .tt-sun { transform: translateY(-140%) rotate(40deg); opacity: 0; }
+  :global([data-theme="dark"]) .tt-moon { transform: none; opacity: 1; }
+
+  .nav-cta { min-height: 46px; padding: .7rem 1.3rem; font-size: .88rem; }
+
+  .burger {
+    display: none;
+    width: 46px; height: 46px; border-radius: 50%;
+    border: 1px solid color-mix(in srgb, currentColor 28%, transparent);
+    position: relative;
+  }
+  .burger span {
+    position: absolute; left: 13px; right: 13px; height: 1.5px; background: currentColor; border-radius: 2px;
+    transition: transform .5s var(--ease), top .5s var(--ease);
+  }
+  .burger span:first-child { top: 18px; }
+  .burger span:last-child { top: 26px; }
+  :global(body.menu-open) .burger span:first-child { top: 22px; transform: rotate(45deg); }
+  :global(body.menu-open) .burger span:last-child { top: 22px; transform: rotate(-45deg); }
+
+  /* Mobile menu */
+  .mobile-menu {
+    position: fixed; inset: 0; z-index: 90;
+    background: var(--bg);
+    color: var(--ink);
+    clip-path: circle(0% at calc(100% - 48px) 42px);
+    transition: clip-path .8s var(--ease-in-out);
+    overflow-y: auto;
+    visibility: hidden;
+  }
+  :global(body.menu-open) .mobile-menu { clip-path: circle(150% at calc(100% - 48px) 42px); visibility: visible; }
+  .mm-inner {
+    min-height: 100%;
+    display: flex; flex-direction: column; justify-content: space-between; gap: 2rem;
+    padding: calc(var(--header-h) + 1.5rem) var(--gutter) 2rem;
+    max-width: 720px; margin-inline: auto;
+  }
+  .mm-item {
+    border-bottom: 1px solid var(--line);
+    opacity: 0; transform: translateY(20px);
+    transition: opacity .5s var(--ease), transform .6s var(--ease);
+    transition-delay: calc(var(--i) * 40ms + .2s);
+  }
+  :global(body.menu-open) .mm-item { opacity: 1; transform: none; }
+  .mm-link {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1rem 0; min-height: 56px;
+    cursor: pointer; list-style: none;
+  }
+  .mm-link::-webkit-details-marker { display: none; }
+  .mm-num { font-family: var(--font-display); font-style: italic; font-size: .85rem; color: var(--muted); width: 1.6rem; }
+  .mm-plus {
+    width: 40px; height: 40px; border-radius: 50%;
+    border: 1px solid var(--line-strong);
+    display: grid; place-items: center;
+    transition: transform .35s var(--ease), background .3s, color .3s, border-color .3s;
+    color: currentColor;
+  }
+  .mm-group[open] .mm-plus {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: #101216;
+  }
+  .mm-group[open] .mm-plus svg {
+    transform: rotate(180deg);
+  }
+  .mm-sub { padding: 0 0 1.25rem 2.6rem; display: grid; gap: .1rem; }
+  .mm-sub a { display: block; padding: .55rem 0; color: var(--muted); font-weight: 600; min-height: 44px; }
+  .mm-sub a:hover { color: var(--gold-text); }
+  .mm-sub2 { padding-left: 1rem; border-left: 1px solid var(--line); margin: .15rem 0 .5rem; }
+  .mm-sub2 a { font-weight: 500; font-size: .95rem; }
+  .mm-foot { display: flex; flex-direction: column; gap: 1.25rem; }
+  .mm-foot .btn { align-self: flex-start; }
+  .mm-contact { display: flex; flex-direction: column; gap: .35rem; color: var(--muted); font-size: .92rem; }
+
+  @media (max-width: 1320px) {
+    .menu-link { padding-inline: .5rem; font-size: .84rem; }
+    .menu-link::after { left: .5rem; right: .5rem; }
+  }
+  @media (max-width: 1260px) {
+    .desk-nav { display: none; }
+    .burger { display: block; }
+  }
+  @media (max-width: 992px) {
+    .topbar-motto, .topbar-sep { display: none; }
+  }
+  @media (max-width: 768px) {
+    .topbar { display: none; }
+    .nav-cta { display: none; }
+    .brand-mark { width: 44px; height: 44px; }
+    .brand-mark img { width: 36px; height: 36px; }
+    .brand-name { font-size: 1.2rem; }
+    .brand-sub { font-size: .58rem; letter-spacing: .1em; }
+  }
+  @media (max-width: 380px) {
+    .brand-sub { display: none; }
+  }
+</style>

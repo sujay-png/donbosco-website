@@ -1,0 +1,175 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import PageLayout from '../../../components/PageLayout.astro';
+import Icon from '../../../components/Icon.astro';
+
+const highlights = [
+  { icon: 'trophy', title: 'Celebrating Achievements', text: 'Our school has consistently demonstrated a commitment to academic excellence, physical fitness, cultural integration, and service. Our students have excelled in various competitions both within and outside the school.' },
+  { icon: 'rocket', title: 'Innovations & Enhancements', text: 'Veda Handwriting Lab, Uolo Spoken English classes, AI & Robotics from Class V, Xperimentor Lab for Grades VI–X, Embibe & Ebix smart classes, weekly Adventure Skill training, skating and archery — all new this year.' },
+  { icon: 'bulb', title: 'Core Values', text: 'We are committed to creating a safe, supportive, and inclusive environment. For students from Class VI onwards, a UK-based spoken English course (City & Guilds certified) is now available.' },
+  { icon: 'handshake', title: 'Collaboration', text: "We value the collaboration with our parents and guardians. Together, let's foster open lines of communication, nurture a love for learning, and celebrate every achievement." },
+];
+---
+
+<Layout title="Principal's Message – Don Bosco School Shirva">
+  <PageLayout title="Principal's <span>Message</span>" subtitle="From the Principal's Desk" currentPage="Principal's Message" image="/about/principal-photo.jpg">
+
+    <!-- Intro -->
+    <section class="section">
+      <div class="container">
+        <div class="pm-intro">
+          <figure class="pm-portrait" data-reveal>
+            <div class="media pm-photo" data-reveal="clip">
+              <img src="/about/principal.jpg" alt="Rev. Fr Rolwyn Joy Aranha" loading="lazy" />
+            </div>
+          </figure>
+          <div class="pm-quote">
+            <span class="quote-mark" data-reveal aria-hidden="true"><Icon name="quote" size={52} /></span>
+            <blockquote>
+              <p class="h1" data-split>An investment in knowledge pays the <em>best interest.</em></p>
+              <cite data-reveal>— Benjamin Franklin</cite>
+            </blockquote>
+            <div class="pm-name" data-reveal>
+              <span class="pm-n">Rev. Fr Rolwyn Joy Aranha</span>
+              <span class="pm-t">Principal, Don Bosco English Medium School, Shirva</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Letter -->
+    <section class="section section-alt">
+      <div class="container">
+        <div class="letter">
+          <aside class="letter-aside" data-reveal>
+            <span class="eyebrow">(01) &nbsp;Dear Parents &amp; Students</span>
+          </aside>
+          <div class="letter-body">
+            <p class="letter-lead" data-reveal>Welcome to Don Bosco School, a vibrant and dynamic community dedicated to providing exceptional education and fostering the holistic development of our students.</p>
+            <div class="prose" data-reveal>
+              <p>For over four decades, Don Bosco School has stood as a beacon of excellence in the vicinity of Shirva, offering a comprehensive education that challenges and nurtures our students. Despite our rural setting, we pride ourselves on having the necessary human and material resources to deliver high-quality education at an affordable fee structure.</p>
+              <p>Our Don Bosco community is built on the principles of <strong>inclusivity, equality, and social responsibility</strong>, ensuring that every student, regardless of their religion, gender, economic status, or academic performance, has an equal opportunity to thrive.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Highlights -->
+    <section class="section">
+      <div class="container">
+        <div class="sec-head">
+          <div class="sec-meta" data-reveal><span class="sec-index">(02)</span><span class="eyebrow">This Year</span></div>
+          <div class="sec-title-wrap"><h2 class="h2" data-split>Highlights <em>&amp; Priorities</em></h2></div>
+        </div>
+        <div class="hl-grid">
+          {highlights.map((h, i) => (
+            <article class="hl-card" data-reveal style={`--d:${i * 0.07}s`}>
+              <div class="hl-top">
+                <span class="hl-icon"><Icon name={h.icon} size={24} /></span>
+                <span class="hl-num">{String(i + 1).padStart(2, '0')}</span>
+              </div>
+              <h3 class="h3">{h.title}</h3>
+              <p>{h.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Closing -->
+    <section class="section deep">
+      <div class="container">
+        <div class="letter">
+          <aside class="letter-aside" data-reveal>
+            <span class="eyebrow">(03) &nbsp;Looking Ahead</span>
+          </aside>
+          <div class="letter-body">
+            <div class="prose closing" data-reveal>
+              <p>As we move forward, we are committed to continuous improvement, ensuring our students are always on a path toward excellence. Our vision is for every student to be transition-ready, equipped with the skills, knowledge, and character necessary to succeed in an ever-changing world.</p>
+              <p>Thank you for being part of the Don Bosco family. Together, we will continue to build a community dedicated to excellence, inclusivity, and the holistic development of our students.</p>
+            </div>
+            <div class="signature" data-reveal>
+              <span class="sig-line">Sincerely,</span>
+              <span class="sig-name">Rev. Fr Rolwyn Joy Aranha</span>
+              <span class="sig-title">Principal, Don Bosco English Medium School, Shirva</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </PageLayout>
+</Layout>
+
+<style>
+  .pm-intro { display: grid; grid-template-columns: minmax(0, .75fr) minmax(0, 1.25fr); gap: clamp(2.5rem, 7vw, 7rem); align-items: center; }
+  .pm-portrait { margin: 0; position: relative; max-width: 440px; width: 100%; }
+  .pm-portrait::before {
+    content: ""; position: absolute; inset: -14px;
+    border: 1px solid var(--gold-text); opacity: .5;
+    border-radius: 999px 999px calc(var(--r-lg) + 14px) calc(var(--r-lg) + 14px);
+  }
+  .pm-photo { aspect-ratio: 4 / 5; border-radius: 999px 999px var(--r-lg) var(--r-lg); }
+  .pm-photo img { object-position: 30% center; }
+  .js .pm-photo[data-reveal="clip"] { clip-path: inset(100% 0 0 0 round 999px 999px var(--r-lg) var(--r-lg)); }
+  .js .pm-photo[data-reveal="clip"].is-in { clip-path: inset(0 0 0 0 round 999px 999px var(--r-lg) var(--r-lg)); }
+  .pm-quote { display: flex; flex-direction: column; gap: 1.5rem; }
+  .quote-mark { color: var(--gold-text); }
+  .pm-quote blockquote { display: flex; flex-direction: column; gap: 1rem; }
+  .pm-quote cite { font-style: normal; font-size: .85rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+  .pm-name { display: flex; flex-direction: column; gap: .2rem; padding-top: 1.5rem; border-top: 1px solid var(--line-strong); }
+  .pm-n { font-family: var(--font-display); font-size: 1.5rem; }
+  .pm-t { color: var(--muted); font-size: .92rem; }
+
+  .letter { display: grid; grid-template-columns: minmax(180px, 1fr) 3fr; gap: 1.5rem 3rem; }
+  .letter-aside { padding-top: .9rem; border-top: 1px solid var(--line-strong); align-self: start; }
+  .letter-body { display: flex; flex-direction: column; gap: 2rem; max-width: 820px; }
+  .letter-lead {
+    font-family: var(--font-display); font-weight: 300;
+    font-size: clamp(1.5rem, 2.8vw, 2.35rem); line-height: 1.3; letter-spacing: -0.02em;
+  }
+  .letter-lead::first-letter {
+    float: left; font-size: 3.2em; line-height: .8; padding: .08em .06em 0 0; margin-right: .02em;
+    color: var(--gold-text); font-weight: 400;
+  }
+  .letter-body .prose p { font-size: 1.1rem; }
+  .closing p { color: var(--on-deep-muted); font-size: 1.15rem; }
+
+  .hl-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+  .hl-card {
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg);
+    padding: clamp(1.5rem, 3.5vw, 2.5rem);
+    display: flex; flex-direction: column; gap: 1rem;
+    transition: transform .6s var(--ease), box-shadow .6s var(--ease), border-color .4s;
+  }
+  .hl-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); border-color: var(--line-strong); }
+  .hl-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: .75rem; }
+  .hl-icon { width: 56px; height: 56px; border-radius: 50%; background: var(--gold); color: #101216; display: grid; place-items: center; }
+  .hl-num { font-family: var(--font-display); font-style: italic; color: var(--muted); font-size: 1.1rem; }
+  .hl-card p { color: var(--muted); }
+
+  .signature { display: flex; flex-direction: column; gap: .3rem; padding-top: 2rem; border-top: 1px solid var(--on-deep-line); }
+  .sig-line { color: var(--on-deep-muted); font-size: .9rem; }
+  .sig-name {
+    font-family: var(--font-display); font-style: italic; font-weight: 300; color: var(--gold);
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem); line-height: 1.1;
+    font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+  }
+  .sig-title { color: var(--on-deep-muted); font-size: .9rem; }
+
+  @media (max-width: 992px) {
+    .pm-intro, .letter { grid-template-columns: 1fr; }
+    .pm-portrait { max-width: 340px; margin-inline: auto; }
+  }
+  @media (max-width: 768px) {
+    .hl-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 480px) {
+    .pm-portrait { max-width: 260px; }
+    .pm-portrait::before { inset: -8px; }
+    .letter-lead { font-size: 1.35rem; }
+    .hl-card { padding: 1.25rem; }
+  }
+</style>

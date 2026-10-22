@@ -1,0 +1,663 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const textbooksData = [
+  {
+    "class": "LKG",
+    "books": [
+      {
+        "no": "1",
+        "name": "Building Blocks -Semester  - A",
+        "publisher": "Sky Books"
+      },
+      {
+        "no": "2",
+        "name": "Art & Craft-LKG",
+        "publisher": "Sky Books"
+      }
+    ]
+  },
+  {
+    "class": "UKG",
+    "books": [
+      {
+        "no": "1",
+        "name": "Building Blocks -semester -B",
+        "publisher": "Sky Books"
+      },
+      {
+        "no": "2",
+        "name": "Art & Craft-UKG",
+        "publisher": "Sky Books"
+      },
+      {
+        "no": "3",
+        "name": "Building Blocks Hindi",
+        "publisher": "Sky Books"
+      }
+    ]
+  },
+  {
+    "class": "Class 1",
+    "books": [
+      {
+        "no": "1",
+        "name": "Caravan Integrated Sem- I",
+        "publisher": "Orient Black Swan"
+      },
+      {
+        "no": "2",
+        "name": "Caravan Integrated Sem- II",
+        "publisher": "Orient Black Swan"
+      },
+      {
+        "no": "3",
+        "name": "Great Fun With Grammar I",
+        "publisher": "Macmillan"
+      },
+      {
+        "no": "4",
+        "name": "Mitaas I",
+        "publisher": "Bharathi Bhavan"
+      },
+      {
+        "no": "5",
+        "name": "Eprompt -New Version  I",
+        "publisher": "Kips Learning PVT Ltd"
+      },
+      {
+        "no": "6",
+        "name": "Art of Drawing & colouring I",
+        "publisher": "FireFly"
+      }
+    ]
+  },
+  {
+    "class": "Class 2",
+    "books": [
+      {
+        "no": "1",
+        "name": "Caravan Integrated Sem- I",
+        "publisher": "Orient Black Swan"
+      },
+      {
+        "no": "2",
+        "name": "Caravan Integrated Sem- II",
+        "publisher": "Orient Black Swan"
+      },
+      {
+        "no": "3",
+        "name": "Great Fun With Grammar II",
+        "publisher": "Macmillan"
+      },
+      {
+        "no": "4",
+        "name": "Mitaas II",
+        "publisher": "Bharathi Bhavan"
+      },
+      {
+        "no": "5",
+        "name": "Eprompt -New Version  II",
+        "publisher": "Kips Learning PVT Ltd"
+      },
+      {
+        "no": "6",
+        "name": "Art of Drawing & colouring II",
+        "publisher": "FireFly"
+      }
+    ]
+  },
+  {
+    "class": "Class 3",
+    "books": [
+      {
+        "no": "1",
+        "name": "Caravan Integrated Sem- I",
+        "publisher": "Orient Black Swan"
+      },
+      {
+        "no": "2",
+        "name": "Caravan Integrated Sem- II",
+        "publisher": "Orient Black Swan"
+      },
+      {
+        "no": "3",
+        "name": "Great Fun With Grammar III",
+        "publisher": "Macmillan"
+      },
+      {
+        "no": "4",
+        "name": "Mitaas III",
+        "publisher": "Bharathi Bhavan"
+      },
+      {
+        "no": "5",
+        "name": "Eprompt -New Version  III",
+        "publisher": "Kips Learning PVT Ltd"
+      },
+      {
+        "no": "6",
+        "name": "Art of Drawing & colouring III",
+        "publisher": "FireFly"
+      }
+    ]
+  },
+  {
+    "class": "Class 4",
+    "books": [
+      {
+        "no": "1",
+        "name": "Caravan Integrated Sem- I",
+        "publisher": "Orient Black Swan"
+      },
+      {
+        "no": "2",
+        "name": "Caravan Integrated Sem- II",
+        "publisher": "Orient Black Swan"
+      },
+      {
+        "no": "3",
+        "name": "Great Fun With Grammar IV",
+        "publisher": "Macmillan"
+      },
+      {
+        "no": "4",
+        "name": "Mitaas IV",
+        "publisher": "Bharathi Bhavan"
+      },
+      {
+        "no": "5",
+        "name": "Eprompt -New Version  IV",
+        "publisher": "Kips Learning PVT Ltd"
+      },
+      {
+        "no": "6",
+        "name": "Art of Drawing & colouring IV",
+        "publisher": "FireFly"
+      }
+    ]
+  },
+  {
+    "class": "Class 5",
+    "books": [
+      {
+        "no": "1",
+        "name": "Caravan Integrated Sem- I",
+        "publisher": "Orient Black Swan"
+      },
+      {
+        "no": "2",
+        "name": "Caravan Integrated Sem- II",
+        "publisher": "Orient Black Swan"
+      },
+      {
+        "no": "3",
+        "name": "Great Fun With Grammar V",
+        "publisher": "Macmillan"
+      },
+      {
+        "no": "4",
+        "name": "Mitaas V",
+        "publisher": "Bharathi Bhavan"
+      },
+      {
+        "no": "5",
+        "name": "Eprompt -New Version  V",
+        "publisher": "Kips Learning PVT Ltd"
+      },
+      {
+        "no": "6",
+        "name": "Art of Drawing & colouring V",
+        "publisher": "FireFly"
+      }
+    ]
+  },
+  {
+    "class": "Class 6",
+    "books": [
+      {
+        "no": "1",
+        "name": "Buzzword",
+        "publisher": "Buzzword"
+      },
+      {
+        "no": "2",
+        "name": "Ganitha Prakash",
+        "publisher": "NCERT"
+      },
+      {
+        "no": "3",
+        "name": "Enhanced Science Now-6",
+        "publisher": "COLLINS"
+      },
+      {
+        "no": "4",
+        "name": "Social Science-Exploring Society India & beyond",
+        "publisher": "NCERT"
+      },
+      {
+        "no": "5",
+        "name": "Hindi Saras Patmala -6",
+        "publisher": "New Saraswathi Publication"
+      },
+      {
+        "no": "6",
+        "name": "E Prompt VI",
+        "publisher": "Kips Learning PVT Ltd"
+      },
+      {
+        "no": "7",
+        "name": "Art of Drawing & colouring VI",
+        "publisher": "Firefly the art of Drawing & Colouring"
+      }
+    ]
+  },
+  {
+    "class": "Class 7",
+    "books": [
+      {
+        "no": "1",
+        "name": "Buzzword",
+        "publisher": "Buzzword"
+      },
+      {
+        "no": "2",
+        "name": "Maths - NCERT",
+        "publisher": "NCERT"
+      },
+      {
+        "no": "3",
+        "name": "Enhanced Science Now-7",
+        "publisher": "COLLINS"
+      },
+      {
+        "no": "4",
+        "name": "Social Science",
+        "publisher": "NCERT"
+      },
+      {
+        "no": "5",
+        "name": "Hindi Saras Patmala -7",
+        "publisher": "New Saraswathi Publication"
+      },
+      {
+        "no": "6",
+        "name": "E Prompt VII",
+        "publisher": "Kips Learning PVT Ltd"
+      },
+      {
+        "no": "7",
+        "name": "Art of Drawing & colouring VII",
+        "publisher": "Firefly the art of Drawing & Colouring"
+      }
+    ]
+  },
+  {
+    "class": "Class 8",
+    "books": [
+      {
+        "no": "1",
+        "name": "Buzzword",
+        "publisher": "Buzzword"
+      },
+      {
+        "no": "2",
+        "name": "Maths",
+        "publisher": "NCERT"
+      },
+      {
+        "no": "3",
+        "name": "Enhanced Science Now -8",
+        "publisher": "COLLINS"
+      },
+      {
+        "no": "4",
+        "name": "Social Science",
+        "publisher": "NCERT"
+      },
+      {
+        "no": "5",
+        "name": "Hindi Saras Patmala -8",
+        "publisher": "New Saraswathi Publication"
+      },
+      {
+        "no": "6",
+        "name": "E Prompt VIII",
+        "publisher": "Kips Learning PVT Ltd"
+      }
+    ]
+  },
+  {
+    "class": "Class 9",
+    "books": [
+      {
+        "no": "1",
+        "name": "Cyberlink HTML-9",
+        "publisher": "Kips Learning PVT Ltd"
+      },
+      {
+        "no": "2",
+        "name": "English- Beehive",
+        "publisher": "NCERT"
+      },
+      {
+        "no": "3",
+        "name": "English -Words & Expression I",
+        "publisher": "NCERT"
+      },
+      {
+        "no": "4",
+        "name": "English -Moments",
+        "publisher": "NCERT"
+      },
+      {
+        "no": "5",
+        "name": "Hindi Sparsh- I",
+        "publisher": "NCERT"
+      },
+      {
+        "no": "6",
+        "name": "Hindi Sanchayan -I",
+        "publisher": "NCERT"
+      },
+      {
+        "no": "7",
+        "name": "Maths",
+        "publisher": "NCERT"
+      },
+      {
+        "no": "8",
+        "name": "Science",
+        "publisher": "NCERT"
+      },
+      {
+        "no": "9",
+        "name": "Social Science – India and Contemporary World 1 – Textbook in History",
+        "publisher": "NCERT"
+      },
+      {
+        "no": "10",
+        "name": "Social Science – Contemporary India – Textbook in Geography",
+        "publisher": "NCERT"
+      },
+      {
+        "no": "11",
+        "name": "Social Science – Democratic Politics 1- Textbook in Political Science",
+        "publisher": "NCERT"
+      },
+      {
+        "no": "12",
+        "name": "Economics",
+        "publisher": "NCERT"
+      },
+      {
+        "no": "13",
+        "name": "Map & Diagrams -IX",
+        "publisher": "Periwinkle"
+      },
+      {
+        "no": "14",
+        "name": "Modern Eng Grammar & Composition",
+        "publisher": "(WREN & MARTIN)"
+      }
+    ]
+  },
+  {
+    "class": "Class 10",
+    "books": [
+      {
+        "no": "1",
+        "name": "Cyberlink With More on C and C++",
+        "publisher": "Kips Learning PVT Ltd"
+      },
+      {
+        "no": "2",
+        "name": "Words & Expression",
+        "publisher": "NCERT"
+      },
+      {
+        "no": "3",
+        "name": "First Flight & Footprints  Without Feet(100+55)",
+        "publisher": "NCERT"
+      },
+      {
+        "no": "4",
+        "name": "Hindi Sparsh- 2",
+        "publisher": "NCERT"
+      },
+      {
+        "no": "5",
+        "name": "Hindi Sanchayan -2",
+        "publisher": "NCERT"
+      },
+      {
+        "no": "6",
+        "name": "Maths  - NCERT",
+        "publisher": "NCERT"
+      },
+      {
+        "no": "7",
+        "name": "Science   - NCERT",
+        "publisher": "NCERT"
+      },
+      {
+        "no": "8",
+        "name": "Social :- India & Contemporary  World -II",
+        "publisher": "NCERT"
+      },
+      {
+        "no": "9",
+        "name": "Democratic politics -II",
+        "publisher": "NCERT"
+      },
+      {
+        "no": "10",
+        "name": "Understanding Economic Development",
+        "publisher": "NCERT"
+      },
+      {
+        "no": "11",
+        "name": "Contemporary India-II",
+        "publisher": "NCERT"
+      },
+      {
+        "no": "12",
+        "name": "Map & Diagrams -X",
+        "publisher": "Periwinkle"
+      },
+      {
+        "no": "13",
+        "name": "Modern Eng Grammar & Composition",
+        "publisher": "(WREN & MARTIN)"
+      }
+    ]
+  }
+];
+---
+
+<Layout title="Textbooks - Don Bosco School Shirva">
+  <Header />
+  
+  <section class="page-hero on-image">
+    <div class="ph-media" data-parallax="-0.12"><img src="/about/old-school.jpg" alt="" fetchpriority="high" /></div>
+    <div class="ph-shade" aria-hidden="true"></div>
+    <div class="container ph-inner">
+      <nav class="breadcrumb" aria-label="Breadcrumb" data-reveal="fade">
+        <a href="/">Home</a>
+        <span aria-hidden="true">/</span>
+        <span>Academics</span>
+        <span aria-hidden="true">/</span>
+        <span>Curriculum</span>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page" class="crumb-current">Textbooks</span>
+      </nav>
+      <h1 class="h1 ph-title" data-split><em>TEXTBOOKS</em></h1>
+    </div>
+  </section>
+
+  <main class="inner-main section">
+    <div class="container textbooks-container">
+      <div class="intro-text" data-reveal>
+        <h2 class="h2">Textbooks for the Academic Year 2024-25</h2>
+      </div>
+
+      <div class="tables-wrapper">
+        {textbooksData.map((group, index) => (
+          <div class="table-section" data-reveal>
+            <div class="table-header">
+              <h3 class="h3">{group.class}</h3>
+            </div>
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th class="col-sl">Sl.No</th>
+                    <th>Name of the Book</th>
+                    <th>Name of the Publisher</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {group.books.map((book) => (
+                    <tr>
+                      <td class="col-sl">{book.no}</td>
+                      <td>{book.name}</td>
+                      <td>{book.publisher}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </main>
+  
+  <Footer />
+</Layout>
+
+<style>
+  /* Hero Styles */
+  .page-hero {
+    position: relative;
+    min-height: clamp(460px, 62vh, 640px);
+    display: flex; align-items: flex-end;
+    color: #fff;
+    overflow: hidden;
+    isolation: isolate;
+    background: #0b0d10;
+  }
+  .ph-media { position: absolute; inset: -10% 0; z-index: -2; }
+  .ph-media img { width: 100%; height: 100%; object-fit: cover; animation: phZoom 2.2s var(--ease) both; }
+  @keyframes phZoom { from { transform: scale(1.12); } to { transform: scale(1); } }
+  .ph-shade {
+    position: absolute; inset: 0; z-index: -1;
+    background: linear-gradient(180deg, rgba(8,10,13,.78) 0%, rgba(8,10,13,.55) 45%, rgba(8,10,13,.92) 100%);
+  }
+  .ph-inner {
+    padding-top: calc(var(--header-h) + 90px);
+    padding-bottom: clamp(2.5rem, 6vw, 4.5rem);
+    display: flex; flex-direction: column; gap: 1.1rem;
+  }
+  .breadcrumb {
+    display: flex; flex-wrap: wrap; align-items: center; gap: .6rem;
+    font-size: .8rem; font-weight: 600; letter-spacing: .04em;
+    color: rgba(255,255,255,.6);
+  }
+  .breadcrumb a { color: rgba(255,255,255,.85); transition: color .2s; min-height: 32px; display: inline-flex; align-items: center; }
+  .breadcrumb a:hover { color: var(--gold); }
+  .crumb-current { color: var(--gold); }
+  .ph-title { color: #fff; max-width: 18ch; text-transform: uppercase; }
+  .ph-title :global(em) { color: var(--gold); }
+
+  /* Page Styles */
+  .inner-main { width: 100%; overflow-x: clip; padding-block: clamp(3rem, 6vw, 5rem); }
+  
+  .intro-text {
+    text-align: center;
+    margin-bottom: clamp(2rem, 5vw, 4rem);
+  }
+
+  .textbooks-container {
+    max-width: 1200px;
+    margin-inline: auto;
+  }
+  
+  .tables-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+  }
+  
+  .table-header {
+    background-color: var(--gold);
+    padding: 0.8rem;
+    text-align: center;
+    border-radius: var(--r) var(--r) 0 0;
+  }
+  
+  .table-header h3 {
+    color: #101216;
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 800;
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+  }
+
+  .table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border: 1px solid var(--line);
+    border-top: none;
+    border-radius: 0 0 var(--r) var(--r);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--surface);
+    font-size: 0.95rem;
+    min-width: 600px;
+  }
+  
+  .table th,
+  .table td {
+    padding: 0.9rem 1.25rem;
+    border-bottom: 1px solid var(--line);
+    text-align: left;
+  }
+  
+  .table th {
+    background-color: color-mix(in srgb, var(--gold) 15%, transparent);
+    font-weight: 700;
+    color: var(--ink);
+    font-size: 0.85rem;
+  }
+  
+  .table tr:last-child td {
+    border-bottom: none;
+  }
+  
+  .table tr:nth-child(even) {
+    background-color: color-mix(in srgb, var(--bg-alt) 30%, transparent);
+  }
+  
+  .table tr:hover {
+    background-color: color-mix(in srgb, var(--gold) 5%, transparent);
+  }
+
+  .col-sl {
+    width: 80px;
+    text-align: center !important;
+  }
+  
+  @media (max-width: 768px) {
+    .page-hero { min-height: 420px; }
+    .ph-inner { padding-top: calc(var(--header-h) + 60px); }
+    .table th, .table td { padding: 0.75rem 1rem; }
+  }
+</style>

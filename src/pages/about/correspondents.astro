@@ -1,0 +1,117 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageLayout from '../../components/PageLayout.astro';
+
+const correspondents = [
+  { name: 'Very Rev. Fr Aloysius Rosario', period: '1983 – 1987', role: 'Founder Correspondent', img: '/about/correspondent-1.jpg', note: 'Turned the community\'s vision of an English Medium School in Shirva into reality.' },
+  { name: 'Very Rev. Fr Sylvester Dsouza', period: '1987 – 1994', img: '/about/correspondent-2.jpg', note: 'Expanded the school\'s reach by establishing new sections.' },
+  { name: 'Very Rev. Fr Lawrence Gomes', period: '1994 – 2001', img: '/about/correspondent-3.jpg' },
+  { name: 'Very Rev. Fr Valerian Pinto', period: '2001 – 2008', img: '/about/correspondent-4.jpg' },
+  { name: 'Very Rev. Fr Richard A Coelho', period: '2008 – 2010', img: '/about/correspondent-5.jpg' },
+  { name: 'Very Rev. Fr Stany Tauro', period: '2010 – 2018', img: '/about/correspondent-6.jpg', note: 'Pioneered the historic shift from State Board to CBSE — achieved in 2018.' },
+  { name: 'Very Rev. Fr Thomas D\'Souza', period: '2018 – 2022', img: '/about/correspondent-7.jpg' },
+  { name: 'Very Rev. Dr Leslie Clifford Dsouza', period: '2022 – Present', img: '/about/correspondent-8.jpg', note: 'His guidance empowers the Principal and staff to work tirelessly for the bright future of students.', current: true },
+];
+
+const pastCorrespondents = correspondents.filter(c => !c.current);
+const currentCorrespondent = correspondents.find(c => c.current);
+---
+
+<Layout title="Correspondents – Don Bosco School Shirva">
+  <PageLayout
+    title='Our <span>Correspondents</span>'
+    subtitle="Guiding Leaders"
+    currentPage="Correspondents"
+    breadcrumb="About Us"
+    intro="Since its founding in 1983, Don Bosco English Medium School Shirva has been blessed with visionary Correspondents whose leadership, foresight, and spiritual guidance have shaped the institution into a premier center for education."
+  >
+    <!-- Current -->
+    <section class="section">
+      <div class="container">
+        <div class="sec-head">
+          <div class="sec-meta" data-reveal><span class="sec-index">(01)</span><span class="eyebrow">Present</span></div>
+          <div class="sec-title-wrap"><h2 class="h2" data-split>Current <em>Correspondent</em></h2></div>
+        </div>
+
+        <article class="current deep" data-reveal>
+          <div class="media current-photo">
+            <img src={currentCorrespondent!.img} alt={currentCorrespondent!.name} loading="lazy" />
+            <span class="tag tag-gold current-tag">Present Leader</span>
+          </div>
+          <div class="current-body">
+            <span class="current-period">{currentCorrespondent!.period}</span>
+            <h3 class="h1 current-name">{currentCorrespondent!.name}</h3>
+            <p class="current-note">{currentCorrespondent!.note}</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Past -->
+    <section class="section section-alt">
+      <div class="container">
+        <div class="sec-head">
+          <div class="sec-meta" data-reveal><span class="sec-index">(02)</span><span class="eyebrow">Legacy</span></div>
+          <div class="sec-title-wrap"><h2 class="h2" data-split>Past <em>Correspondents</em></h2></div>
+        </div>
+
+        <ol class="legacy">
+          {pastCorrespondents.map((c, index) => (
+            <li class="legacy-item" data-reveal style={`--d:${(index % 4) * 0.06}s`}>
+              <div class="media legacy-photo">
+                <img src={c.img} alt={c.name} loading="lazy" />
+                <span class="legacy-num">{String(index + 1).padStart(2, '0')}</span>
+              </div>
+              <div class="legacy-body">
+                <span class="legacy-period">{c.period}</span>
+                {c.role && <span class="legacy-role">{c.role}</span>}
+                <h3 class="legacy-name">{c.name}</h3>
+                {c.note && <p class="legacy-note">{c.note}</p>}
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+  </PageLayout>
+</Layout>
+
+<style>
+  .current {
+    display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
+    gap: clamp(2rem, 5vw, 4.5rem); align-items: center;
+    border-radius: clamp(24px, 3vw, 36px);
+    padding: clamp(1.25rem, 2.5vw, 1.75rem);
+    overflow: hidden;
+  }
+  .current-photo { aspect-ratio: 4 / 5; border-radius: var(--r-lg); }
+  .current-photo img { object-position: top; }
+  .current-tag { position: absolute; left: 1rem; top: 1rem; }
+  .current-body { display: flex; flex-direction: column; gap: 1.25rem; padding-right: clamp(0rem, 3vw, 2.5rem); }
+  .current-period { font-family: var(--font-display); font-style: italic; font-size: 1.3rem; color: var(--gold); }
+  .current-name { color: var(--on-deep); }
+  .current-note { font-size: 1.15rem; color: var(--on-deep-muted); max-width: 48ch; }
+
+  .legacy { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(1rem, 2vw, 1.5rem); }
+  .legacy-item { display: flex; flex-direction: column; gap: 1rem; }
+  .legacy-photo { aspect-ratio: 4 / 5; border-radius: var(--r-lg); }
+  .legacy-photo img { object-position: top; filter: grayscale(.35); transition: filter .6s, transform 1s var(--ease); }
+  .legacy-item:hover .legacy-photo img { filter: none; transform: scale(1.04); }
+  .legacy-num {
+    position: absolute; left: .9rem; top: .9rem;
+    width: 44px; height: 44px; border-radius: 50%;
+    background: rgba(255,255,255,.92); color: #101216;
+    font-family: var(--font-display); font-style: italic;
+    display: grid; place-items: center;
+  }
+  .legacy-body { display: flex; flex-direction: column; gap: .35rem; }
+  .legacy-period { font-size: .74rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--gold-text); }
+  .legacy-role { font-family: var(--font-display); font-style: italic; color: var(--muted); }
+  .legacy-name { font-size: 1.25rem; line-height: 1.2; }
+  .legacy-note { color: var(--muted); font-size: .92rem; margin-top: .25rem; }
+
+  @media (max-width: 1100px) { .legacy { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 992px) { .current { grid-template-columns: 1fr; } .current-photo { aspect-ratio: 1; } .current-body { padding: 0 .5rem .75rem; } }
+  @media (max-width: 768px) { .legacy { grid-template-columns: repeat(2, 1fr); } .legacy-name { font-size: 1.05rem; } }
+  @media (max-width: 480px) { .legacy { grid-template-columns: 1fr; } }
+</style>

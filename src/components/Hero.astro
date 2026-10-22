@@ -1,0 +1,134 @@
+---
+import Icon from './Icon.astro';
+---
+<section class="hero on-image" aria-label="Welcome">
+  <div class="hero-media" data-parallax="-0.15">
+    <img src="/hero_new.jpg" alt="Students walking through the Don Bosco English Medium School gate, Shirva" fetchpriority="high" />
+  </div>
+  <div class="hero-shade" aria-hidden="true"></div>
+
+  <div class="container hero-inner">
+    <div class="hero-top" data-reveal="fade" style="--d:.2s">
+      <span class="eyebrow">Growing in Truth and Purity</span>
+      <span class="hero-est">Est. 1983 · Shirva, Udupi</span>
+    </div>
+
+    <h1 class="display hero-title" data-split>
+      Empowering Minds Through <em>Education &amp; Innovation</em>
+    </h1>
+
+    <div class="hero-bottom">
+      <p class="hero-desc" data-reveal style="--d:.5s">
+        Welcome to Don Bosco English Medium School Shirva. We are dedicated to providing exceptional education and nurturing the holistic development of our students in a dynamic learning environment.
+      </p>
+      <div class="hero-actions" data-reveal style="--d:.65s">
+        <a href="#about" class="btn btn-gold">Discover More <Icon name="arrow" class="arrow" /></a>
+        <a href="/admission" class="btn btn-light">Admissions Open</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Rotating seal -->
+  <div class="seal" aria-hidden="true" data-reveal="fade" style="--d:.9s">
+    <svg viewBox="0 0 200 200" class="seal-ring">
+      <defs><path id="sealPath" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0" /></defs>
+      <text><textPath href="#sealPath" startOffset="0">GROWING IN TRUTH AND PURITY · DON BOSCO · EST. 1983 ·</textPath></text>
+    </svg>
+    <span class="seal-logo"><img src="/logo.jpg" alt="" width="72" height="72" /></span>
+  </div>
+
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 100svh;
+    min-height: max(100svh, 680px);
+    display: flex;
+    align-items: flex-end;
+    color: #fff;
+    overflow: hidden;
+    isolation: isolate;
+    background: #0b0d10;
+  }
+  .hero-media { position: absolute; inset: -8% 0; z-index: -2; }
+  .hero-media img {
+    width: 100%; height: 100%; object-fit: cover; object-position: center 40%;
+    animation: heroZoom 2.6s var(--ease) both;
+  }
+  @keyframes heroZoom { from { transform: scale(1.18); filter: brightness(.6); } to { transform: scale(1); filter: none; } }
+  .hero-shade {
+    position: absolute; inset: 0; z-index: -1;
+    background:
+      linear-gradient(180deg, rgba(8,10,13,.72) 0%, rgba(8,10,13,.15) 28%, rgba(8,10,13,.25) 50%, rgba(8,10,13,.92) 100%),
+      linear-gradient(90deg, rgba(8,10,13,.55) 0%, rgba(8,10,13,0) 65%);
+  }
+
+  .hero-inner {
+    padding-top: calc(var(--header-h) + 80px);
+    padding-bottom: clamp(3rem, 7vw, 5.5rem);
+    display: flex; flex-direction: column; gap: clamp(1.5rem, 3vw, 2.5rem);
+  }
+  .hero-top { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+  .hero-top .eyebrow { color: var(--gold); }
+  .hero-est { font-size: .78rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; opacity: .7; }
+
+  .hero-title { color: #fff; max-width: 13.5ch; }
+  .hero-title :global(em) { color: var(--gold); }
+
+  .hero-bottom {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) auto;
+    align-items: end;
+    gap: 2rem 4rem;
+    padding-top: clamp(1.25rem, 2.5vw, 2rem);
+    border-top: 1px solid rgba(255,255,255,.22);
+    max-width: 1100px;
+  }
+  .hero-desc { max-width: 54ch; font-size: clamp(1rem, 1.25vw, 1.12rem); color: rgba(255,255,255,.82); }
+  .hero-actions { display: flex; gap: .75rem; flex-wrap: wrap; }
+
+  /* Seal */
+  .seal {
+    position: absolute;
+    right: var(--gutter);
+    bottom: clamp(3rem, 7vw, 5.5rem);
+    width: 168px; height: 168px;
+    display: grid; place-items: center;
+  }
+  .seal-ring { position: absolute; inset: 0; width: 100%; height: 100%; animation: spin 26s linear infinite; }
+  .seal-ring text { fill: #fff; font-family: var(--font-body); font-size: 12.5px; font-weight: 700; letter-spacing: 2.6px; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .seal-logo {
+    width: 94px; height: 94px; border-radius: 50%; background: #fff;
+    display: grid; place-items: center;
+    box-shadow: 0 0 0 6px rgba(255,255,255,.12);
+  }
+  .seal-logo img { width: 72px; height: 72px; object-fit: contain; }
+
+
+  @media (max-width: 1100px) {
+    .seal { top: calc(var(--header-h) + 70px); bottom: auto; width: 128px; height: 128px; }
+    .seal-ring text { font-size: 13px; }
+    .seal-logo { width: 70px; height: 70px; }
+    .seal-logo img { width: 54px; height: 54px; }
+  }
+  @media (max-width: 992px) {
+    .hero-bottom { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 768px) {
+    .hero { min-height: 100svh; }
+    .hero-inner { padding-top: calc(var(--header-h) + 150px); }
+    .seal { width: 108px; height: 108px; top: calc(var(--header-h) + 24px); right: var(--gutter); }
+    .seal-logo { width: 58px; height: 58px; }
+    .seal-logo img { width: 44px; height: 44px; }
+    .hero-est { display: none; }
+    .hero-actions .btn { flex: 1 1 auto; }
+  }
+  @media (max-width: 480px) {
+    .seal { display: none; }
+    .hero-inner { padding-top: calc(var(--header-h) + 40px); }
+    .hero-actions { flex-direction: column; width: 100%; }
+    .hero-actions .btn { width: 100%; justify-content: center; }
+  }
+</style>

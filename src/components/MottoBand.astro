@@ -1,0 +1,40 @@
+---
+const words = ['Growing in Truth and Purity', 'Don Bosco English Medium School', 'Shirva', 'Est. 1983'];
+---
+<div class="motto" aria-hidden="true">
+  <div class="marquee" style="--marquee-speed: 55s; --marquee-gap: 2.5rem;">
+    {[0, 1].map(() => (
+      <div class="marquee-track">
+        {words.map((w, i) => (
+          <>
+            <span class:list={['motto-word', { outline: i % 2 === 1 }]}>{w}</span>
+            <span class="motto-star">✦</span>
+          </>
+        ))}
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+  .motto { padding-block: clamp(2rem, 4vw, 3.25rem); overflow: hidden; }
+  .motto .marquee { -webkit-mask-image: none; mask-image: none; }
+  .motto-word {
+    font-family: var(--font-display);
+    font-size: clamp(2.6rem, 7vw, 6rem);
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    font-weight: 300;
+    font-style: italic;
+    white-space: nowrap;
+    color: var(--ink);
+    font-variation-settings: "opsz" 144, "SOFT" 100;
+  }
+  .motto-word.outline {
+    font-style: normal;
+    font-weight: 400;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--line-strong);
+  }
+  .motto-star { color: var(--gold); font-size: clamp(1.4rem, 3vw, 2.4rem); }
+</style>

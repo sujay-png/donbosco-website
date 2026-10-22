@@ -1,0 +1,192 @@
+---
+import Icon from './Icon.astro';
+const events = [
+  {
+    title: 'Annual Day - Secondary Section',
+    date: '28', month: 'Nov', day: 'Friday', time: '3:00 PM',
+    image: '/events/event1.png',
+    excerpt: 'The Annual Day of Secondary Section will be held on Friday, 28 November 2025.',
+  },
+  {
+    title: 'Annual Day - Primary Section',
+    date: '27', month: 'Nov', day: 'Thursday', time: '3:00 PM',
+    image: '/events/event2.png',
+    excerpt: 'The Annual Day of Primary Section will be held on Thursday, 27 November 2025.',
+  },
+  {
+    title: 'Annual Day - Kindergarten Section',
+    date: '26', month: 'Nov', day: 'Wednesday', time: '9:30 AM',
+    image: '/events/event3.png',
+    excerpt: 'The Annual Day of Kindergarten Section will be held on Wednesday, 26 November 2025.',
+  },
+  {
+    title: 'Prize Distribution Day',
+    date: '25', month: 'Nov', day: 'Tuesday', time: '9:15 AM',
+    image: '/events/event4.png',
+    excerpt: 'As a part of Annual Day Celebrations, the Prize Distribution Day will mark the hoisting of the School Flag.',
+  },
+];
+---
+<section id="events" class="section section-alt events">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-meta" data-reveal>
+        <span class="sec-index">(04)</span>
+        <span class="eyebrow">Don't Miss Out</span>
+      </div>
+      <div class="sec-title-wrap">
+        <h2 class="h2" data-split>Upcoming <em>Events</em></h2>
+      </div>
+    </div>
+
+    <ol class="event-list" data-events>
+      {events.map((e, i) => (
+        <li class="event-row" data-reveal style={`--d:${i * 0.07}s`} data-img={e.image}>
+          <a href="#" class="event-link">
+            <div class="event-date">
+              <span class="ed-day">{e.date}</span>
+              <span class="ed-month">{e.month}<br /><small>2025</small></span>
+            </div>
+            <div class="event-main">
+              <h3 class="event-title">{e.title}</h3>
+              <p class="event-excerpt">{e.excerpt}</p>
+            </div>
+            <div class="event-meta">
+              <span><Icon name="calendar" size={15} /> {e.day}</span>
+              <span><Icon name="clock" size={15} /> {e.time}</span>
+            </div>
+            <div class="event-thumb"><img src={e.image} alt="" loading="lazy" /></div>
+            <span class="event-go" aria-hidden="true"><Icon name="arrow-up-right" size={20} /></span>
+            <span class="visually-hidden">Read more about {e.title}</span>
+          </a>
+        </li>
+      ))}
+    </ol>
+  </div>
+
+  <!-- Cursor-follow poster preview (desktop) -->
+  <div class="event-preview" aria-hidden="true" data-event-preview>
+    <div class="ep-inner">
+      {events.map((e) => <img src={e.image} alt="" loading="lazy" data-src={e.image} />)}
+    </div>
+  </div>
+</section>
+
+<script>
+  const list = document.querySelector<HTMLElement>('[data-events]');
+  const preview = document.querySelector<HTMLElement>('[data-event-preview]');
+  if (list && preview && window.matchMedia('(hover: hover) and (min-width: 1100px)').matches) {
+    const imgs = Array.from(preview.querySelectorAll<HTMLImageElement>('img'));
+    let x = 0, y = 0, cx = 0, cy = 0, raf = 0;
+    const loop = () => {
+      cx += (x - cx) * 0.14; cy += (y - cy) * 0.14;
+      preview.style.transform = `translate3d(${cx}px, ${cy}px, 0)`;
+      raf = requestAnimationFrame(loop);
+    };
+    list.querySelectorAll<HTMLElement>('.event-row').forEach((row) => {
+      row.addEventListener('mouseenter', () => {
+        const src = row.dataset.img;
+        imgs.forEach((im) => im.classList.toggle('on', im.dataset.src === src));
+        preview.classList.add('show');
+      });
+    });
+    list.addEventListener('mousemove', (e) => { x = e.clientX + 24; y = e.clientY - 120; });
+    list.addEventListener('mouseenter', (e) => { cx = x = e.clientX + 24; cy = y = e.clientY - 120; raf = requestAnimationFrame(loop); });
+    list.addEventListener('mouseleave', () => { preview.classList.remove('show'); cancelAnimationFrame(raf); });
+  }
+</script>
+
+<style>
+  .event-list { border-top: 1px solid var(--line-strong); }
+  .event-row { border-bottom: 1px solid var(--line-strong); }
+  .event-link {
+    position: relative;
+    display: grid;
+    grid-template-columns: 180px minmax(0, 1fr) 200px 56px;
+    align-items: center;
+    gap: 2rem;
+    padding: clamp(1.5rem, 3vw, 2.25rem) 0;
+    transition: padding .6s var(--ease);
+  }
+  .event-link::before {
+    content: ""; position: absolute; inset: 0 -1.5rem; border-radius: var(--r);
+    background: var(--surface); opacity: 0; transform: scaleY(.9);
+    transition: opacity .4s var(--ease), transform .6s var(--ease);
+    z-index: -1;
+  }
+  .event-row { position: relative; z-index: 0; }
+  .event-link:hover { padding-inline: 1rem; }
+  .event-link:hover::before { opacity: 1; transform: none; }
+
+  .event-date { display: flex; align-items: center; gap: .9rem; }
+  .ed-day {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 5vw, 4.5rem);
+    line-height: .9; letter-spacing: -0.04em; font-weight: 300;
+    font-variation-settings: "opsz" 144;
+    transition: color .3s;
+  }
+  .event-link:hover .ed-day { color: var(--gold-text); }
+  .ed-month { font-size: .8rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; line-height: 1.3; }
+  .ed-month small { font-size: .72rem; color: var(--muted); letter-spacing: .1em; font-weight: 600; }
+
+  .event-main { display: flex; flex-direction: column; gap: .4rem; }
+  .event-title { font-size: clamp(1.35rem, 2.2vw, 1.9rem); }
+  .event-excerpt { color: var(--muted); max-width: 60ch; font-size: .95rem; }
+
+  .event-meta { display: flex; flex-direction: column; gap: .45rem; font-size: .88rem; font-weight: 600; color: var(--ink-2); }
+  .event-meta span { display: inline-flex; align-items: center; gap: .5rem; }
+  .event-meta :global(svg) { color: var(--gold-text); }
+
+  .event-thumb { display: none; }
+
+  .event-go {
+    width: 56px; height: 56px; border-radius: 50%;
+    display: grid; place-items: center;
+    border: 1px solid var(--line-strong);
+    transition: background .4s var(--ease), color .4s, border-color .4s, transform .6s var(--ease);
+  }
+  .event-link:hover .event-go { background: var(--gold); color: #101216; border-color: var(--gold); transform: rotate(45deg); }
+
+  /* Preview */
+  .event-preview {
+    position: fixed; left: 0; top: 0; z-index: 50;
+    width: 320px; aspect-ratio: 870 / 500;
+    pointer-events: none;
+  }
+  .ep-inner {
+    position: relative; width: 100%; height: 100%;
+    border-radius: var(--r); overflow: hidden;
+    box-shadow: 0 40px 80px -30px rgba(0,0,0,.5);
+    transform: scale(.6) rotate(-4deg); opacity: 0;
+    transition: transform .5s var(--ease), opacity .3s var(--ease);
+    background: var(--surface);
+  }
+  .event-preview.show .ep-inner { transform: scale(1) rotate(-3deg); opacity: 1; }
+  .ep-inner img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .3s; }
+  .ep-inner img.on { opacity: 1; }
+
+  @media (max-width: 1100px) {
+    .event-link { grid-template-columns: 150px minmax(0, 1fr) 56px; }
+    .event-meta { display: none; }
+    .event-preview { display: none; }
+  }
+  @media (max-width: 768px) {
+    .event-link {
+      grid-template-columns: 1fr auto;
+      grid-template-areas: "thumb thumb" "date go" "main main";
+      gap: 1rem;
+    }
+    .event-link:hover { padding-inline: 0; }
+    .event-link::before { display: none; }
+    .event-thumb { display: block; grid-area: thumb; border-radius: var(--r); overflow: hidden; aspect-ratio: 870 / 500; background: var(--surface); }
+    .event-thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .event-date { grid-area: date; }
+    .event-main { grid-area: main; }
+    .event-go { grid-area: go; width: 48px; height: 48px; }
+  }
+  @media (max-width: 480px) {
+    .ed-day { font-size: 2.5rem; }
+    .event-title { font-size: 1.25rem; }
+  }
+</style>

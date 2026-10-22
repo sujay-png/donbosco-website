@@ -1,0 +1,123 @@
+---
+import Icon from './Icon.astro';
+const news = [
+  { title: "Patron's Day Celebration", date: 'February 28, 2026', category: '2025-2026',
+    image: 'https://donboscoschoolshirva.com/wp-content/uploads/2026/02/MG_1325-scaled-500x352.jpg',
+    excerpt: 'Don Bosco School celebrated its Patron’s Day with great joy and devotion on the feast day of St. John Bosco.' },
+  { title: 'Farewell Ceremony of Grade 10', date: 'February 22, 2026', category: '2025-2026',
+    image: 'https://donboscoschoolshirva.com/wp-content/uploads/2026/02/MG_0902-scaled-500x352.jpg',
+    excerpt: 'The Farewell Ceremony for the Grade 10 students of the 2025–26 batch was held on 28th January 2026.' },
+  { title: 'Republic Day Celebration', date: 'January 26, 2026', category: '2025-2026',
+    image: '/events/event3.png',
+    excerpt: 'The 76th Republic Day was celebrated with patriotic fervor in the school premises.' },
+  { title: 'Christmas Celebration', date: 'December 23, 2025', category: '2025-2026',
+    image: '/events/event4.png',
+    excerpt: 'The joyous festival of Christmas was celebrated with a special assembly and cultural programs.' },
+];
+const [feature, ...rest] = news;
+---
+<section id="news" class="section news">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-meta" data-reveal>
+        <span class="sec-index">(07)</span>
+        <span class="eyebrow">Stay Updated</span>
+      </div>
+      <div class="sec-title-wrap">
+        <h2 class="h2" data-split>News &amp; <em>Events</em></h2>
+      </div>
+    </div>
+
+    <div class="news-grid">
+      <article class="news-feature" data-reveal>
+        <a href="#" class="nf-link">
+          <div class="media nf-media">
+            <img src={feature.image} alt={feature.title} loading="lazy" onerror="this.style.visibility='hidden'" />
+            <span class="tag tag-gold nf-tag">{feature.category}</span>
+          </div>
+          <div class="nf-body">
+            <span class="news-date"><Icon name="calendar" size={14} /> {feature.date}</span>
+            <h3 class="h3 nf-title">{feature.title}</h3>
+            <p class="muted">{feature.excerpt}</p>
+            <span class="link-arrow">Read More <Icon name="arrow-up-right" /></span>
+          </div>
+        </a>
+      </article>
+
+      <div class="news-list">
+        {rest.map((n, i) => (
+          <article class="news-item" data-reveal style={`--d:${0.1 * (i + 1)}s`}>
+            <a href="#" class="ni-link">
+              <div class="media ni-media">
+                <img src={n.image} alt={n.title} loading="lazy" onerror="this.style.visibility='hidden'" />
+              </div>
+              <div class="ni-body">
+                <div class="ni-meta">
+                  <span class="news-date"><Icon name="calendar" size={14} /> {n.date}</span>
+                  <span class="ni-cat">{n.category}</span>
+                </div>
+                <h3 class="ni-title">{n.title}</h3>
+                <p class="ni-excerpt">{n.excerpt}</p>
+              </div>
+              <span class="ni-go" aria-hidden="true"><Icon name="arrow-up-right" size={18} /></span>
+            </a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .news-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    gap: clamp(2rem, 5vw, 4.5rem);
+    align-items: start;
+  }
+  .nf-link { display: flex; flex-direction: column; gap: 1.5rem; }
+  .nf-media { aspect-ratio: 16 / 11; border-radius: var(--r-lg); background: linear-gradient(135deg, var(--bg-alt), var(--surface)); }
+  .nf-media img { transition: transform 1.2s var(--ease); }
+  .nf-link:hover .nf-media img { transform: scale(1.05); }
+  .nf-tag { position: absolute; left: 1.1rem; top: 1.1rem; }
+  .nf-body { display: flex; flex-direction: column; gap: .8rem; }
+  .nf-title { transition: color .3s; }
+  .nf-link:hover .nf-title { color: var(--gold-text); }
+  .news-date { display: inline-flex; align-items: center; gap: .45rem; font-size: .82rem; font-weight: 700; color: var(--muted); letter-spacing: .02em; }
+  .news-date :global(svg) { color: var(--gold-text); }
+
+  .news-list { display: flex; flex-direction: column; border-top: 1px solid var(--line-strong); }
+  .news-item { border-bottom: 1px solid var(--line-strong); }
+  .ni-link {
+    display: grid; grid-template-columns: 140px minmax(0, 1fr) 44px; gap: 1.5rem; align-items: center;
+    padding: 1.5rem 0;
+  }
+  .ni-media { aspect-ratio: 1; border-radius: var(--r); background: linear-gradient(135deg, var(--bg-alt), var(--surface)); }
+  .ni-media img { transition: transform 1s var(--ease); }
+  .ni-link:hover .ni-media img { transform: scale(1.08); }
+  .ni-body { display: flex; flex-direction: column; gap: .4rem; }
+  .ni-meta { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+  .ni-cat { font-size: .7rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--gold-text); }
+  .ni-title { font-size: 1.35rem; transition: color .3s; }
+  .ni-link:hover .ni-title { color: var(--gold-text); }
+  .ni-excerpt { color: var(--muted); font-size: .92rem; display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .ni-go {
+    width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line-strong);
+    display: grid; place-items: center; transition: all .4s var(--ease);
+  }
+  .ni-link:hover .ni-go { background: var(--gold); border-color: var(--gold); color: #101216; transform: rotate(45deg); }
+
+  @media (max-width: 992px) {
+    .news-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 560px) {
+    .ni-link { grid-template-columns: 96px minmax(0, 1fr); gap: 1rem; }
+    .ni-go { display: none; }
+    .ni-title { font-size: 1.15rem; }
+  }
+  @media (max-width: 420px) {
+    .ni-link { grid-template-columns: 80px minmax(0, 1fr); gap: .75rem; }
+    .ni-title { font-size: 1.05rem; }
+    .ni-excerpt { display: none; }
+  }
+</style>

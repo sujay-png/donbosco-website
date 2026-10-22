@@ -1,0 +1,1380 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { cbseRequirementsData, cbseHighlights } from '../data/cbse-requirements';
+---
+
+<Layout 
+  title="CBSE Requirements & Regulatory Documents - Don Bosco School Shirva"
+  description="Comprehensive regulatory and statutory compliance documentation for Don Bosco English Medium School Shirva under CBSE (Affiliation No. 830838, School Code: 45731). View and download affiliation letters, safety certificates, land deeds, and governance frameworks."
+>
+  <Header />
+
+  <!-- Hero Section -->
+  <section class="page-hero on-image">
+    <div class="ph-media" data-parallax="-0.12">
+      <img src="/about/old-school.jpg" alt="Don Bosco School Shirva Campus" fetchpriority="high" />
+    </div>
+    <div class="ph-shade" aria-hidden="true"></div>
+    <div class="container ph-inner">
+      <nav class="breadcrumb" aria-label="Breadcrumb" data-reveal="fade">
+        <a href="/">Home</a>
+        <span aria-hidden="true">/</span>
+        <span>CBSE</span>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page" class="crumb-current">CBSE Requirements</span>
+      </nav>
+
+      <div class="hero-badges" data-reveal="fade">
+        <span class="badge-pill">CBSE AFFILIATION NO: 830838</span>
+        <span class="badge-pill">SCHOOL CODE: 45731</span>
+        <span class="badge-pill badge-gold">REGULATORY COMPLIANCE</span>
+      </div>
+
+      <h1 class="h1 ph-title" data-split>CBSE <em>REQUIREMENTS</em></h1>
+      <p class="ph-subtitle" data-reveal="fade">
+        Statutory accreditations, NOCs, regulatory clearances, safety certifications, and governance disclosures in complete accordance with CBSE affiliation bye-laws and educational norms.
+      </p>
+
+      <!-- Jump link to table -->
+      <div class="hero-actions" data-reveal="fade">
+        <a href="#documents-grid" class="btn-hero-primary">Explore All 15 Documents</a>
+        <a href="#compliance-table" class="btn-hero-ghost">View Summary Checklist</a>
+        <a href="/mandatory-public-disclosure" class="btn-hero-link">
+          Mandatory Public Disclosure (Appendix IX)
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Highlights Bar -->
+  <section class="highlights-bar" aria-label="Key Accreditation Highlights">
+    <div class="container">
+      <div class="highlights-grid">
+        {cbseHighlights.map(item => (
+          <div class="highlight-item" data-reveal>
+            <span class="hl-label">{item.label}</span>
+            <strong class="hl-val">{item.val}</strong>
+            <span class="hl-sub">{item.sub}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Area -->
+  <main class="main-section section">
+    <div class="container req-wrapper">
+
+      <!-- Section Header & Filter Controls -->
+      <div id="documents-grid" class="section-intro" data-reveal>
+        <div class="intro-headings">
+          <div class="section-pill">STATUTORY REPOSITORY</div>
+          <h2 class="h2 sec-title">Official Documents &amp; Certificates</h2>
+          <p class="sec-desc">
+            Browse verified institutional certifications, land deeds, and administrative compliances. Click on any document card to view in full resolution or download official files.
+          </p>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="filter-tabs-bar" role="tablist" aria-label="Document Categories">
+          <button type="button" class="filter-tab active" data-filter="all" role="tab" aria-selected="true">
+            All Documents (15)
+          </button>
+          <button type="button" class="filter-tab" data-filter="affiliation" role="tab" aria-selected="false">
+            Affiliation &amp; Approvals (5)
+          </button>
+          <button type="button" class="filter-tab" data-filter="safety" role="tab" aria-selected="false">
+            Safety &amp; Health (4)
+          </button>
+          <button type="button" class="filter-tab" data-filter="governance" role="tab" aria-selected="false">
+            Institutional Framework (3)
+          </button>
+          <button type="button" class="filter-tab" data-filter="academics" role="tab" aria-selected="false">
+            Academics &amp; Outcomes (3)
+          </button>
+        </div>
+      </div>
+
+      <!-- Grid of 15 Requirement Cards -->
+      <div class="requirements-grid">
+        {cbseRequirementsData.map((doc, idx) => (
+          <div 
+            class="req-card" 
+            data-category={doc.category} 
+            data-reveal
+            style={`--delay: ${(idx % 3) * 0.1}s`}
+          >
+            <!-- Card Header -->
+            <div class="rc-header">
+              <span class="rc-num">#{doc.no}</span>
+              <span class="rc-tag">{doc.categoryLabel}</span>
+            </div>
+
+            <!-- Card Thumbnail with Zoom Action -->
+            <div class="rc-media-wrap">
+              <button 
+                type="button" 
+                class="rc-preview-trigger"
+                data-modal-type={doc.pdfUrl ? 'pdf' : 'image'}
+                data-modal-title={doc.title}
+                data-modal-src={doc.pdfUrl || doc.imgSrc}
+                data-modal-img={doc.imgSrc}
+                data-modal-dl={doc.pdfUrl || doc.imgSrc}
+                aria-label={`Preview ${doc.title}`}
+              >
+                <img 
+                  src={doc.imgSrc} 
+                  alt={doc.title} 
+                  loading="lazy" 
+                  decoding="async" 
+                  class="rc-img" 
+                />
+                <div class="rc-overlay">
+                  <span class="zoom-pill">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                    Quick View
+                  </span>
+                </div>
+              </button>
+            </div>
+
+            <!-- Card Info -->
+            <div class="rc-body">
+              <h3 class="h4 rc-title">{doc.title}</h3>
+              <p class="rc-auth">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                {doc.authority}
+              </p>
+              <p class="rc-desc">{doc.description}</p>
+            </div>
+
+            <!-- Card Footer / Action Buttons -->
+            <div class="rc-footer">
+              {doc.pageUrl ? (
+                <a href={doc.pageUrl} class="rc-btn-page">
+                  <span>View Details</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+              ) : (
+                <div class="rc-dual-actions">
+                  <button 
+                    type="button" 
+                    class="rc-btn-view"
+                    data-modal-type="pdf"
+                    data-modal-title={doc.title}
+                    data-modal-src={doc.pdfUrl || doc.imgSrc}
+                    data-modal-dl={doc.pdfUrl}
+                  >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                    Preview
+                  </button>
+                  <a 
+                    href={doc.pdfUrl || doc.imgSrc} 
+                    download 
+                    class="rc-btn-dl"
+                    aria-label={`Download ${doc.title}`}
+                  >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    <span>PDF</span>
+                  </a>
+                </div>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Official CBSE Regulatory Summary Table -->
+      <section id="compliance-table" class="compliance-table-section" data-reveal>
+        <div class="table-section-head">
+          <div>
+            <div class="section-pill">VERIFICATION MATRIX</div>
+            <h2 class="h3 matrix-title">CBSE Institutional Requirements Checklist</h2>
+            <p class="matrix-desc">Comprehensive index of all 15 accreditations and official records for public verification.</p>
+          </div>
+          <a href="/mandatory-public-disclosure" class="disclosure-nav-pill">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            Mandatory Public Disclosure
+          </a>
+        </div>
+
+        <div class="table-responsive standard-table-box">
+          <table class="compliance-table">
+            <thead>
+              <tr>
+                <th scope="col" style="width: 70px;">SL. NO</th>
+                <th scope="col" style="width: 32%;">REQUIREMENT / DOCUMENT</th>
+                <th scope="col" style="width: 25%;">ISSUING AUTHORITY</th>
+                <th scope="col">CATEGORY</th>
+                <th scope="col" style="text-align: right; width: 180px;">ACTION</th>
+              </tr>
+            </thead>
+            <tbody>
+              {cbseRequirementsData.map(item => (
+                <tr>
+                  <td class="td-num">#{item.no}</td>
+                  <td class="td-doc">
+                    <strong class="doc-name">{item.title}</strong>
+                    <span class="doc-sub">{item.description}</span>
+                  </td>
+                  <td class="td-auth">
+                    <span>{item.authority}</span>
+                  </td>
+                  <td class="td-cat">
+                    <span class="cat-pill">{item.categoryLabel}</span>
+                  </td>
+                  <td class="td-action">
+                    {item.pageUrl ? (
+                      <a href={item.pageUrl} class="tbl-action-btn">
+                        <span>View Page</span>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                      </a>
+                    ) : (
+                      <div class="tbl-action-duo">
+                        <button 
+                          type="button" 
+                          class="tbl-action-btn"
+                          data-modal-type="pdf"
+                          data-modal-title={item.title}
+                          data-modal-src={item.pdfUrl || item.imgSrc}
+                          data-modal-dl={item.pdfUrl}
+                        >
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                          View
+                        </button>
+                        <a href={item.pdfUrl || item.imgSrc} download class="tbl-dl-btn" aria-label={`Download ${item.title}`}>
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        </a>
+                      </div>
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Interactive Document Preview / Lightbox Modal -->
+  <div id="cbse-modal" class="cbse-modal" aria-hidden="true" role="dialog" aria-labelledby="cbse-modal-title">
+    <div class="modal-backdrop" id="cbse-modal-backdrop"></div>
+    <div class="modal-container">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <div class="modal-header-info">
+          <span class="modal-tag">CBSE STATUTORY COMPLIANCE DOCUMENT</span>
+          <h3 id="cbse-modal-title" class="modal-title">Document Inspection</h3>
+        </div>
+        <div class="modal-actions">
+          <a id="cbse-modal-dl" href="#" download class="modal-btn" title="Download Document">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span class="sr-only">Download</span>
+          </a>
+          <a id="cbse-modal-newtab" href="#" target="_blank" rel="noopener noreferrer" class="modal-btn" title="Open in New Tab">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            <span class="sr-only">Open Tab</span>
+          </a>
+          <button type="button" id="cbse-modal-close" class="modal-close-btn" aria-label="Close Preview">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="modal-body">
+        <!-- PDF Viewer Frame -->
+        <div id="pdf-view-wrapper" class="modal-view-panel">
+          <iframe id="cbse-modal-iframe" src="" title="PDF Viewer"></iframe>
+        </div>
+        <!-- High-res Image Lightbox View -->
+        <div id="img-view-wrapper" class="modal-view-panel" style="display: none;">
+          <img id="cbse-modal-image" src="" alt="Certificate Document" class="modal-img-preview" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <Footer />
+</Layout>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    // 1. Category Filtering
+    const tabs = document.querySelectorAll('.filter-tab');
+    const cards = document.querySelectorAll('.req-card');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => {
+          t.classList.remove('active');
+          t.setAttribute('aria-selected', 'false');
+        });
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+
+        const filter = tab.getAttribute('data-filter');
+        cards.forEach(card => {
+          const category = card.getAttribute('data-category');
+          if (filter === 'all' || category === filter) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // 2. Interactive Document Modal
+    const modal = document.getElementById('cbse-modal');
+    const modalBackdrop = document.getElementById('cbse-modal-backdrop');
+    const modalClose = document.getElementById('cbse-modal-close');
+    const modalTitle = document.getElementById('cbse-modal-title');
+    const modalIframe = document.getElementById('cbse-modal-iframe');
+    const modalImg = document.getElementById('cbse-modal-image');
+    const pdfPanel = document.getElementById('pdf-view-wrapper');
+    const imgPanel = document.getElementById('img-view-wrapper');
+    const modalDl = document.getElementById('cbse-modal-dl');
+    const modalNewTab = document.getElementById('cbse-modal-newtab');
+
+    function openModal(type, title, src, dlUrl, imgBackup) {
+      if (!modal) return;
+      if (modalTitle) modalTitle.textContent = title || 'Document Inspection';
+      if (modalDl) modalDl.href = dlUrl || src;
+      if (modalNewTab) modalNewTab.href = src;
+
+      if (type === 'pdf' && src.endsWith('.pdf')) {
+        if (pdfPanel) pdfPanel.style.display = 'block';
+        if (imgPanel) imgPanel.style.display = 'none';
+        if (modalIframe) modalIframe.src = src;
+      } else {
+        // Image preview
+        if (pdfPanel) pdfPanel.style.display = 'none';
+        if (imgPanel) imgPanel.style.display = 'flex';
+        if (modalImg) modalImg.src = imgBackup || src;
+      }
+
+      modal.classList.add('is-open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      if (!modal) return;
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+      if (modalIframe) modalIframe.src = '';
+      if (modalImg) modalImg.src = '';
+      document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('[data-modal-src]').forEach(trigger => {
+      trigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        const type = trigger.getAttribute('data-modal-type') || 'pdf';
+        const title = trigger.getAttribute('data-modal-title');
+        const src = trigger.getAttribute('data-modal-src');
+        const dlUrl = trigger.getAttribute('data-modal-dl');
+        const imgBackup = trigger.getAttribute('data-modal-img');
+        openModal(type, title, src, dlUrl, imgBackup);
+      });
+    });
+
+    if (modalClose) modalClose.addEventListener('click', closeModal);
+    if (modalBackdrop) modalBackdrop.addEventListener('click', closeModal);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal && modal.classList.contains('is-open')) {
+        closeModal();
+      }
+    });
+  });
+</script>
+
+<style>
+  /* =========================================================
+     HERO SECTION
+     ========================================================= */
+  .page-hero {
+    position: relative;
+    min-height: clamp(520px, 68vh, 720px);
+    display: flex;
+    align-items: flex-end;
+    color: #fff;
+    overflow: hidden;
+    isolation: isolate;
+    background: #0b0d10;
+  }
+  .ph-media {
+    position: absolute;
+    inset: -10% 0;
+    z-index: -2;
+  }
+  .ph-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.75);
+  }
+  .ph-shade {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(
+      180deg,
+      rgba(8, 10, 13, 0.88) 0%,
+      rgba(8, 10, 13, 0.65) 45%,
+      rgba(8, 10, 13, 0.96) 100%
+    );
+  }
+  .ph-inner {
+    padding-top: calc(var(--header-h) + 60px);
+    padding-bottom: clamp(2.5rem, 6vw, 4.5rem);
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  .breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.68);
+  }
+  .breadcrumb a {
+    color: rgba(255, 255, 255, 0.88);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .breadcrumb a:hover {
+    color: var(--gold);
+  }
+  .crumb-current {
+    color: var(--gold);
+  }
+
+  .hero-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    align-items: center;
+  }
+  .badge-pill {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    padding: 0.35rem 0.85rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+  .badge-gold {
+    background: rgba(197, 160, 89, 0.2);
+    color: var(--gold);
+    border-color: rgba(197, 160, 89, 0.5);
+  }
+
+  .ph-title {
+    color: #fff;
+    max-width: 20ch;
+    margin: 0;
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    line-height: 1.1;
+  }
+  .ph-title :global(em) {
+    color: var(--gold);
+    font-style: normal;
+  }
+  .ph-subtitle {
+    color: rgba(255, 255, 255, 0.88);
+    max-width: 75ch;
+    margin: 0;
+    font-size: clamp(1rem, 1.8vw, 1.15rem);
+    line-height: 1.6;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+    margin-top: 0.5rem;
+  }
+  .btn-hero-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0.75rem 1.6rem;
+    border-radius: 999px;
+    background: var(--gold);
+    color: #101216;
+    font-weight: 700;
+    font-size: 0.92rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  .btn-hero-primary:hover {
+    background: #0B0D12;
+    color: #FFFFFF;
+    transform: translateY(-2px);
+  }
+  .btn-hero-ghost {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0.75rem 1.6rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.92rem;
+    text-decoration: none;
+    backdrop-filter: blur(8px);
+    transition: all 0.2s ease;
+  }
+  .btn-hero-ghost:hover {
+    background: #FFFFFF;
+    color: #101216;
+    border-color: #FFFFFF;
+    transform: translateY(-2px);
+  }
+  .btn-hero-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--gold);
+    font-weight: 600;
+    font-size: 0.92rem;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .btn-hero-link:hover {
+    text-decoration: underline;
+    color: #fff;
+  }
+
+  /* =========================================================
+     HIGHLIGHTS STRIP
+     ========================================================= */
+  .highlights-bar {
+    background: var(--bg-alt);
+    border-bottom: 1px solid var(--line);
+    padding-block: 2rem;
+  }
+  .highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+  }
+  .highlight-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.02);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+  .highlight-item:hover {
+    transform: translateY(-2px);
+    border-color: var(--gold);
+  }
+  .hl-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+  }
+  .hl-val {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  .hl-sub {
+    font-size: 0.82rem;
+    color: var(--gold-text);
+    font-weight: 600;
+  }
+
+  /* =========================================================
+     MAIN SECTION
+     ========================================================= */
+  .main-section {
+    padding-block: clamp(3.5rem, 6vw, 6rem);
+    background: var(--bg);
+  }
+  .req-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 4.5rem;
+  }
+
+  .section-intro {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+  }
+  .section-pill {
+    display: inline-block;
+    width: fit-content;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    color: var(--gold-text);
+    text-transform: uppercase;
+    background: rgba(197, 160, 89, 0.12);
+    padding: 0.25rem 0.65rem;
+    border-radius: 4px;
+    margin-bottom: 0.4rem;
+  }
+  .sec-title {
+    color: var(--ink);
+    margin: 0;
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+  }
+  .sec-desc {
+    color: var(--muted);
+    margin: 0.5rem 0 0 0;
+    max-width: 80ch;
+    font-size: 1.05rem;
+    line-height: 1.6;
+  }
+
+  /* Filter Tabs Bar */
+  .filter-tabs-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    padding-top: 0.5rem;
+  }
+  .filter-tab {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0.5rem 1.25rem;
+    border-radius: 999px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    color: var(--ink);
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .filter-tab:hover {
+    border-color: var(--gold);
+    color: var(--gold-text);
+  }
+  .filter-tab.active {
+    background: var(--gold);
+    color: #fff;
+    border-color: var(--gold);
+  }
+
+  /* =========================================================
+     REQUIREMENTS CARDS GRID
+     ========================================================= */
+  .requirements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: clamp(1.5rem, 3vw, 2.25rem);
+  }
+  .req-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    padding: 1.5rem;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.03);
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+  }
+  .req-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--gold);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
+  }
+
+  .rc-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+  .rc-num {
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: var(--gold-text);
+    background: var(--bg-alt);
+    padding: 0.25rem 0.55rem;
+    border-radius: 6px;
+    border: 1px solid var(--line);
+  }
+  .rc-tag {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: var(--bg-alt);
+    border: 1px solid var(--line);
+    padding: 0.25rem 0.65rem;
+    border-radius: 999px;
+  }
+
+  /* Thumbnail Media Wrapper */
+  .rc-media-wrap {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    border-radius: var(--r-md);
+    overflow: hidden;
+    background: var(--bg-alt);
+    border: 1px solid var(--line);
+    position: relative;
+    margin-bottom: 1.25rem;
+  }
+  .rc-preview-trigger {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    position: relative;
+    text-align: left;
+  }
+  .rc-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    transition: transform 0.4s ease;
+  }
+  .rc-preview-trigger:hover .rc-img {
+    transform: scale(1.04);
+  }
+  .rc-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(3px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .rc-preview-trigger:hover .rc-overlay {
+    opacity: 1;
+  }
+  .zoom-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--gold);
+    color: #fff;
+    font-size: 0.86rem;
+    font-weight: 700;
+    padding: 0.6rem 1.2rem;
+    border-radius: 999px;
+    transform: translateY(6px);
+    transition: transform 0.3s ease;
+  }
+  .rc-preview-trigger:hover .zoom-pill {
+    transform: translateY(0);
+  }
+
+  /* Body */
+  .rc-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-bottom: 1.25rem;
+    flex-grow: 1;
+  }
+  .rc-title {
+    color: var(--ink);
+    margin: 0;
+    font-size: 1.15rem;
+    line-height: 1.35;
+  }
+  .rc-auth {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--gold-text);
+    margin: 0;
+  }
+  .rc-auth svg {
+    flex-shrink: 0;
+    color: var(--gold);
+  }
+  .rc-desc {
+    color: var(--muted);
+    font-size: 0.88rem;
+    line-height: 1.5;
+    margin: 0.3rem 0 0 0;
+  }
+
+  /* Footer Actions */
+  .rc-footer {
+    padding-top: 1.1rem;
+    border-top: 1px solid var(--line);
+  }
+  .rc-btn-page {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    min-height: 44px;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    background: var(--bg-alt);
+    border: 1px solid var(--line);
+    color: var(--ink);
+    font-size: 0.88rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  .rc-btn-page:hover {
+    background: var(--gold);
+    color: #101216;
+    border-color: var(--gold);
+  }
+  .rc-btn-page:hover * {
+    color: #101216 !important;
+  }
+
+  .rc-dual-actions {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.6rem;
+  }
+  .rc-btn-view {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    min-height: 44px;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    background: var(--bg-alt);
+    border: 1px solid var(--line);
+    color: var(--ink);
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .rc-btn-view:hover {
+    background: var(--gold);
+    color: #101216;
+    border-color: var(--gold);
+  }
+  .rc-btn-view:hover * {
+    color: #101216 !important;
+  }
+  .rc-btn-dl {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    min-height: 44px;
+    padding: 0.5rem 1.2rem;
+    border-radius: 8px;
+    background: rgba(197, 160, 89, 0.12);
+    border: 1px solid rgba(197, 160, 89, 0.35);
+    color: var(--gold-text);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  .rc-btn-dl:hover {
+    background: var(--gold);
+    color: #101216;
+    border-color: var(--gold);
+  }
+  .rc-btn-dl:hover * {
+    color: #101216 !important;
+  }
+
+  /* =========================================================
+     COMPLIANCE SUMMARY TABLE
+     ========================================================= */
+  .compliance-table-section {
+    scroll-margin-top: calc(var(--header-h) + 40px);
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+  }
+  .table-section-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1.25rem;
+  }
+  .matrix-title {
+    color: var(--ink);
+    margin: 0;
+    font-size: 1.6rem;
+  }
+  .matrix-desc {
+    color: var(--muted);
+    margin: 0.35rem 0 0 0;
+    font-size: 0.95rem;
+  }
+  .disclosure-nav-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 44px;
+    padding: 0.6rem 1.25rem;
+    background: var(--bg-alt);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--gold-text);
+    font-size: 0.88rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  .disclosure-nav-pill:hover {
+    background: var(--gold);
+    color: #fff;
+    border-color: var(--gold);
+  }
+
+  .standard-table-box {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .compliance-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+    min-width: 760px;
+    text-align: left;
+  }
+  .compliance-table th {
+    background: var(--bg-alt);
+    color: var(--ink);
+    font-weight: 800;
+    font-size: 0.82rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 1.15rem 1.25rem;
+    border-bottom: 2px solid var(--line);
+  }
+  .compliance-table td {
+    padding: 1.1rem 1.25rem;
+    border-bottom: 1px solid var(--line);
+    color: var(--ink);
+    vertical-align: middle;
+  }
+  .compliance-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+  .compliance-table tbody tr:hover {
+    background: color-mix(in srgb, var(--gold) 4%, transparent);
+  }
+  .td-num {
+    font-weight: 800;
+    color: var(--muted);
+  }
+  .td-doc {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+  .doc-name {
+    color: var(--ink);
+    font-size: 0.98rem;
+  }
+  .doc-sub {
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+  .td-auth {
+    font-size: 0.88rem;
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .cat-pill {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.25rem 0.65rem;
+    border-radius: 999px;
+    background: var(--bg-alt);
+    border: 1px solid var(--line);
+    color: var(--muted);
+  }
+  .td-action {
+    text-align: right;
+  }
+  .tbl-action-duo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .tbl-action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    min-height: 38px;
+    padding: 0.4rem 0.85rem;
+    background: var(--bg-alt);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    font-size: 0.84rem;
+    font-weight: 600;
+    color: var(--ink);
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  .tbl-action-btn:hover {
+    background: var(--gold);
+    color: #101216;
+    border-color: var(--gold);
+  }
+  .tbl-action-btn:hover * {
+    color: #101216 !important;
+  }
+  .tbl-dl-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    background: rgba(197, 160, 89, 0.12);
+    border: 1px solid rgba(197, 160, 89, 0.3);
+    border-radius: 6px;
+    color: var(--gold-text);
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  .tbl-dl-btn:hover {
+    background: var(--gold);
+    color: #101216;
+    border-color: var(--gold);
+  }
+  .tbl-dl-btn:hover * {
+    color: #101216 !important;
+  }
+
+  /* =========================================================
+     LIGHTBOX / PDF MODAL
+     ========================================================= */
+  .cbse-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+  }
+  .cbse-modal.is-open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.82);
+    backdrop-filter: blur(8px);
+  }
+  .modal-container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 960px;
+    height: 88vh;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 1.75rem;
+    border-bottom: 1px solid var(--line);
+    background: var(--bg-alt);
+  }
+  .modal-header-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+  .modal-tag {
+    font-size: 0.7rem;
+    font-weight: 800;
+    color: var(--gold-text);
+    letter-spacing: 0.06em;
+  }
+  .modal-title {
+    margin: 0;
+    font-size: 1.15rem;
+    color: var(--ink);
+    max-width: 55ch;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .modal-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .modal-btn, .modal-close-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    color: var(--ink);
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .modal-btn:hover, .modal-close-btn:hover {
+    background: var(--gold);
+    color: #101216;
+    border-color: var(--gold);
+  }
+  .modal-btn:hover *, .modal-close-btn:hover * {
+    color: #101216 !important;
+  }
+  .modal-body {
+    flex: 1;
+    width: 100%;
+    background: #1e1e1e;
+    position: relative;
+    overflow: hidden;
+  }
+  .modal-view-panel {
+    width: 100%;
+    height: 100%;
+  }
+  .modal-view-panel iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+  #img-view-wrapper {
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+    padding: 1rem;
+  }
+  .modal-img-preview {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 6px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  /* =========================================================
+     RESPONSIVE MEDIA QUERIES
+     ========================================================= */
+  @media (max-width: 768px) {
+    .page-hero {
+      min-height: 480px;
+    }
+    .ph-inner {
+      padding-top: calc(var(--header-h) + 40px);
+      gap: 1rem;
+    }
+    .ph-title {
+      font-size: 2rem;
+    }
+    .ph-subtitle {
+      font-size: 0.95rem;
+    }
+    .hero-actions {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .btn-hero-primary, .btn-hero-ghost {
+      width: 100%;
+    }
+    .filter-tabs-bar {
+      overflow-x: auto;
+      flex-wrap: nowrap;
+      padding-bottom: 0.5rem;
+      -webkit-overflow-scrolling: touch;
+    }
+    .filter-tab {
+      flex-shrink: 0;
+    }
+    .requirements-grid {
+      grid-template-columns: 1fr;
+    }
+    .compliance-table th, .compliance-table td {
+      padding: 0.85rem 1rem;
+    }
+    .cbse-modal {
+      padding: 0.5rem;
+    }
+    .modal-container {
+      height: 94vh;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .page-hero { min-height: 420px; }
+    .req-card { padding: 1.15rem; }
+    .table-section-head { flex-direction: column; align-items: flex-start; gap: 1rem; }
+    .disclosure-nav-pill { width: 100%; justify-content: center; }
+  }
+
+  /* =========================================================
+     DARK MODE HIGH CONTRAST SPECIFICATIONS
+     (Fixes user feedback regarding dark mode heading contrast)
+     ========================================================= */
+  :global([data-theme="dark"]) .sec-title,
+  :global([data-theme="dark"]) .rc-title,
+  :global([data-theme="dark"]) .matrix-title,
+  :global([data-theme="dark"]) .modal-title,
+  :global([data-theme="dark"]) .compliance-table th,
+  :global([data-theme="dark"]) .doc-name,
+  :global([data-theme="dark"]) .hl-val {
+    color: #F8F6F0 !important;
+  }
+
+  :global([data-theme="dark"]) .sec-desc,
+  :global([data-theme="dark"]) .matrix-desc,
+  :global([data-theme="dark"]) .rc-desc,
+  :global([data-theme="dark"]) .doc-sub,
+  :global([data-theme="dark"]) .td-auth {
+    color: #BDB9B0 !important;
+  }
+
+  :global([data-theme="dark"]) .highlight-item,
+  :global([data-theme="dark"]) .req-card,
+  :global([data-theme="dark"]) .standard-table-box,
+  :global([data-theme="dark"]) .modal-container,
+  :global([data-theme="dark"]) .filter-tab {
+    background: #14171F !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+  }
+
+  :global([data-theme="dark"]) .compliance-table th,
+  :global([data-theme="dark"]) .modal-header {
+    background: #1B1F2A !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+  }
+
+  :global([data-theme="dark"]) .compliance-table td {
+    color: #D8D4CC !important;
+    border-color: rgba(255, 255, 255, 0.06) !important;
+  }
+
+  :global([data-theme="dark"]) .rc-btn-page,
+  :global([data-theme="dark"]) .rc-btn-view,
+  :global([data-theme="dark"]) .rc-btn-dl,
+  :global([data-theme="dark"]) .tbl-action-btn,
+  :global([data-theme="dark"]) .tbl-dl-btn,
+  :global([data-theme="dark"]) .modal-btn,
+  :global([data-theme="dark"]) .modal-close-btn,
+  :global([data-theme="dark"]) .disclosure-nav-pill {
+    background: #1E2330 !important;
+    color: #F8F6F0 !important;
+    border-color: rgba(255, 255, 255, 0.12) !important;
+  }
+
+  :global([data-theme="dark"]) .rc-btn-page:hover,
+  :global([data-theme="dark"]) .rc-btn-view:hover,
+  :global([data-theme="dark"]) .rc-btn-dl:hover,
+  :global([data-theme="dark"]) .tbl-action-btn:hover,
+  :global([data-theme="dark"]) .tbl-dl-btn:hover,
+  :global([data-theme="dark"]) .modal-btn:hover,
+  :global([data-theme="dark"]) .modal-close-btn:hover,
+  :global([data-theme="dark"]) .disclosure-nav-pill:hover {
+    background: var(--gold) !important;
+    color: #101216 !important;
+    border-color: var(--gold) !important;
+  }
+  :global([data-theme="dark"]) .rc-btn-page:hover *,
+  :global([data-theme="dark"]) .rc-btn-view:hover *,
+  :global([data-theme="dark"]) .rc-btn-dl:hover *,
+  :global([data-theme="dark"]) .tbl-action-btn:hover *,
+  :global([data-theme="dark"]) .tbl-dl-btn:hover *,
+  :global([data-theme="dark"]) .modal-btn:hover *,
+  :global([data-theme="dark"]) .modal-close-btn:hover * {
+    color: #101216 !important;
+    fill: currentColor;
+  }
+
+  :global([data-theme="dark"]) .filter-tab.active {
+    background: var(--gold) !important;
+    color: #111 !important;
+    border-color: var(--gold) !important;
+  }
+
+  :global([data-theme="dark"]) .highlights-bar {
+    background: #0E1015 !important;
+    border-color: rgba(255, 255, 255, 0.06) !important;
+  }
+
+  :global([data-theme="dark"]) .main-section {
+    background: #0B0D12 !important;
+  }
+</style>

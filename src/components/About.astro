@@ -1,0 +1,106 @@
+---
+import Icon from './Icon.astro';
+---
+<section id="about" class="section about">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-meta" data-reveal>
+        <span class="sec-index">(01)</span>
+        <span class="eyebrow">About Us</span>
+      </div>
+      <div class="sec-title-wrap">
+        <h2 class="h2" data-split>Welcome to <em>Don Bosco</em> School</h2>
+      </div>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-media">
+        <div class="media about-img-main" data-reveal="clip">
+          <img src="/about/old-school.jpg" alt="Don Bosco School building, Shirva" loading="lazy" data-parallax="0.06" />
+        </div>
+        <div class="media about-img-float" data-reveal="clip" style="--d:.25s">
+          <img src="/about/entrance.jpg" alt="Don Bosco School entrance gate" loading="lazy" />
+        </div>
+        <div class="about-badge" data-reveal style="--d:.4s">
+          <span class="badge-year">Est. 1983</span>
+          <span class="badge-text">Decades of Excellence</span>
+        </div>
+      </div>
+
+      <div class="about-copy">
+        <p class="about-lead" data-reveal>
+          Well this noble thought of education had a deep-rooted meaning and not a long time ago in <span class="hl">1983</span>, the simple peaceful hamlet of Shirva, woke up to the call for imparting education to the children of the locality through the medium of English.
+        </p>
+        <div class="prose" data-reveal style="--d:.1s">
+          <p>
+            The older folks yearned to see and hear their young ones learn the language, which they had missed and hence found it an obstacle, which many faced in their career when they went to the cities looking for greener pastures.
+          </p>
+          <p>
+            They didn't lose any opportunity of moulding their dreams into a reality. Their dreams, contribution and determination enabled the then Founder Correspondent, <strong>Late Rev. Fr. Aloysious Rosario</strong>, who also had secretly cherished a vision of establishing an English Medium School in Shirva.
+          </p>
+        </div>
+        <div class="about-actions" data-reveal style="--d:.2s">
+          <a href="/about/history" class="btn btn-gold">Read Our Full History <Icon name="arrow" class="arrow" /></a>
+          <a href="/about/know-your-don-bosco" class="link-arrow">Know your Don Bosco <Icon name="arrow-up-right" /></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    gap: clamp(2.5rem, 6vw, 6rem);
+    align-items: center;
+  }
+  .about-media { position: relative; padding-bottom: 14%; padding-right: 8%; }
+  .about-img-main { aspect-ratio: 4 / 4.4; border-radius: var(--r-lg); }
+  .about-img-main img { height: 116%; margin-top: -8%; object-position: 45% center; }
+  .about-img-float {
+    position: absolute; right: 0; bottom: 0;
+    width: 62%; aspect-ratio: 16 / 9;
+    border-radius: var(--r);
+    border: 6px solid var(--bg);
+    box-shadow: var(--shadow);
+  }
+  .about-badge {
+    position: absolute; left: -1rem; top: 8%;
+    background: var(--gold); color: #101216;
+    padding: 1.1rem 1.35rem;
+    border-radius: var(--r);
+    display: flex; flex-direction: column; gap: .1rem;
+    box-shadow: var(--shadow-sm);
+  }
+  .badge-year { font-family: var(--font-display); font-size: 1.9rem; line-height: 1; letter-spacing: -0.03em; }
+  .badge-text { font-size: .7rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+
+  .about-copy { display: flex; flex-direction: column; gap: 1.75rem; }
+  .about-lead {
+    font-family: var(--font-display);
+    font-size: clamp(1.35rem, 2.2vw, 1.85rem);
+    line-height: 1.35;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    font-weight: 350;
+  }
+  .hl { font-style: italic; color: var(--gold-text); }
+  .about-actions { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; padding-top: .5rem; }
+
+  @media (max-width: 992px) {
+    .about-grid { grid-template-columns: 1fr; }
+    .about-media { max-width: 640px; }
+  }
+  @media (max-width: 768px) {
+    .about-badge { left: .75rem; top: .75rem; padding: .8rem 1rem; }
+    .badge-year { font-size: 1.4rem; }
+    .about-img-float { width: 70%; border-width: 4px; }
+  }
+  @media (max-width: 480px) {
+    .about-actions { flex-direction: column; align-items: stretch; gap: 1rem; }
+    .about-actions .btn { width: 100%; justify-content: center; }
+    .about-actions .link-arrow { justify-content: center; }
+    .about-media { padding-bottom: 20%; padding-right: 0; }
+  }
+</style>

@@ -1,0 +1,142 @@
+---
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import Admissions from './Admissions.astro';
+
+export interface Props {
+  title: string;
+  subtitle?: string;
+  breadcrumb?: string;
+  currentPage: string;
+  image?: string;
+  intro?: string;
+}
+
+const { title, subtitle, breadcrumb = 'About Us', currentPage, image = '/hero_new.jpg', intro } = Astro.props;
+
+const aboutPages = [
+  { label: 'Know your Don Bosco', href: '/about/know-your-don-bosco' },
+  { label: 'School Anthem', href: '/about/school-anthem' },
+  { label: 'History', href: '/about/history' },
+  { label: 'School Management', href: '/about/school-management' },
+  { label: 'Correspondents', href: '/about/correspondents' },
+  { label: 'Principal', href: '/about/principal' },
+  { label: "Principal's Message", href: '/about/messages/principal-message' },
+];
+const path = Astro.url.pathname.replace(/\/$/, '');
+---
+
+<Header />
+
+<section class="page-hero on-image">
+  <div class="ph-media" data-parallax="-0.12"><img src={image} alt="" fetchpriority="high" /></div>
+  <div class="ph-shade" aria-hidden="true"></div>
+  <div class="container ph-inner">
+    <nav class="breadcrumb" aria-label="Breadcrumb" data-reveal="fade">
+      <a href="/">Home</a>
+      <span aria-hidden="true">/</span>
+      <span>{breadcrumb}</span>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page" class="crumb-current">{currentPage}</span>
+    </nav>
+    {subtitle && <span class="eyebrow ph-eyebrow" data-reveal="fade" style="--d:.1s">{subtitle}</span>}
+    <h1 class="h1 ph-title" data-split set:html={title.replace(/<span>/g, '<em>').replace(/<\/span>/g, '</em>')} />
+    {intro && <p class="ph-intro" data-reveal style="--d:.3s">{intro}</p>}
+  </div>
+</section>
+
+<nav class="subnav" aria-label="About Us pages">
+  <div class="container">
+    <ul class="subnav-list" data-lenis-prevent>
+      {aboutPages.map((p) => (
+        <li>
+          <a href={p.href} class:list={['subnav-link', { 'is-current': path === p.href }]} aria-current={path === p.href ? 'page' : undefined}>{p.label}</a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</nav>
+
+<main class="inner-main">
+  <slot />
+</main>
+
+<Admissions />
+<Footer />
+
+<style>
+  .page-hero {
+    position: relative;
+    min-height: clamp(460px, 62vh, 640px);
+    display: flex; align-items: flex-end;
+    color: #fff;
+    overflow: hidden;
+    isolation: isolate;
+    background: #0b0d10;
+  }
+  .ph-media { position: absolute; inset: -10% 0; z-index: -2; }
+  .ph-media img { width: 100%; height: 100%; object-fit: cover; animation: phZoom 2.2s var(--ease) both; }
+  @keyframes phZoom { from { transform: scale(1.12); } to { transform: scale(1); } }
+  .ph-shade {
+    position: absolute; inset: 0; z-index: -1;
+    background: linear-gradient(180deg, rgba(8,10,13,.78) 0%, rgba(8,10,13,.55) 45%, rgba(8,10,13,.92) 100%);
+  }
+  .ph-inner {
+    padding-top: calc(var(--header-h) + 90px);
+    padding-bottom: clamp(2.5rem, 6vw, 4.5rem);
+    display: flex; flex-direction: column; gap: 1.1rem;
+  }
+  .breadcrumb {
+    display: flex; flex-wrap: wrap; align-items: center; gap: .6rem;
+    font-size: .8rem; font-weight: 600; letter-spacing: .04em;
+    color: rgba(255,255,255,.6);
+  }
+  .breadcrumb a { color: rgba(255,255,255,.85); transition: color .2s; min-height: 32px; display: inline-flex; align-items: center; }
+  .breadcrumb a:hover { color: var(--gold); }
+  .crumb-current { color: var(--gold); }
+  .ph-eyebrow { color: var(--gold); }
+  .ph-title { color: #fff; max-width: 18ch; }
+  .ph-title :global(em) { color: var(--gold); }
+  .ph-intro { max-width: 62ch; color: rgba(255,255,255,.8); font-size: 1.1rem; }
+
+  .subnav {
+    position: sticky; top: 0; z-index: 40;
+    background: var(--header-bg);
+    backdrop-filter: saturate(160%) blur(16px);
+    -webkit-backdrop-filter: saturate(160%) blur(16px);
+    border-bottom: 1px solid var(--line);
+    transition: top .6s var(--ease);
+  }
+  :global(body:has(.site-header.is-scrolled:not(.is-hidden))) .subnav { top: var(--header-h); }
+  .subnav-list {
+    display: flex; gap: .35rem;
+    overflow-x: auto; scrollbar-width: none;
+    padding-block: .75rem;
+    -webkit-mask-image: linear-gradient(90deg, #000 90%, transparent);
+    mask-image: linear-gradient(90deg, #000 90%, transparent);
+  }
+  .subnav-list::-webkit-scrollbar { display: none; }
+  .subnav-link {
+    display: inline-flex; align-items: center;
+    padding: .55rem 1rem; min-height: 44px;
+    border-radius: var(--r-pill);
+    font-size: .86rem; font-weight: 600; white-space: nowrap;
+    color: var(--muted);
+    border: 1px solid transparent;
+    transition: color .25s, background .25s, border-color .25s;
+  }
+  .subnav-link:hover { color: var(--ink); border-color: var(--line-strong); }
+  .subnav-link.is-current { background: var(--ink); color: var(--bg); }
+
+  .inner-main { width: 100%; overflow-x: clip; }
+
+  @media (max-width: 768px) {
+    .page-hero { min-height: 420px; }
+    .ph-inner { padding-top: calc(var(--header-h) + 60px); }
+  }
+  @media (max-width: 480px) {
+    .page-hero { min-height: 360px; }
+    .ph-title { font-size: 2rem; }
+    .ph-intro { font-size: 1rem; }
+  }
+</style>

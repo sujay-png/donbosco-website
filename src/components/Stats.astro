@@ -1,0 +1,115 @@
+---
+import Icon from './Icon.astro';
+const stats = [
+  { label: 'Staff', value: 48, suffix: '', icon: 'staff' },
+  { label: 'Students', value: 950, suffix: '', icon: 'students' },
+  { label: 'Other Staff', value: 10, suffix: '', icon: 'team' },
+  { label: 'Alumni', value: 3000, suffix: '+', icon: 'award' },
+];
+---
+<section class="stats" aria-label="School at a glance">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stats-intro" data-reveal>
+        <span class="eyebrow">At a Glance</span>
+        <p>For over four decades, a beacon of excellence in the vicinity of Shirva.</p>
+      </div>
+      {stats.map((s, i) => (
+        <div class="stat" data-reveal style={`--d:${0.08 * (i + 1)}s`}>
+          <span class="stat-icon"><Icon name={s.icon} size={22} /></span>
+          <div class="stat-num">
+            <span class="counter" data-target={s.value}>{s.value.toLocaleString('en-IN')}</span><span class="stat-suffix">{s.suffix}</span>
+          </div>
+          <span class="stat-label">{s.label}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  const counters = document.querySelectorAll<HTMLElement>('.stats .counter');
+  const run = (el: HTMLElement) => {
+    const end = parseInt(el.dataset.target || '0', 10);
+    const dur = 1800;
+    let start: number | null = null;
+    const step = (t: number) => {
+      if (start === null) start = t;
+      const p = Math.min((t - start) / dur, 1);
+      const e = 1 - Math.pow(1 - p, 4);
+      el.textContent = Math.round(e * end).toLocaleString('en-IN');
+      if (p < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  };
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+    counters.forEach((c) => (c.textContent = '0'));
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) { run(e.target as HTMLElement); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.6 });
+    counters.forEach((c) => io.observe(c));
+  }
+</script>
+
+<style>
+  .stats {
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: 1.3fr repeat(4, 1fr);
+  }
+  .stats-intro, .stat {
+    padding: clamp(2rem, 4vw, 3.25rem) clamp(1rem, 2vw, 1.75rem);
+  }
+  .stats-intro {
+    padding-left: 0;
+    display: flex; flex-direction: column; gap: 1rem; justify-content: center;
+  }
+  .stats-intro p {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    line-height: 1.35;
+    color: var(--ink-2);
+    max-width: 22ch;
+  }
+  .stat {
+    position: relative;
+    border-left: 1px solid var(--line);
+    display: flex; flex-direction: column; gap: .5rem;
+  }
+  .stat-icon { color: var(--gold-text); margin-bottom: .5rem; }
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: clamp(2.75rem, 4.6vw, 4.5rem);
+    font-weight: 350;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    font-variant-numeric: tabular-nums;
+    font-variation-settings: "opsz" 144;
+  }
+  .stat-suffix { color: var(--gold-text); }
+  .stat-label {
+    font-size: .78rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--muted);
+  }
+
+  @media (max-width: 1100px) {
+    .stats-grid { grid-template-columns: repeat(4, 1fr); }
+    .stats-intro { grid-column: 1 / -1; padding-bottom: 0; }
+    .stats-intro p { max-width: none; }
+    .stat:nth-child(2) { border-left: 0; padding-left: 0; }
+  }
+  @media (max-width: 768px) {
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .stat { padding: 1.75rem 1rem; border-top: 1px solid var(--line); }
+    .stat:nth-child(2), .stat:nth-child(4) { border-left: 0; padding-left: 0; }
+    .stats-intro { padding-bottom: 1.75rem; }
+  }
+  @media (max-width: 420px) {
+    .stats-grid { grid-template-columns: 1fr; }
+    .stat { border-left: 0 !important; padding-left: 0 !important; }
+  }
+</style>

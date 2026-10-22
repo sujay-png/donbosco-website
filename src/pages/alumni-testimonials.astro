@@ -1,0 +1,534 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface AlumnusTestimonial {
+  name: string;
+  role?: string;
+  batch?: string;
+  img: string;
+  highlight?: string;
+  quote: string;
+}
+
+const alumniTestimonials: AlumnusTestimonial[] = [
+  {
+    name: 'Mohammed Fauzan',
+    role: 'Alumnus',
+    img: '/testimonials/mohammed-fauzan.jpg',
+    highlight: 'Build your own empire and become a well-rounded individual.',
+    quote: 'I am proud to be an alumnus of Don Bosco English Medium School, Shirva. Reflecting on my journey, I am filled with gratitude for the foundational years I spent within those vibrant walls.\n\n"Focus on developing practical skills and embracing opportunities, rather than just chasing high marks. Your time at Don Bosco is a precious gift that shapes your future. Believe in your potential, work relentlessly towards your goals, and remember that failure is a stepping stone to success. Aim to build your own empire and become a well-rounded individual."'
+  },
+  {
+    name: 'Ancita Oshin Dsouza',
+    role: 'Chartered Accountant & Public Speaker',
+    img: '/testimonials/ancita-oshin-dsouza.jpg',
+    highlight: 'Rooted in the strong foundation laid during primary and high school years.',
+    quote: 'My journey to becoming a Chartered Accountant, poet, and public speaker was firmly rooted in the strong foundation laid during my primary and high school years at Don Bosco. The excellent teaching, unwavering support of my teachers, and abundant opportunities for co-curricular activities were instrumental in my academic and extracurricular successes. I wish the current students and parents of Don Bosco all the best, confident that they too will soar high and make their dreams a reality.'
+  },
+  {
+    name: 'Dr. Edlin Glane Mathias',
+    role: 'Research Fellow & Ph.D.',
+    img: '/testimonials/dr-edlin-glane-mathias.jpg',
+    highlight: 'Basic education at Don Bosco was instrumental in achieving my PhD degree.',
+    quote: 'I am proud to be an alumnus of Don Bosco English Medium School, Shirva. My time there provided a strong academic foundation and taught me important life lessons in discipline, responsibility, and integrity. The dedicated teachers instilled in me a love for learning, which has guided me throughout my career.\n\nI am proud to say that the basic education I received at Don Bosco was instrumental in helping me achieve my PhD degree. I am deeply grateful for the nurturing environment that shaped my growth and success.'
+  },
+  {
+    name: 'Sarah Dsouza',
+    role: 'Lecturer in Nursing, University of Worcester, UK',
+    img: '/testimonials/sarah-dsouza.jpg',
+    highlight: 'The school gave me a voice, a stage, and the courage to dream big.',
+    quote: 'When I first entered Don Bosco School, I was shy and struggling with English, but the school gave me a voice, a stage, and the courage to dream big. Today, I am a lecturer in nursing at the University of Worcester, UK, thanks to the transformative education and encouragement I received at Don Bosco. I urge every student to never underestimate their current struggles, as they are shaping their future successes, and to keep learning, pushing, and believing in themselves.'
+  },
+  {
+    name: 'Shreya Achar',
+    role: 'Alumna & Dancer',
+    img: '/testimonials/shreya-achar.jpg',
+    highlight: 'Nurturing environment that discovered and encouraged my passion for dance.',
+    quote: 'As a proud alumna of Don Bosco School, I, Shreya Achar, attribute my academic excellence and discovery of my passion for dance to the nurturing environment provided by the school. Don Bosco not only recognized my talents but also gave me numerous opportunities to perform, compete, and develop confidence through various extracurricular activities. The unwavering support from teachers and the school community has been invaluable, instilling in me lasting values and skills that I carry with me in every step of my journey.'
+  },
+  {
+    name: 'Xanely Dsouza',
+    role: 'Alumnus',
+    batch: '2012 Batch',
+    img: '/testimonials/xanely-dsouza.jpg',
+    highlight: 'Forever grateful for the knowledge, skills, and fond memories of school days.',
+    quote: 'A proud alumni of Don Bosco Shirva (2012 Batch). My time spent here at Don Bosco has been very memorable. The Knowledge, skills and connections I gained in academics or extracurricular activities during my time here have been invaluable in shaping who I am today. All my teachers were incredibly supportive and today I\'m working at a good organization and I owe a lot of my success to the foundation I built at Don Bosco Shirva. My favourite time will definitely be the school picnics and also the Karate classes not to mention the delicious Bisi Oota. I\'m forever grateful for the experience and I wish all the best.'
+  },
+  {
+    name: 'Reancy Danthi',
+    role: 'Alumna',
+    img: '/testimonials/reancy-danthi.jpg',
+    highlight: 'A second home that provided holistic growth academically, socially, and spiritually.',
+    quote: 'Don Bosco English Medium School served as a second home where I experienced holistic growth, academically, socially, and spiritually from LKG to 10th standard, providing a strong foundation in education and values. The school offered numerous opportunities for personal development, including various competitions, Sports Day, and School Day celebrations, which enhanced my confidence and team spirit. As a Catholic school, it also fostered a strong sense of community and faith through regular Mass and other spiritual activities, leaving a lasting impact on my character and friendships.'
+  },
+  {
+    name: 'Mischel Sandra Menezes',
+    role: 'Alumna',
+    batch: 'First Batch',
+    img: '/testimonials/mischel-sandra-menezes.jpg',
+    highlight: 'Cherishing unforgettable memories and lessons from our foundational first batch.',
+    quote: 'As an alumnus and member of the first batch, I cherish the memories of my school journey from KG to 10th standard, where I was nurtured by kind, knowledgeable, and caring teachers like Mrs. Irene Rodrigues, despite the lack of modern infrastructure at the time. The school instilled in me valuable life lessons, knowledge, and friendships, creating unforgettable experiences that include lessons under tree shades and playful interactions with classmates. I express deep gratitude to my alma mater and teachers, praying for their well-being and happiness, and I am proud to see the school grow into one of the best in our district.'
+  },
+  {
+    name: 'Roline Stapny Saldanha',
+    role: 'Software Development Engineer, Amazon Seattle',
+    img: '/testimonials/roline-stapny-saldanha.jpg',
+    highlight: 'Gifted me with invaluable confidence in my abilities, choices, and aspirations.',
+    quote: 'Attending Don Bosco from pre-school to 10th standard was a transformative experience for me, shaping my personal growth and instilling strong moral values that guide my decisions. The school\'s vibrant extracurricular programs, particularly in music, and various school events like sports days and annual celebrations, provided a rich foundation for my future and helped me discover my passions. Don Bosco gifted me with invaluable confidence in my abilities, choices, and aspirations, and the school remains a special and inspiring part of my life.'
+  }
+];
+---
+
+<Layout 
+  title="Alumni Testimonials - Don Bosco English Medium School Shirva"
+  description="Heartfelt reflections, career journeys, and inspiring testimonials from the alumni of Don Bosco English Medium School Shirva."
+>
+  <Header />
+
+  <!-- Page Hero -->
+  <section class="page-hero on-image">
+    <div class="ph-media" data-parallax="-0.12">
+      <img src="/about/old-school.jpg" alt="Don Bosco School Shirva" fetchpriority="high" />
+    </div>
+    <div class="ph-shade" aria-hidden="true"></div>
+    <div class="container ph-inner">
+      <nav class="breadcrumb" aria-label="Breadcrumb" data-reveal="fade">
+        <a href="/">Home</a>
+        <span aria-hidden="true">/</span>
+        <span>Alumni</span>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page" class="crumb-current">Alumni Testimonials</span>
+      </nav>
+      <h1 class="h1 ph-title" data-split>Alumni <em>Testimonials</em></h1>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="inner-main section">
+    <div class="container">
+      
+      <!-- Intro Section -->
+      <header class="intro-text" data-reveal>
+        <div class="badge-pill">
+          <span class="badge-dot"></span>
+          Alumni Corner
+        </div>
+        <h2 class="h2">Echoes of Pride & Success</h2>
+        <p class="muted">
+          Our proud alumni carry the values, confidence, and foundational excellence of Don Bosco English Medium School into leading institutions, top universities, and multinational organizations across the globe. Hear their journeys, fond memories, and timeless advice.
+        </p>
+      </header>
+
+      <!-- Testimonials Grid -->
+      <div class="testimonials-grid">
+        {alumniTestimonials.map((item, idx) => (
+          <article class="testimonial-card" data-reveal="slide-up" style={`--delay: ${idx * 0.05}s`}>
+            
+            <!-- Card Top Bar with Avatar and Identity -->
+            <div class="card-header">
+              <div class="avatar-wrap">
+                <img 
+                  src={item.img} 
+                  alt={item.name} 
+                  loading="lazy" 
+                  decoding="async"
+                  width="72"
+                  height="72"
+                />
+                <span class="avatar-ring" aria-hidden="true"></span>
+              </div>
+              <div class="author-meta">
+                <h3 class="author-name">{item.name}</h3>
+                {item.role && <span class="author-role">{item.role}</span>}
+                {item.batch && <span class="batch-tag">{item.batch}</span>}
+              </div>
+              <div class="quote-badge" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Highlight callout if available -->
+            {item.highlight && (
+              <div class="highlight-bar">
+                <span class="highlight-line"></span>
+                <p class="highlight-text">"{item.highlight}"</p>
+              </div>
+            )}
+
+            <!-- Quote Text Body -->
+            <div class="card-body">
+              {item.quote.split('\n\n').map((paragraph) => (
+                <p class="quote-paragraph">{paragraph}</p>
+              ))}
+            </div>
+
+            <!-- Card Footer Accent -->
+            <div class="card-foot">
+              <span class="bosco-tag">Don Bosco Shirva Alumni</span>
+            </div>
+
+          </article>
+        ))}
+      </div>
+
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  /* Hero Styles */
+  .page-hero {
+    position: relative;
+    min-height: clamp(460px, 62vh, 640px);
+    display: flex; 
+    align-items: flex-end;
+    color: #fff;
+    overflow: hidden;
+    isolation: isolate;
+    background: #0b0d10;
+  }
+  .ph-media { 
+    position: absolute; 
+    inset: -10% 0; 
+    z-index: -2; 
+  }
+  .ph-media img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    animation: phZoom 2.2s var(--ease) both; 
+  }
+  @keyframes phZoom { 
+    from { transform: scale(1.12); } 
+    to { transform: scale(1); } 
+  }
+  .ph-shade {
+    position: absolute; 
+    inset: 0; 
+    z-index: -1;
+    background: linear-gradient(180deg, rgba(8,10,13,.78) 0%, rgba(8,10,13,.55) 45%, rgba(8,10,13,.92) 100%);
+  }
+  .ph-inner {
+    padding-top: calc(var(--header-h) + 90px);
+    padding-bottom: clamp(2.5rem, 6vw, 4.5rem);
+    display: flex; 
+    flex-direction: column; 
+    gap: 1.1rem;
+  }
+  .breadcrumb {
+    display: flex; 
+    flex-wrap: wrap; 
+    align-items: center; 
+    gap: .6rem;
+    font-size: .8rem; 
+    font-weight: 600; 
+    letter-spacing: .04em;
+    color: rgba(255,255,255,.6);
+  }
+  .breadcrumb a { 
+    color: rgba(255,255,255,.85); 
+    transition: color .2s; 
+    min-height: 32px; 
+    display: inline-flex; 
+    align-items: center; 
+  }
+  .breadcrumb a:hover { 
+    color: var(--gold); 
+  }
+  .crumb-current { 
+    color: var(--gold); 
+  }
+  .ph-title { 
+    color: #fff; 
+    max-width: 18ch; 
+    text-transform: uppercase; 
+  }
+  .ph-title :global(em) { 
+    color: var(--gold); 
+  }
+
+  /* Page Styles */
+  .inner-main { 
+    width: 100%; 
+    overflow-x: clip; 
+    padding-block: clamp(4rem, 8vw, 6rem); 
+    background: var(--bg-alt); 
+    transition: background-color .4s var(--ease);
+  }
+  
+  .intro-text {
+    text-align: center;
+    max-width: 820px;
+    margin-inline: auto;
+    margin-bottom: clamp(3rem, 6vw, 4.5rem);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .badge-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 1rem;
+    border-radius: var(--r-pill);
+    background: rgba(255, 182, 6, 0.12);
+    border: 1px solid rgba(255, 182, 6, 0.3);
+    color: var(--gold-text);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+  }
+  .badge-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+    box-shadow: 0 0 10px var(--gold);
+  }
+  .intro-text .h2 {
+    margin-bottom: 1.25rem;
+    color: var(--gold-text);
+    font-size: clamp(2rem, 3.5vw, 2.75rem);
+    font-weight: 600;
+    line-height: 1.25;
+  }
+  .intro-text .muted {
+    font-size: clamp(1rem, 1.25vw, 1.15rem);
+    line-height: 1.75;
+    color: var(--muted);
+  }
+
+  /* Testimonials Grid */
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(1.75rem, 2.5vw, 2.5rem);
+    align-items: stretch;
+  }
+  
+  .testimonial-card {
+    position: relative;
+    border-radius: var(--r-lg);
+    background: var(--surface);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+    transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.3s;
+    animation-delay: var(--delay, 0s);
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--line);
+    padding: clamp(1.75rem, 2.5vw, 2.25rem);
+    overflow: hidden;
+  }
+  
+  .testimonial-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 1.5rem;
+    right: 1.5rem;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    border-radius: 0 0 3px 3px;
+  }
+
+  .testimonial-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.04);
+    border-color: rgba(255, 182, 6, 0.4);
+  }
+
+  :global([data-theme="dark"]) .testimonial-card {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  }
+  :global([data-theme="dark"]) .testimonial-card:hover {
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.55), 0 0 0 1px var(--gold);
+  }
+
+  /* Card Header */
+  .card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    position: relative;
+    margin-bottom: 1.25rem;
+  }
+
+  .avatar-wrap {
+    position: relative;
+    width: 68px;
+    height: 68px;
+    flex-shrink: 0;
+  }
+  .avatar-wrap img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    border: 2px solid var(--gold);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.4s var(--ease);
+  }
+  .testimonial-card:hover .avatar-wrap img {
+    transform: scale(1.05);
+  }
+  .avatar-ring {
+    position: absolute;
+    inset: -3px;
+    border-radius: 50%;
+    border: 1px dashed rgba(255, 182, 6, 0.4);
+    pointer-events: none;
+    transition: transform 0.6s var(--ease);
+  }
+  .testimonial-card:hover .avatar-ring {
+    transform: rotate(45deg);
+  }
+
+  .author-meta {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    min-width: 0;
+  }
+  .author-name {
+    margin: 0;
+    font-size: 1.22rem;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.3;
+    font-family: var(--font-heading, var(--font-body));
+  }
+  .author-role {
+    font-size: 0.85rem;
+    color: var(--gold-text);
+    font-weight: 600;
+    line-height: 1.35;
+  }
+  .batch-tag {
+    display: inline-block;
+    align-self: flex-start;
+    margin-top: 0.2rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.15rem 0.55rem;
+    border-radius: var(--r-pill);
+    background: rgba(255, 182, 6, 0.12);
+    border: 1px solid rgba(255, 182, 6, 0.25);
+    color: var(--gold-text);
+  }
+
+  .quote-badge {
+    color: var(--gold);
+    opacity: 0.25;
+    flex-shrink: 0;
+    transition: opacity 0.3s;
+  }
+  .testimonial-card:hover .quote-badge {
+    opacity: 0.75;
+  }
+
+  /* Highlight Bar */
+  .highlight-bar {
+    display: flex;
+    align-items: stretch;
+    gap: 0.75rem;
+    padding: 0.75rem 0.9rem;
+    margin-bottom: 1.25rem;
+    background: rgba(255, 182, 6, 0.07);
+    border-radius: var(--r-sm);
+    border: 1px solid rgba(255, 182, 6, 0.15);
+  }
+  .highlight-line {
+    width: 3px;
+    border-radius: 2px;
+    background: var(--gold);
+    flex-shrink: 0;
+  }
+  .highlight-text {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.45;
+    font-style: italic;
+  }
+  :global([data-theme="dark"]) .highlight-text {
+    color: #F1EEE7;
+  }
+
+  /* Card Body */
+  .card-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    color: var(--ink-2);
+    font-size: 0.96rem;
+    line-height: 1.7;
+  }
+  .quote-paragraph {
+    margin: 0;
+    opacity: 0.88;
+  }
+
+  /* Card Footer */
+  .card-foot {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .bosco-tag {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+  }
+
+  /* Responsive Breakpoints */
+  @media (max-width: 1080px) {
+    .testimonials-grid { 
+      grid-template-columns: repeat(2, 1fr); 
+      gap: 1.75rem; 
+    }
+  }
+  @media (max-width: 768px) {
+    .page-hero { 
+      min-height: 420px; 
+    }
+    .ph-inner { 
+      padding-top: calc(var(--header-h) + 60px); 
+    }
+    .testimonials-grid { 
+      grid-template-columns: 1fr; 
+      gap: 1.5rem; 
+    }
+    .testimonial-card {
+      padding: 1.5rem;
+    }
+    .card-header {
+      gap: 0.85rem;
+    }
+    .avatar-wrap {
+      width: 58px;
+      height: 58px;
+    }
+    .author-name {
+      font-size: 1.15rem;
+    }
+  }
+</style>

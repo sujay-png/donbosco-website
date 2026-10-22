@@ -1,0 +1,63 @@
+---
+const partners = [
+  { src: '/collaborations/1.jpg', alt: 'CBSE' },
+  { src: '/collaborations/2.jpg', alt: 'Udupi Diocese' },
+  { src: '/collaborations/3.jpg', alt: 'CESU' },
+  { src: '/collaborations/4.jpg', alt: 'Embibe' },
+  { src: '/collaborations/5.jpg', alt: 'Tag-Hive' },
+  { src: '/collaborations/6.jpg', alt: 'Xperimentor' },
+  { src: '/collaborations/7.jpg', alt: 'Ebix Smartclass' },
+  { src: '/collaborations/8.jpg', alt: 'Podac Adventure Club' },
+];
+---
+<section class="collab" aria-labelledby="collab-title">
+  <div class="container collab-head">
+    <span class="eyebrow">Our Partners</span>
+    <h2 id="collab-title" class="collab-title">We Collaborate With</h2>
+  </div>
+  <div class="marquee" style="--marquee-speed: 38s; --marquee-gap: 1.25rem;">
+    {[0, 1].map((copy) => (
+      <ul class="marquee-track" aria-hidden={copy === 1 ? 'true' : undefined}>
+        {partners.map((p) => (
+          <li class="logo-chip">
+            <img src={p.src} alt={copy === 0 ? p.alt : ''} width="160" height="80" />
+            <span class="logo-name">{p.alt}</span>
+          </li>
+        ))}
+      </ul>
+    ))}
+  </div>
+</section>
+
+<style>
+  .collab {
+    padding-block: clamp(3.5rem, 7vw, 5.5rem);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .collab-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 2.25rem; flex-wrap: wrap; }
+  .collab-title { font-size: clamp(1.4rem, 2.4vw, 2rem); }
+  .logo-chip {
+    flex-shrink: 0;
+    width: 220px; height: 120px;
+    border-radius: var(--r);
+    background: #fff;
+    border: 1px solid var(--line);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .35rem;
+    padding: .75rem;
+    transition: transform .5s var(--ease), box-shadow .5s var(--ease);
+  }
+  .logo-chip img { width: 140px; height: 70px; object-fit: contain; filter: grayscale(1); opacity: .8; transition: filter .4s, opacity .4s; }
+  .logo-chip:hover { transform: translateY(-4px); box-shadow: var(--shadow-sm); }
+  .logo-chip:hover img { filter: none; opacity: 1; }
+  .logo-name { font-size: .64rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: #6b6f76; }
+
+  @media (max-width: 768px) {
+    .logo-chip { width: 170px; height: 100px; }
+    .logo-chip img { width: 110px; height: 55px; }
+  }
+  @media (max-width: 480px) {
+    .logo-chip { width: 140px; height: 86px; padding: .5rem; }
+    .logo-chip img { width: 90px; height: 44px; }
+  }
+</style>

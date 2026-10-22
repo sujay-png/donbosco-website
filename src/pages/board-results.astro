@@ -1,0 +1,1240 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface ResultImage {
+  src: string;
+  alt: string;
+  label: string;
+}
+
+interface BatchResult {
+  year: string;
+  exam: string;
+  title: string;
+  description?: string;
+  images: ResultImage[];
+}
+
+const class10Batches: BatchResult[] = [
+  {
+    year: '2023 – 2024',
+    exam: 'CBSE Class X (AISSE)',
+    title: 'Batch 2023 – 2024',
+    description: 'Congratulations to our students on securing outstanding results and carrying forward our tradition of 100% excellence in the CBSE Class X examinations.',
+    images: [
+      {
+        src: '/board-results/class-10/2023-2024.jpg',
+        alt: 'Don Bosco Shirva CBSE Class X Board Results 2023 - 2024',
+        label: 'Result Felicitation & Toppers'
+      }
+    ]
+  },
+  {
+    year: '2022 – 2023',
+    exam: 'CBSE Class X (AISSE)',
+    title: 'Batch 2022 – 2023',
+    description: 'Remarkable achievements and distinction holders of the 2022-2023 Class X CBSE Board Examination.',
+    images: [
+      {
+        src: '/board-results/class-10/2022-2023-a.jpg',
+        alt: 'Don Bosco Shirva CBSE Class X Board Results 2022 - 2023 Part 1',
+        label: 'Toppers & Distinctions (Part 1)'
+      },
+      {
+        src: '/board-results/class-10/2022-2023-b.jpg',
+        alt: 'Don Bosco Shirva CBSE Class X Board Results 2022 - 2023 Part 2',
+        label: 'Toppers & Distinctions (Part 2)'
+      }
+    ]
+  },
+  {
+    year: '2021 – 2022',
+    exam: 'CBSE Class X (AISSE)',
+    title: 'Batch 2021 – 2022',
+    description: 'Commendable performance by students in the CBSE Class X board examination with superior academic grades.',
+    images: [
+      {
+        src: '/board-results/class-10/2021-2022.jpg',
+        alt: 'Don Bosco Shirva CBSE Class X Board Results 2021 - 2022',
+        label: 'Result Felicitation'
+      }
+    ]
+  },
+  {
+    year: '2020 – 2021',
+    exam: 'CBSE Class X (AISSE)',
+    title: 'Batch 2020 – 2021',
+    description: 'Exemplary dedication and academic laurels achieved in the CBSE Class X board examination.',
+    images: [
+      {
+        src: '/board-results/class-10/2020-2021.jpg',
+        alt: 'Don Bosco Shirva CBSE Class X Board Results 2020 - 2021',
+        label: 'Result Felicitation'
+      }
+    ]
+  },
+  {
+    year: '2019 – 2020',
+    exam: 'CBSE Class X (AISSE)',
+    title: 'Batch 2019 – 2020',
+    description: 'Honouring the high-flyers and distinction earners in the CBSE Class X board examinations.',
+    images: [
+      {
+        src: '/board-results/class-10/2019-2020-a.jpg',
+        alt: 'Don Bosco Shirva CBSE Class X Board Results 2019 - 2020 Part 1',
+        label: 'Toppers & Distinctions (Part 1)'
+      },
+      {
+        src: '/board-results/class-10/2019-2020-b.jpg',
+        alt: 'Don Bosco Shirva CBSE Class X Board Results 2019 - 2020 Part 2',
+        label: 'Toppers & Distinctions (Part 2)'
+      }
+    ]
+  },
+  {
+    year: '2018 – 2019',
+    exam: 'CBSE Class X (AISSE)',
+    title: 'Batch 2018 – 2019',
+    description: 'Celebration of outstanding academic accomplishments in the CBSE Class X Board exams.',
+    images: [
+      {
+        src: '/board-results/class-10/2018-2019.jpg',
+        alt: 'Don Bosco Shirva CBSE Class X Board Results 2018 - 2019',
+        label: 'Result Felicitation'
+      }
+    ]
+  },
+  {
+    year: '2017 – 2018',
+    exam: 'CBSE Class X (AISSE)',
+    title: 'Batch 2017 – 2018',
+    description: 'Pioneering excellence and cent percent pass results in the CBSE Class X Board examination.',
+    images: [
+      {
+        src: '/board-results/class-10/2017-2018.jpg',
+        alt: 'Don Bosco Shirva CBSE Class X Board Results 2017 - 2018',
+        label: 'Result Felicitation'
+      }
+    ]
+  }
+];
+
+const class12Batches: BatchResult[] = [
+  {
+    year: '2023 – 2024',
+    exam: 'CBSE Class XII (AISSCE)',
+    title: 'Batch 2023 – 2024',
+    description: 'Hearty congratulations to the Senior Secondary Class XII batch for stellar performance in the CBSE AISSCE examinations.',
+    images: [
+      {
+        src: '/board-results/class-12/2023-2024.jpg',
+        alt: 'Don Bosco Shirva CBSE Class XII Board Results 2023 - 2024',
+        label: 'Senior Secondary Result Felicitation'
+      }
+    ]
+  },
+  {
+    year: '2022 – 2023',
+    exam: 'CBSE Class XII (AISSCE)',
+    title: 'Batch 2022 – 2023',
+    description: 'Celebration of triumphant achievements by our Class XII students in the CBSE Senior School Certificate Examination.',
+    images: [
+      {
+        src: '/board-results/class-12/2022-2023.jpg',
+        alt: 'Don Bosco Shirva CBSE Class XII Board Results 2022 - 2023',
+        label: 'Senior Secondary Result Felicitation'
+      }
+    ]
+  }
+];
+---
+
+<Layout 
+  title="Board Results - Don Bosco English Medium School Shirva"
+  description="CBSE Board Exam results for Class 10 (AISSE) and Class 12 (AISSCE) batches at Don Bosco English Medium School Shirva. Celebrating academic excellence and 100% pass rates."
+>
+  <Header />
+
+  <!-- Page Hero -->
+  <section class="page-hero on-image">
+    <div class="ph-media" data-parallax="-0.12">
+      <img src="/about/old-school.jpg" alt="Don Bosco School Shirva" fetchpriority="high" />
+    </div>
+    <div class="ph-shade" aria-hidden="true"></div>
+    <div class="container ph-inner">
+      <nav class="breadcrumb" aria-label="Breadcrumb" data-reveal="fade">
+        <a href="/">Home</a>
+        <span aria-hidden="true">/</span>
+        <span>Academics</span>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page" class="crumb-current">Board Results</span>
+      </nav>
+      <h1 class="h1 ph-title" data-split>Board <em>Results</em></h1>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="inner-main section" id="results-content">
+    <div class="container">
+      
+      <!-- Intro Section -->
+      <header class="intro-section" data-reveal>
+        <div class="badge-pill">
+          <span class="badge-dot"></span>
+          Academic Milestones
+        </div>
+        <h2 class="h2 intro-title">
+          Congratulations to the students on achieving success in the CBSE Board Exams!
+        </h2>
+        <p class="intro-desc">
+          We applaud the relentless dedication of our students, the guidance of our esteemed faculty, and the unwavering encouragement of parents. Don Bosco English Medium School proudly upholds a glorious legacy of 100% pass results in CBSE Board Examinations.
+        </p>
+
+        <!-- Stats highlights -->
+        <div class="stats-row">
+          <div class="stat-item">
+            <span class="stat-number">100%</span>
+            <span class="stat-label">Pass Percentage</span>
+          </div>
+          <div class="stat-divider" aria-hidden="true"></div>
+          <div class="stat-item">
+            <span class="stat-number">Class X & XII</span>
+            <span class="stat-label">CBSE Affiliation</span>
+          </div>
+          <div class="stat-divider" aria-hidden="true"></div>
+          <div class="stat-item">
+            <span class="stat-number">Multiple</span>
+            <span class="stat-label">Distinctions & Centums</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Tabs Component -->
+      <section class="results-showcase" aria-label="Board Results by Batch">
+        <div class="tabs-container" data-reveal="fade">
+          <div class="tab-nav-wrapper">
+            <div class="tab-nav" role="tablist" aria-label="Class selection tabs">
+              <button 
+                type="button" 
+                class="tab-btn is-active" 
+                role="tab" 
+                id="tab-btn-10" 
+                aria-selected="true" 
+                aria-controls="tab-panel-10"
+                data-tab="class-10"
+              >
+                <span class="tab-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                    <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                  </svg>
+                </span>
+                <span class="tab-title">Class 10 Batch</span>
+                <span class="tab-count">{class10Batches.length} Batches</span>
+              </button>
+
+              <button 
+                type="button" 
+                class="tab-btn" 
+                role="tab" 
+                id="tab-btn-12" 
+                aria-selected="false" 
+                aria-controls="tab-panel-12"
+                data-tab="class-12"
+              >
+                <span class="tab-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="8" r="7"/>
+                    <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
+                  </svg>
+                </span>
+                <span class="tab-title">Class 12 Batch</span>
+                <span class="tab-count">{class12Batches.length} Batches</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab Panels -->
+        <div class="tab-panels-wrapper">
+          
+          <!-- Class 10 Panel -->
+          <div 
+            class="tab-panel is-active" 
+            role="tabpanel" 
+            id="tab-panel-10" 
+            aria-labelledby="tab-btn-10"
+            data-panel="class-10"
+          >
+            <div class="panel-header">
+              <div class="panel-header-info">
+                <span class="panel-tag">Secondary School Examination (AISSE)</span>
+                <h3 class="panel-title">All India Secondary School Examination (Class X)</h3>
+              </div>
+              <span class="panel-note">Showing all {class10Batches.length} recorded academic batches</span>
+            </div>
+
+            <div class="results-list">
+              {class10Batches.map((batch, bIdx) => (
+                <article class="batch-card" data-reveal="slide-up" style={`--delay: ${bIdx * 0.05}s`}>
+                  <div class="batch-card-header">
+                    <div class="batch-title-group">
+                      <span class="batch-pill">{batch.exam}</span>
+                      <h4 class="batch-year">{batch.year}</h4>
+                    </div>
+                    <div class="batch-status-badge">
+                      <span class="badge-icon">✓</span>
+                      <span>100% Pass Result</span>
+                    </div>
+                  </div>
+
+                  {batch.description && (
+                    <p class="batch-desc">{batch.description}</p>
+                  )}
+
+                  <div class:list={['batch-media-grid', { 'is-multi': batch.images.length > 1 }]}>
+                    {batch.images.map((img) => (
+                      <figure class="media-figure">
+                        <button 
+                          type="button" 
+                          class="media-zoom-trigger" 
+                          data-lightbox-trigger
+                          data-img-src={img.src}
+                          data-img-alt={img.alt}
+                          data-img-caption={`${batch.year} - ${img.label}`}
+                          aria-label={`Enlarge result banner for ${batch.year} (${img.label})`}
+                        >
+                          <img 
+                            src={img.src} 
+                            alt={img.alt} 
+                            loading="lazy" 
+                            decoding="async" 
+                            class="batch-image" 
+                          />
+                          <span class="zoom-hover-overlay" aria-hidden="true">
+                            <span class="zoom-btn-icon">
+                              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                <line x1="11" y1="8" x2="11" y2="14"></line>
+                                <line x1="8" y1="11" x2="14" y2="11"></line>
+                              </svg>
+                            </span>
+                            <span class="zoom-text">Click to View Full Resolution</span>
+                          </span>
+                        </button>
+                        <figcaption class="media-caption">
+                          <span class="caption-bullet"></span>
+                          <span>{img.label}</span>
+                        </figcaption>
+                      </figure>
+                    ))}
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+
+          <!-- Class 12 Panel -->
+          <div 
+            class="tab-panel" 
+            role="tabpanel" 
+            id="tab-panel-12" 
+            aria-labelledby="tab-btn-12"
+            data-panel="class-12"
+            hidden
+          >
+            <div class="panel-header">
+              <div class="panel-header-info">
+                <span class="panel-tag">Senior School Certificate Examination (AISSCE)</span>
+                <h3 class="panel-title">All India Senior School Certificate Examination (Class XII)</h3>
+              </div>
+              <span class="panel-note">Showing all {class12Batches.length} recorded academic batches</span>
+            </div>
+
+            <div class="results-list">
+              {class12Batches.map((batch, bIdx) => (
+                <article class="batch-card" data-reveal="slide-up" style={`--delay: ${bIdx * 0.05}s`}>
+                  <div class="batch-card-header">
+                    <div class="batch-title-group">
+                      <span class="batch-pill">{batch.exam}</span>
+                      <h4 class="batch-year">{batch.year}</h4>
+                    </div>
+                    <div class="batch-status-badge">
+                      <span class="badge-icon">✓</span>
+                      <span>100% Pass Result</span>
+                    </div>
+                  </div>
+
+                  {batch.description && (
+                    <p class="batch-desc">{batch.description}</p>
+                  )}
+
+                  <div class:list={['batch-media-grid', { 'is-multi': batch.images.length > 1 }]}>
+                    {batch.images.map((img) => (
+                      <figure class="media-figure">
+                        <button 
+                          type="button" 
+                          class="media-zoom-trigger" 
+                          data-lightbox-trigger
+                          data-img-src={img.src}
+                          data-img-alt={img.alt}
+                          data-img-caption={`${batch.year} - ${img.label}`}
+                          aria-label={`Enlarge result banner for ${batch.year} (${img.label})`}
+                        >
+                          <img 
+                            src={img.src} 
+                            alt={img.alt} 
+                            loading="lazy" 
+                            decoding="async" 
+                            class="batch-image" 
+                          />
+                          <span class="zoom-hover-overlay" aria-hidden="true">
+                            <span class="zoom-btn-icon">
+                              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                <line x1="11" y1="8" x2="11" y2="14"></line>
+                                <line x1="8" y1="11" x2="14" y2="11"></line>
+                              </svg>
+                            </span>
+                            <span class="zoom-text">Click to View Full Resolution</span>
+                          </span>
+                        </button>
+                        <figcaption class="media-caption">
+                          <span class="caption-bullet"></span>
+                          <span>{img.label}</span>
+                        </figcaption>
+                      </figure>
+                    ))}
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Interactive Lightbox Modal -->
+  <dialog class="lightbox-modal" id="results-lightbox" aria-label="Board Result Banner Viewer" data-lenis-prevent>
+    <div class="lightbox-backdrop" data-lightbox-close></div>
+    <div class="lightbox-window">
+      <header class="lightbox-bar">
+        <span class="lightbox-title" id="lightbox-caption">Board Results</span>
+        <button type="button" class="lightbox-close" data-lightbox-close aria-label="Close modal">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </header>
+      <div class="lightbox-content">
+        <img src="" alt="" id="lightbox-img" class="lightbox-image" />
+      </div>
+    </div>
+  </dialog>
+
+  <Footer />
+</Layout>
+
+<script>
+  // Tab Switcher Logic with URL Hash & History Support
+  const tabBtns = document.querySelectorAll<HTMLButtonElement>('.tab-btn');
+  const tabPanels = document.querySelectorAll<HTMLElement>('.tab-panel');
+
+  const switchTab = (targetId: string, updateUrl = true) => {
+    tabBtns.forEach((btn) => {
+      const isTarget = btn.getAttribute('data-tab') === targetId;
+      btn.classList.toggle('is-active', isTarget);
+      btn.setAttribute('aria-selected', String(isTarget));
+    });
+
+    tabPanels.forEach((panel) => {
+      const isTarget = panel.getAttribute('data-panel') === targetId;
+      panel.classList.toggle('is-active', isTarget);
+      if (isTarget) {
+        panel.removeAttribute('hidden');
+      } else {
+        panel.setAttribute('hidden', '');
+      }
+    });
+
+    if (updateUrl && history.replaceState) {
+      const url = new URL(window.location.href);
+      url.hash = targetId;
+      history.replaceState(null, '', url.toString());
+    }
+  };
+
+  tabBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const target = btn.getAttribute('data-tab');
+      if (target) switchTab(target);
+    });
+  });
+
+  // Handle URL hash on initial load
+  const initialHash = window.location.hash.replace('#', '');
+  if (initialHash === 'class-12' || initialHash === 'class-10') {
+    switchTab(initialHash, false);
+  }
+
+  // Lightbox Modal Functionality
+  const modal = document.querySelector<HTMLDialogElement>('#results-lightbox');
+  const lightboxImg = document.querySelector<HTMLImageElement>('#lightbox-img');
+  const lightboxCaption = document.querySelector<HTMLElement>('#lightbox-caption');
+  const triggerBtns = document.querySelectorAll<HTMLButtonElement>('[data-lightbox-trigger]');
+  const closeElements = document.querySelectorAll<HTMLElement>('[data-lightbox-close]');
+
+  const openLightbox = (src: string, alt: string, caption: string) => {
+    if (!modal || !lightboxImg) return;
+    lightboxImg.src = src;
+    lightboxImg.alt = alt;
+    if (lightboxCaption) lightboxCaption.textContent = caption;
+    
+    if (typeof modal.showModal === 'function') {
+      modal.showModal();
+    } else {
+      modal.setAttribute('open', '');
+    }
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeLightbox = () => {
+    if (!modal) return;
+    if (typeof modal.close === 'function') {
+      modal.close();
+    } else {
+      modal.removeAttribute('open');
+    }
+    if (lightboxImg) lightboxImg.src = '';
+    document.body.style.overflow = '';
+  };
+
+  triggerBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const src = btn.getAttribute('data-img-src') || '';
+      const alt = btn.getAttribute('data-img-alt') || '';
+      const caption = btn.getAttribute('data-img-caption') || '';
+      openLightbox(src, alt, caption);
+    });
+  });
+
+  closeElements.forEach((el) => {
+    el.addEventListener('click', closeLightbox);
+  });
+
+  modal?.addEventListener('cancel', (e) => {
+    e.preventDefault();
+    closeLightbox();
+  });
+</script>
+
+<style>
+  /* Hero Styles */
+  .page-hero {
+    position: relative;
+    min-height: clamp(460px, 62vh, 640px);
+    display: flex;
+    align-items: flex-end;
+    color: #fff;
+    overflow: hidden;
+    isolation: isolate;
+    background: #0b0d10;
+  }
+  .ph-media {
+    position: absolute;
+    inset: -10% 0;
+    z-index: -2;
+  }
+  .ph-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: phZoom 2.2s var(--ease) both;
+  }
+  @keyframes phZoom {
+    from { transform: scale(1.12); }
+    to { transform: scale(1); }
+  }
+  .ph-shade {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(180deg, rgba(8,10,13,.78) 0%, rgba(8,10,13,.55) 45%, rgba(8,10,13,.92) 100%);
+  }
+  .ph-inner {
+    padding-top: calc(var(--header-h) + 90px);
+    padding-bottom: clamp(2.5rem, 6vw, 4.5rem);
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+  }
+  .breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .6rem;
+    font-size: .8rem;
+    font-weight: 600;
+    letter-spacing: .04em;
+    color: rgba(255,255,255,.6);
+  }
+  .breadcrumb a {
+    color: rgba(255,255,255,.85);
+    transition: color .2s;
+    min-height: 32px;
+    display: inline-flex;
+    align-items: center;
+  }
+  .breadcrumb a:hover {
+    color: var(--gold);
+  }
+  .crumb-current {
+    color: var(--gold);
+  }
+  .ph-title {
+    color: #fff;
+    max-width: 18ch;
+    text-transform: uppercase;
+  }
+  .ph-title :global(em) {
+    color: var(--gold);
+  }
+
+  /* Main Section */
+  .inner-main {
+    width: 100%;
+    overflow-x: clip;
+    padding-block: clamp(3.5rem, 7vw, 6rem);
+    background: var(--bg-alt);
+    transition: background-color .4s var(--ease);
+  }
+
+  /* Intro Section */
+  .intro-section {
+    text-align: center;
+    max-width: 900px;
+    margin-inline: auto;
+    margin-bottom: clamp(2.5rem, 5vw, 4.5rem);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .badge-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 1rem;
+    border-radius: var(--r-pill);
+    background: rgba(255, 182, 6, 0.12);
+    border: 1px solid rgba(255, 182, 6, 0.3);
+    color: var(--gold-text);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+  }
+  .badge-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+    box-shadow: 0 0 10px var(--gold);
+  }
+
+  .intro-title {
+    margin-bottom: 1.25rem;
+    color: var(--ink);
+    font-size: clamp(1.8rem, 3.5vw, 2.75rem);
+    line-height: 1.25;
+    font-weight: 600;
+  }
+  :global([data-theme="dark"]) .intro-title {
+    color: #F1EEE7;
+  }
+
+  .intro-desc {
+    font-size: clamp(1rem, 1.3vw, 1.15rem);
+    line-height: 1.75;
+    color: var(--muted);
+    max-width: 780px;
+  }
+
+  /* Stats Row */
+  .stats-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(1.5rem, 3vw, 3rem);
+    margin-top: 2.5rem;
+    padding: 1.25rem clamp(1.5rem, 4vw, 3rem);
+    background: var(--surface);
+    border-radius: var(--r-lg);
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow-sm);
+    width: 100%;
+    max-width: 760px;
+  }
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+  }
+  .stat-number {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 2.2vw, 1.9rem);
+    font-weight: 600;
+    color: var(--gold-text);
+    line-height: 1.1;
+  }
+  .stat-label {
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+  }
+  .stat-divider {
+    width: 1px;
+    height: 38px;
+    background: var(--line);
+  }
+
+  /* Tab Navigation */
+  .results-showcase {
+    max-width: 1140px;
+    margin-inline: auto;
+  }
+  .tab-nav-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: clamp(2rem, 4vw, 3.5rem);
+  }
+  .tab-nav {
+    display: inline-flex;
+    background: var(--surface);
+    padding: 0.45rem;
+    border-radius: var(--r-pill);
+    border: 1px solid var(--line-strong);
+    box-shadow: var(--shadow-sm);
+    gap: 0.5rem;
+    max-width: 100%;
+  }
+  .tab-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1.6rem;
+    min-height: 50px;
+    border: none;
+    background: transparent;
+    border-radius: var(--r-pill);
+    color: var(--muted);
+    font-family: var(--font-body);
+    font-size: 0.98rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s var(--ease);
+    position: relative;
+    user-select: none;
+  }
+  .tab-btn:hover {
+    color: var(--ink);
+    background: rgba(255, 182, 6, 0.08);
+  }
+  .tab-btn.is-active {
+    background: var(--gold);
+    color: #101216;
+    box-shadow: 0 4px 18px rgba(255, 182, 6, 0.35);
+  }
+  .tab-icon {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+  }
+  .tab-count {
+    font-size: 0.76rem;
+    font-weight: 800;
+    padding: 0.2rem 0.6rem;
+    border-radius: var(--r-pill);
+    background: rgba(0, 0, 0, 0.08);
+    letter-spacing: 0.03em;
+  }
+  .tab-btn.is-active .tab-count {
+    background: rgba(0, 0, 0, 0.15);
+    color: #000;
+  }
+
+  /* Panels */
+  .tab-panel {
+    display: none;
+    animation: fadeInTab 0.45s var(--ease) forwards;
+  }
+  .tab-panel.is-active {
+    display: block;
+  }
+  @keyframes fadeInTab {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .panel-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1.2rem;
+    border-bottom: 1px solid var(--line);
+    flex-wrap: wrap;
+  }
+  .panel-tag {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--gold-text);
+    margin-bottom: 0.35rem;
+  }
+  .panel-title {
+    font-size: clamp(1.3rem, 2vw, 1.75rem);
+    color: var(--ink);
+    margin: 0;
+    font-weight: 600;
+  }
+  .panel-note {
+    font-size: 0.9rem;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  /* Results List */
+  .results-list {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(2rem, 3.5vw, 3rem);
+  }
+
+  /* Batch Card */
+  .batch-card {
+    background: var(--surface);
+    border-radius: var(--r-lg);
+    border: 1px solid var(--line);
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0, 0, 0, 0.02);
+    transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease), border-color 0.4s var(--ease);
+    position: relative;
+    overflow: hidden;
+  }
+  .batch-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 100%;
+    background: var(--gold);
+    opacity: 0.7;
+    transition: opacity 0.3s;
+  }
+  .batch-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.06), 0 2px 6px rgba(0, 0, 0, 0.03);
+    border-color: rgba(255, 182, 6, 0.4);
+  }
+  .batch-card:hover::before {
+    opacity: 1;
+  }
+
+  :global([data-theme="dark"]) .batch-card {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  }
+  :global([data-theme="dark"]) .batch-card:hover {
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6);
+  }
+
+  /* Batch Card Header */
+  .batch-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+  .batch-title-group {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    flex-wrap: wrap;
+  }
+  .batch-pill {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    border-radius: var(--r-pill);
+    background: rgba(255, 182, 6, 0.14);
+    color: var(--gold-text);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    border: 1px solid rgba(255, 182, 6, 0.25);
+  }
+  .batch-year {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 2.2vw, 1.85rem);
+    color: var(--ink);
+    margin: 0;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+  .batch-status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.35rem 0.85rem;
+    border-radius: var(--r-pill);
+    background: rgba(16, 185, 129, 0.1);
+    color: #059669;
+    border: 1px solid rgba(16, 185, 129, 0.25);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+  :global([data-theme="dark"]) .batch-status-badge {
+    background: rgba(16, 185, 129, 0.16);
+    color: #34d399;
+    border-color: rgba(16, 185, 129, 0.35);
+  }
+  .badge-icon {
+    display: grid;
+    place-items: center;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: currentColor;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 900;
+  }
+  :global([data-theme="dark"]) .badge-icon {
+    color: #12161B;
+  }
+
+  .batch-desc {
+    color: var(--muted);
+    font-size: 0.98rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    max-width: 850px;
+  }
+
+  /* Batch Media Grid */
+  .batch-media-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 1rem;
+  }
+  .batch-media-grid.is-multi {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .media-figure {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+  }
+
+  .media-zoom-trigger {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 1px solid var(--line);
+    border-radius: var(--r);
+    overflow: hidden;
+    background: #000;
+    cursor: zoom-in;
+    text-align: left;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease), border-color 0.3s var(--ease);
+  }
+  .media-zoom-trigger:hover,
+  .media-zoom-trigger:focus-visible {
+    transform: scale(1.01);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+    border-color: var(--gold);
+    outline: none;
+  }
+
+  .batch-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    transition: transform 0.6s var(--ease), opacity 0.3s;
+  }
+  .media-zoom-trigger:hover .batch-image {
+    transform: scale(1.03);
+    opacity: 0.92;
+  }
+
+  .zoom-hover-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(16, 18, 22, 0.65);
+    backdrop-filter: blur(2px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    opacity: 0;
+    color: #fff;
+    transition: opacity 0.3s var(--ease);
+    pointer-events: none;
+  }
+  .media-zoom-trigger:hover .zoom-hover-overlay,
+  .media-zoom-trigger:focus-visible .zoom-hover-overlay {
+    opacity: 1;
+  }
+
+  .zoom-btn-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--gold);
+    color: #101216;
+    display: grid;
+    place-items: center;
+    box-shadow: 0 4px 15px rgba(255, 182, 6, 0.5);
+    transform: scale(0.9);
+    transition: transform 0.3s var(--ease);
+  }
+  .media-zoom-trigger:hover .zoom-btn-icon {
+    transform: scale(1);
+  }
+  .zoom-text {
+    font-size: 0.88rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .media-caption {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--ink-2);
+  }
+  .caption-bullet {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    flex-shrink: 0;
+  }
+
+  /* Lightbox Modal */
+  .lightbox-modal {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    max-width: 100vw;
+    max-height: 100vh;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: transparent;
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .lightbox-modal[open] {
+    display: flex;
+  }
+  .lightbox-modal::backdrop {
+    background: rgba(8, 10, 13, 0.88);
+    backdrop-filter: blur(10px);
+  }
+  .lightbox-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(8, 10, 13, 0.88);
+    backdrop-filter: blur(10px);
+    z-index: 1;
+  }
+  .lightbox-window {
+    position: relative;
+    z-index: 2;
+    width: min(94vw, 1300px);
+    max-height: 92vh;
+    background: var(--surface);
+    border-radius: var(--r-lg);
+    border: 1px solid var(--line-strong);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    animation: modalPop 0.35s var(--ease) forwards;
+  }
+  @keyframes modalPop {
+    from {
+      opacity: 0;
+      transform: scale(0.95) translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+  }
+
+  .lightbox-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    background: var(--surface-2);
+    border-bottom: 1px solid var(--line);
+    gap: 1rem;
+  }
+  .lightbox-title {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--ink);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .lightbox-close {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--ink);
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    transition: all 0.2s var(--ease);
+    flex-shrink: 0;
+  }
+  .lightbox-close:hover {
+    background: var(--gold);
+    color: #101216;
+    border-color: var(--gold);
+    transform: rotate(90deg);
+  }
+
+  .lightbox-content {
+    flex: 1;
+    overflow: auto;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #0d0f12;
+  }
+  .lightbox-image {
+    max-width: 100%;
+    max-height: calc(92vh - 80px);
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Responsive Adjustments */
+  @media (max-width: 992px) {
+    .batch-media-grid.is-multi {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .page-hero {
+      min-height: 420px;
+    }
+    .ph-inner {
+      padding-top: calc(var(--header-h) + 60px);
+    }
+    .stats-row {
+      flex-direction: column;
+      gap: 1.25rem;
+      padding: 1.5rem 1rem;
+    }
+    .stat-divider {
+      width: 60%;
+      height: 1px;
+    }
+    .tab-nav {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-radius: var(--r);
+    }
+    .tab-btn {
+      padding: 0.65rem 0.8rem;
+      font-size: 0.88rem;
+      flex-direction: column;
+      gap: 0.35rem;
+      border-radius: var(--r-sm);
+      text-align: center;
+      min-height: 56px;
+    }
+    .tab-count {
+      font-size: 0.7rem;
+    }
+    .batch-card-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+    .panel-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+    .lightbox-window {
+      width: 98vw;
+      max-height: 96vh;
+    }
+    .lightbox-image {
+      max-height: calc(96vh - 75px);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .tab-nav {
+      grid-template-columns: 1fr;
+    }
+    .tab-btn {
+      flex-direction: row;
+      justify-content: center;
+    }
+  }
+</style>

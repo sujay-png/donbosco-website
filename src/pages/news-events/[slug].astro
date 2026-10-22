@@ -1,0 +1,710 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Icon from '../../components/Icon.astro';
+import Collaborations from '../../components/Collaborations.astro';
+import { allNewsEvents, getRelatedEvents, type NewsEventItem } from '../../data/news-events';
+
+export async function getStaticPaths() {
+  return allNewsEvents.map((event) => ({
+    params: { slug: event.slug },
+    props: { event },
+  }));
+}
+
+interface Props {
+  event: NewsEventItem;
+}
+
+const { event } = Astro.props;
+const relatedEvents = getRelatedEvents(event.slug, 3);
+const parentTabHash = event.categorySlug === 'kg-activities' ? '#kg-activities' : '#activities';
+const categoryName = event.categorySlug === 'kg-activities' ? 'KG Activities' : 'Activities';
+---
+
+<Layout 
+  title={`${event.title} - Don Bosco English Medium School Shirva`}
+  description={event.excerpt || `${event.title} at Don Bosco English Medium School Shirva.`}
+>
+  <Header />
+
+  <!-- Article Hero -->
+  <header class="article-hero on-image">
+    <div class="ph-media" data-parallax="-0.12">
+      <img src={event.localImg} alt={event.title} fetchpriority="high" />
+    </div>
+    <div class="ph-shade" aria-hidden="true"></div>
+    <div class="container ph-inner">
+      <nav class="breadcrumb" aria-label="Breadcrumb" data-reveal="fade">
+        <a href="/">Home</a>
+        <span aria-hidden="true">/</span>
+        <a href="/news-events">News &amp; Events</a>
+        <span aria-hidden="true">/</span>
+        <a href={`/news-events${parentTabHash}`}>{categoryName}</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page" class="crumb-current">{event.title}</span>
+      </nav>
+
+      <div class="hero-category-wrap" data-reveal>
+        <span class:list={['hero-category-badge', { 'is-kg': event.categorySlug === 'kg-activities' }]}>
+          {event.category}
+        </span>
+        <span class="hero-read-time">{event.readingTime}</span>
+      </div>
+
+      <h1 class="h1 article-hero-title" data-split>{event.title}</h1>
+
+      <div class="article-meta-row" data-reveal>
+        <div class="meta-item">
+          <Icon name="calendar" size={16} />
+          <time datetime={event.rawDate}>{event.date}</time>
+        </div>
+        <span class="meta-sep" aria-hidden="true">•</span>
+        <div class="meta-item">
+          <Icon name="staff" size={16} />
+          <span>{event.author}</span>
+        </div>
+        <span class="meta-sep" aria-hidden="true">•</span>
+        <div class="meta-item">
+          <Icon name="pin" size={16} />
+          <span>Don Bosco Campus, Shirva</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Article Body -->
+  <main class="inner-main section" id="article-content">
+    <div class="container article-container">
+      
+      <article class="article-sheet" data-reveal>
+        
+        <!-- Featured Hero Image -->
+        <div class="featured-media-frame">
+          <img 
+            src={event.localImg} 
+            alt={event.title} 
+            width="1200" 
+            height="750" 
+            loading="eager"
+            decoding="async"
+            class="featured-photo"
+          />
+          <div class="media-caption">
+            <span>Don Bosco English Medium School, Shirva — {event.title}</span>
+          </div>
+        </div>
+
+        <!-- Article Prose Content -->
+        <div class="article-body">
+          {event.paragraphs.map((p, idx) => (
+            <p class:list={[{ 'lead-paragraph': idx === 0 }]}>
+              {p}
+            </p>
+          ))}
+        </div>
+
+        <!-- Google Photos Album Callout if available -->
+        {event.albumUrl && (
+          <aside class="album-callout" data-reveal>
+            <div class="album-icon-wrap" aria-hidden="true">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+                <circle cx="12" cy="13" r="4"/>
+              </svg>
+            </div>
+            <div class="album-content">
+              <span class="album-badge">Official Photo Album</span>
+              <h3 class="album-title">View All Celebration Photographs</h3>
+              <p class="album-desc">
+                High-resolution images of this event are available in our official Google Photos gallery. Click below to view and download full-resolution celebration memories.
+              </p>
+            </div>
+            <a 
+              href={event.albumUrl} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="btn-album-action"
+              aria-label="View All Photos on Google Photos (opens in new tab)"
+            >
+              <span>View All Photos</span>
+              <Icon name="arrow-up-right" size={16} />
+            </a>
+          </aside>
+        )}
+
+        <!-- Article Footer / Navigation -->
+        <div class="article-footer-bar">
+          <a href={`/news-events${parentTabHash}`} class="back-nav-btn">
+            <Icon name="arrow-left" size={16} />
+            <span>Back to {categoryName}</span>
+          </a>
+
+          <div class="article-tags">
+            <span class="tag-pill">Don Bosco Shirva</span>
+            <span class="tag-pill">{event.category}</span>
+            <span class="tag-pill">Campus Events</span>
+          </div>
+        </div>
+
+      </article>
+
+      <!-- Related Events Section -->
+      {relatedEvents.length > 0 && (
+        <section class="related-section" data-reveal>
+          <div class="related-header">
+            <div>
+              <span class="related-eyebrow">Explore More</span>
+              <h2 class="h3 related-title">More Campus Happenings</h2>
+            </div>
+            <a href={`/news-events${parentTabHash}`} class="see-all-link">
+              <span>See All Events</span>
+              <Icon name="arrow" size={16} />
+            </a>
+          </div>
+
+          <div class="related-grid">
+            {relatedEvents.map((rel) => (
+              <article class="related-card">
+                <a href={`/news-events/${rel.slug}`} class="related-media-link" aria-label={`Read ${rel.title}`}>
+                  <img 
+                    src={rel.localImg} 
+                    alt={rel.title} 
+                    loading="lazy" 
+                    decoding="async" 
+                    width="400" 
+                    height="250"
+                  />
+                  <span class="rel-category">{rel.category}</span>
+                </a>
+                <div class="related-content">
+                  <div class="related-date">
+                    <Icon name="calendar" size={14} />
+                    <time datetime={rel.rawDate}>{rel.date}</time>
+                  </div>
+                  <h3 class="related-card-title">
+                    <a href={`/news-events/${rel.slug}`}>{rel.title}</a>
+                  </h3>
+                  <p class="related-card-excerpt">{rel.excerpt}</p>
+                  <a href={`/news-events/${rel.slug}`} class="rel-read-more">
+                    <span>Read Details</span>
+                    <Icon name="arrow" size={14} />
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+      )}
+
+    </div>
+  </main>
+
+  <Collaborations />
+
+  <Footer />
+</Layout>
+
+<style>
+  /* ==========================================================================
+     Single Event Details Page Styles
+     ========================================================================== */
+
+  /* Article Hero */
+  .article-hero {
+    position: relative;
+    padding-top: calc(var(--header-h) + clamp(2.5rem, 5vw, 4.5rem));
+    padding-bottom: clamp(3.5rem, 6vw, 5.5rem);
+    background: var(--deep);
+    color: var(--on-deep);
+    overflow: hidden;
+  }
+  .article-hero .ph-media {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    opacity: 0.28;
+    filter: blur(12px) saturate(1.1);
+    transform: scale(1.08);
+  }
+  .article-hero .ph-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+  }
+  .ph-shade {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(11, 12, 15, 0.78) 0%, rgba(11, 12, 15, 0.96) 100%);
+    z-index: 1;
+  }
+  .ph-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 980px;
+    margin: 0 auto;
+  }
+  .breadcrumb {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.82rem;
+    color: var(--on-deep-muted);
+    margin-bottom: 1.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    flex-wrap: wrap;
+  }
+  .breadcrumb a {
+    color: var(--on-deep-muted);
+    text-decoration: none;
+    transition: color 0.2s var(--ease);
+  }
+  .breadcrumb a:hover {
+    color: var(--gold);
+  }
+  .crumb-current {
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  .hero-category-wrap {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+  .hero-category-badge {
+    padding: 0.35rem 0.9rem;
+    border-radius: var(--r-pill);
+    background: var(--gold);
+    color: #101216;
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .hero-category-badge.is-kg {
+    background: #3E3FF0;
+    color: #FFFFFF;
+  }
+  .hero-read-time {
+    font-size: 0.8rem;
+    color: var(--on-deep-muted);
+    font-weight: 600;
+  }
+
+  .article-hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4.5vw, 3.2rem);
+    line-height: 1.2;
+    color: var(--on-deep);
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+  }
+
+  .article-meta-row {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    color: var(--on-deep-muted);
+    font-size: 0.88rem;
+    flex-wrap: wrap;
+  }
+  .meta-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+  }
+  .meta-item svg {
+    color: var(--gold);
+  }
+  .meta-sep {
+    opacity: 0.5;
+  }
+
+  /* Main Section */
+  .inner-main {
+    padding-block: clamp(3rem, 6vw, 5.5rem);
+    background: var(--bg);
+  }
+  .article-container {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  /* Article Sheet */
+  .article-sheet {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    padding: clamp(1.5rem, 4vw, 3rem);
+    margin-bottom: clamp(3rem, 6vw, 5rem);
+  }
+
+  /* Featured Media */
+  .featured-media-frame {
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+    border-radius: var(--r);
+    overflow: hidden;
+    background: var(--bg-alt);
+    border: 1px solid var(--line);
+  }
+  .featured-photo {
+    width: 100%;
+    height: auto;
+    max-height: 560px;
+    object-fit: cover;
+    display: block;
+  }
+  .media-caption {
+    padding: 0.85rem 1.25rem;
+    font-size: 0.82rem;
+    color: var(--muted);
+    background: var(--surface-2);
+    border-top: 1px solid var(--line);
+    text-align: center;
+  }
+
+  /* Article Body Prose */
+  .article-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    font-size: 1.05rem;
+    line-height: 1.85;
+    color: var(--ink);
+  }
+  .article-body p {
+    margin: 0;
+  }
+  .article-body .lead-paragraph {
+    font-size: clamp(1.12rem, 1.4vw, 1.25rem);
+    line-height: 1.8;
+    color: var(--ink);
+    font-weight: 500;
+    padding-left: 1.25rem;
+    border-left: 4px solid var(--gold);
+    margin-bottom: 0.5rem;
+  }
+
+  /* Google Photos Album Callout */
+  .album-callout {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.75rem;
+    margin-top: clamp(2.5rem, 5vw, 3.5rem);
+    padding: clamp(1.5rem, 3vw, 2.25rem);
+    border-radius: var(--r);
+    background: linear-gradient(135deg, rgba(255, 182, 6, 0.12) 0%, rgba(255, 182, 6, 0.04) 100%);
+    border: 1px solid rgba(255, 182, 6, 0.35);
+    flex-wrap: wrap;
+  }
+  .album-icon-wrap {
+    width: 60px;
+    height: 60px;
+    border-radius: var(--r);
+    background: var(--gold);
+    color: #101216;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 8px 20px -6px rgba(255, 182, 6, 0.5);
+  }
+  .album-content {
+    flex: 1;
+    min-width: 260px;
+  }
+  .album-badge {
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gold-text);
+    display: inline-block;
+    margin-bottom: 0.25rem;
+  }
+  .album-title {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    color: var(--ink);
+    margin: 0 0 0.35rem 0;
+    font-weight: 600;
+  }
+  .album-desc {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.6;
+    margin: 0;
+  }
+  .btn-album-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.6rem;
+    min-height: 48px;
+    border-radius: var(--r-pill);
+    background: #101216;
+    color: #FFFFFF;
+    font-size: 0.92rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s var(--ease);
+    box-shadow: 0 8px 20px rgba(16, 18, 22, 0.25);
+    flex-shrink: 0;
+  }
+  .btn-album-action:hover, .btn-album-action:focus-visible {
+    background: var(--gold) !important;
+    color: #101216 !important;
+    transform: translateY(-3px);
+  }
+  .btn-album-action:hover * {
+    color: #101216 !important;
+  }
+  :global([data-theme="dark"]) .btn-album-action {
+    background: var(--gold) !important;
+    color: #0b0c0f !important;
+  }
+  :global([data-theme="dark"]) .btn-album-action:hover,
+  :global([data-theme="dark"]) .btn-album-action:focus-visible {
+    background: #ffffff !important;
+    color: #0b0c0f !important;
+  }
+  :global([data-theme="dark"]) .btn-album-action:hover * {
+    color: #0b0c0f !important;
+  }
+
+  /* Article Footer Bar */
+  .article-footer-bar {
+    margin-top: clamp(2.5rem, 5vw, 3.5rem);
+    padding-top: 1.75rem;
+    border-top: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .back-nav-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.65rem 1.25rem;
+    min-height: 44px;
+    border-radius: var(--r-sm);
+    background: var(--bg-alt);
+    border: 1px solid var(--line);
+    color: var(--ink);
+    font-size: 0.88rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.25s var(--ease);
+  }
+  .back-nav-btn:hover {
+    background: var(--gold);
+    color: #101216;
+    border-color: var(--gold);
+  }
+  .article-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  .tag-pill {
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    padding: 0.35rem 0.75rem;
+    border-radius: var(--r-pill);
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    color: var(--muted);
+  }
+
+  /* Related Section */
+  .related-section {
+    margin-top: clamp(2rem, 4vw, 3rem);
+  }
+  .related-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .related-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold-text);
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+  .related-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+    color: var(--ink);
+    margin: 0;
+    font-weight: 600;
+  }
+  .see-all-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    transition: color 0.2s var(--ease);
+  }
+  .see-all-link:hover {
+    color: var(--gold-deep);
+  }
+
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.75rem;
+  }
+  .related-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--r);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+  }
+  .related-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow);
+  }
+  .related-media-link {
+    position: relative;
+    display: block;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: var(--bg-alt);
+  }
+  .related-media-link img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s var(--ease);
+  }
+  .related-card:hover .related-media-link img {
+    transform: scale(1.06);
+  }
+  .rel-category {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    padding: 0.25rem 0.65rem;
+    border-radius: var(--r-pill);
+    background: rgba(16, 18, 22, 0.75);
+    color: #FFFFFF;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    backdrop-filter: blur(4px);
+  }
+
+  .related-content {
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .related-date {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.78rem;
+    color: var(--gold-text);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+  }
+  .related-card-title {
+    font-family: var(--font-display);
+    font-size: 1.08rem;
+    line-height: 1.35;
+    margin: 0 0 0.5rem 0;
+    font-weight: 600;
+  }
+  .related-card-title a {
+    color: var(--ink);
+    text-decoration: none;
+    transition: color 0.2s var(--ease);
+  }
+  .related-card-title a:hover {
+    color: var(--gold-deep);
+  }
+  .related-card-excerpt {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.55;
+    margin: 0 0 1rem 0;
+    flex: 1;
+  }
+  .rel-read-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    transition: color 0.2s var(--ease);
+  }
+  .rel-read-more:hover {
+    color: var(--gold-deep);
+  }
+
+  /* Responsive Queries */
+  @media (max-width: 992px) {
+    .related-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .related-grid {
+      grid-template-columns: 1fr;
+    }
+    .album-callout {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .btn-album-action {
+      width: 100%;
+      justify-content: center;
+    }
+    .article-footer-bar {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .back-nav-btn {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .article-sheet { padding: 1.25rem 1rem; border-radius: var(--r-md); }
+    .article-body .lead-paragraph { padding-left: 0.85rem; font-size: 1.05rem; }
+    .album-callout { padding: 1.25rem 1rem; }
+    .article-meta-row { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+    .meta-sep { display: none; }
+  }
+</style>

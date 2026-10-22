@@ -1,0 +1,199 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const activities = [
+  {
+    "title": "Keyboard Program",
+    "image": "/eca/1-20.jpg",
+    "content": "Our school offers an engaging and enriching keyboard program as part of our extracurricular activities. The keyboard class is designed for students of all skill levels, from beginners to advanced players, fostering both creativity and technical proficiency. Students will have the opportunity to explore a variety of musical genres, including classical, contemporary, and popular music. Through this program, participants will develop essential skills such as rhythm, coordination, sight-reading, and music theory."
+  },
+  {
+    "title": "Bharatanatyam",
+    "image": "/eca/1-22.jpg",
+    "content": "Bharatanatyam, one of the oldest and most graceful forms of classical Indian dance, is offered as an exciting extracurricular activity at our school. This program introduces students to the rich cultural heritage of India while providing a platform for creative expression and physical discipline. Students learn the intricate footwork, expressive hand gestures (mudras), and storytelling techniques that define Bharatanatyam."
+  },
+  {
+    "title": "Painting",
+    "image": "/eca/WhatsApp-Image-2025-02-24-at-3.18.10-PM.jpeg",
+    "content": "Our school’s painting program offers students a creative space to explore the world of art, express their imaginations, and develop their artistic skills. Whether you’re a beginner or an experienced artist, this activity provides the tools and guidance to enhance your abilities in various painting techniques, including water colors, acrylics, and oils. The program emphasizes both technical proficiency and creative expression, allowing students to experiment with color, texture, and form."
+  },
+  {
+    "title": "Home Science",
+    "image": "/eca/2-17.jpg",
+    "content": "Home Science is an enriching extracurricular activity at our school that focuses on equipping students with essential life skills through hands-on learning. The program covers a wide range of subjects, including cooking, nutrition, child development and personal management, all of which are designed to nurture students’ practical and creative abilities. Through Home Science, students develop a strong foundation in managing day-to-day life tasks, understanding healthy living, and learning how to care for themselves and others."
+  },
+  {
+    "title": "Karate",
+    "image": "/eca/1-25.jpg",
+    "content": "Karate is an exciting and empowering extracurricular activity offered at our school, focusing on physical fitness, mental discipline, and self-defence skills. Through structured training, students learn the traditional martial art of Karate, which helps develop strength, flexibility, coordination, and focus. The Karate program teaches students essential techniques such as strikes, blocks, stances, and kata (forms), while also emphasizing respect, perseverance, and self-control."
+  },
+  {
+    "title": "Taekwondo",
+    "image": "/eca/1-26.jpg",
+    "content": "Taekwondo is an exciting and dynamic extracurricular activity offered at our school, focused on developing both physical and mental strength through the practice of this traditional Korean martial art. This discipline teaches students valuable self-defense techniques while promoting fitness, agility, and flexibility. The Taekwondo program at our school emphasizes the importance of balance, coordination, and precision, helping students to improve their overall physical condition."
+  },
+  {
+    "title": "Guitar Programme",
+    "image": "/eca/1-21.jpg",
+    "content": "The Guitar programme at our school offers students a dynamic platform to explore their musical talents and passion for playing the guitar. This extracurricular activity is designed to nurture creativity, enhance musical skills, and foster teamwork. Open to beginners and experienced players alike, this programme provides lessons on chords, strumming patterns, and popular songs while encouraging original compositions and live performances."
+  },
+  {
+    "title": "Western Dance",
+    "image": "/eca/ghjg.jpg",
+    "content": "The Western Dance at our school is a vibrant extracurricular activity that offers students a chance to explore dynamic dance forms, including hip-hop, jazz, contemporary, and freestyle. This activity is perfect for students passionate about movement, rhythm, and creative expression. Through regular practice sessions and choreography workshops, students develop grace, flexibility, coordination, and confidence."
+  },
+  {
+    "title": "Stitching",
+    "image": "/eca/3-11.jpg",
+    "content": "Stitching is a wonderful extracurricular activity offered at our school, designed to inspire creativity, develop practical skills, and promote self-expression. Whether you’re a beginner or an experienced sewer, our stitching program caters to all levels of expertise. Students will have the opportunity to learn essential skills such as hand stitching, machine sewing, embroidery, and fabric design."
+  },
+  {
+    "title": "Skating",
+    "image": "/eca/1-27.jpg",
+    "content": "The Skating at our school offers students an exhilarating experience that combines fitness, balance, and fun. Open to all skill levels, from beginners to advanced skaters, it provides structured training sessions focused on mastering techniques, enhancing agility, and fostering sportsmanship. With guidance from professional coaches, students learn various skating styles, including speed skating and artistic skating, while improving their endurance and coordination."
+  }
+];
+---
+
+<Layout title="Extra Curricular Activities - Don Bosco School Shirva">
+  <Header />
+  
+  <section class="page-hero on-image">
+    <div class="ph-media" data-parallax="-0.12"><img src="/about/old-school.jpg" alt="" fetchpriority="high" /></div>
+    <div class="ph-shade" aria-hidden="true"></div>
+    <div class="container ph-inner">
+      <nav class="breadcrumb" aria-label="Breadcrumb" data-reveal="fade">
+        <a href="/">Home</a>
+        <span aria-hidden="true">/</span>
+        <span>Academics</span>
+        <span aria-hidden="true">/</span>
+        <span>Activities</span>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page" class="crumb-current">Extra Curricular Activities</span>
+      </nav>
+      <h1 class="h1 ph-title" data-split>Extra Curricular <em>Activities</em></h1>
+    </div>
+  </section>
+
+  <main class="inner-main section">
+    <div class="container">
+      <div class="intro-text" data-reveal>
+        <h2 class="h2">Nurturing Holistic Growth and Talent</h2>
+        <p class="muted">At our school we believe that education extends beyond the classroom. Our vibrant range of extra-curricular activities is designed to foster creativity, leadership, teamwork, and personal growth. By engaging in diverse pursuits such as sports, music, dance, art, students discover and nurture their passions while developing essential life skills.</p>
+        <p class="muted">Through clubs, competitions, and events, we provide ample opportunities for students to explore their interests, build confidence, and form lasting friendships. Our holistic approach to learning ensures a balanced development of mind, body, and character, empowering students to become well-rounded individuals prepared for future success.</p>
+        <p class="muted" style="color: var(--gold-text); font-weight: 600;">Extra-curricular activities are conducted for Grade 5 to 9 on Saturday from 9:00 am to 10:30 am.</p>
+      </div>
+
+      <div class="eca-list">
+        {activities.map((act, i) => (
+          <article class:list={['eca-item', { 'is-reverse': i % 2 === 1 }]}>
+            <div class="media eca-media" data-reveal="clip">
+              <img src={act.image} alt={act.title} loading="lazy" />
+            </div>
+            <div class="eca-body" data-reveal>
+              <span class="eca-num">{String(i + 1).padStart(2, '0')} / {String(activities.length).padStart(2, '0')}</span>
+              <h3 class="h3 eca-title">{act.title}</h3>
+              <div class="eca-desc">
+                <p>{act.content}</p>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </main>
+  
+  <Footer />
+</Layout>
+
+<style>
+  /* Hero Styles */
+  .page-hero {
+    position: relative;
+    min-height: clamp(460px, 62vh, 640px);
+    display: flex; align-items: flex-end;
+    color: #fff;
+    overflow: hidden;
+    isolation: isolate;
+    background: #0b0d10;
+  }
+  .ph-media { position: absolute; inset: -10% 0; z-index: -2; }
+  .ph-media img { width: 100%; height: 100%; object-fit: cover; animation: phZoom 2.2s var(--ease) both; }
+  @keyframes phZoom { from { transform: scale(1.12); } to { transform: scale(1); } }
+  .ph-shade {
+    position: absolute; inset: 0; z-index: -1;
+    background: linear-gradient(180deg, rgba(8,10,13,.78) 0%, rgba(8,10,13,.55) 45%, rgba(8,10,13,.92) 100%);
+  }
+  .ph-inner {
+    padding-top: calc(var(--header-h) + 90px);
+    padding-bottom: clamp(2.5rem, 6vw, 4.5rem);
+    display: flex; flex-direction: column; gap: 1.1rem;
+  }
+  .breadcrumb {
+    display: flex; flex-wrap: wrap; align-items: center; gap: .6rem;
+    font-size: .8rem; font-weight: 600; letter-spacing: .04em;
+    color: rgba(255,255,255,.6);
+  }
+  .breadcrumb a { color: rgba(255,255,255,.85); transition: color .2s; min-height: 32px; display: inline-flex; align-items: center; }
+  .breadcrumb a:hover { color: var(--gold); }
+  .crumb-current { color: var(--gold); }
+  .ph-title { color: #fff; max-width: 18ch; text-transform: uppercase; }
+  .ph-title :global(em) { color: var(--gold); }
+
+  /* Page Styles */
+  .inner-main { width: 100%; overflow-x: clip; padding-block: clamp(3rem, 6vw, 5rem); }
+  
+  .intro-text {
+    text-align: center;
+    max-width: 800px;
+    margin-inline: auto;
+    margin-bottom: clamp(3rem, 6vw, 5rem);
+  }
+  .intro-text .h2 {
+    margin-bottom: 1.5rem;
+    color: var(--gold-text);
+  }
+  .intro-text .muted {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+  }
+
+  .eca-list-layout {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(2.5rem, 5vw, 4rem);
+    max-width: 1000px;
+    margin-inline: auto;
+  }
+
+  /* ECA List Layout */
+  .eca-list { display: flex; flex-direction: column; gap: clamp(4rem, 8vw, 7rem); }
+  .eca-item { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 6vw, 5.5rem); align-items: center; }
+  .eca-item.is-reverse .eca-media { order: 2; }
+  .eca-media { aspect-ratio: 4 / 3; border-radius: var(--r-lg); width: 100%; object-fit: cover; }
+  .eca-body { display: flex; flex-direction: column; gap: 1.25rem; }
+  .eca-num { font-family: var(--font-display); font-style: italic; color: var(--gold-text); font-size: 1.15rem; font-weight: 600; }
+  .eca-title { font-family: var(--font-heading); font-size: 1.7rem; font-weight: 800; color: #1a237e; margin: 0; }
+  .eca-desc p { color: var(--muted); font-size: 1.1rem; line-height: 1.8; margin-bottom: 0; }
+
+  @media (max-width: 992px) {
+    .eca-item { grid-template-columns: 1fr; gap: 2rem; }
+    .eca-item.is-reverse .eca-media { order: 0; }
+  }
+  @media (max-width: 768px) {
+    .page-hero { min-height: 420px; }
+    .ph-inner { padding-top: calc(var(--header-h) + 60px); }
+    .eca-title { font-size: 1.45rem; }
+  }
+
+  :global([data-theme="dark"]) .eca-title {
+    color: var(--gold) !important;
+  }
+  :global([data-theme="dark"]) .eca-desc p,
+  :global([data-theme="dark"]) .intro-text .muted {
+    color: #cbd5e1 !important;
+  }
+</style>

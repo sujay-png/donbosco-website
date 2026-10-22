@@ -1,0 +1,143 @@
+---
+import Icon from './Icon.astro';
+const facilities = [
+  { title: 'Physical Laboratories', image: '/facilities/physical_labs.jpg' },
+  { title: 'Xperimentor Lab', image: '/facilities/xperimentor.jpg' },
+  { title: 'Adventure Classes', image: '/facilities/adventure.jpg' },
+  { title: 'AI & Robotics', image: '/facilities/robotics.jpg' },
+];
+---
+<section id="facilities" class="section facilities">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-meta" data-reveal>
+        <span class="sec-index">(03)</span>
+        <span class="eyebrow">School Facilities</span>
+      </div>
+      <div class="sec-title-wrap">
+        <h2 class="h2" data-split>Explore Our Advanced <em>Learning Environments</em></h2>
+      </div>
+    </div>
+
+    <div class="panels" data-reveal>
+      {facilities.map((f, i) => (
+        <article class:list={['panel', { 'is-open': i === 0 }]} tabindex="0" data-panel>
+          <img src={f.image} alt={f.title} loading="lazy" />
+          <div class="panel-shade" aria-hidden="true"></div>
+          <span class="panel-num">{String(i + 1).padStart(2, '0')}</span>
+          <h3 class="panel-vertical" aria-hidden="true">{f.title}</h3>
+          <div class="panel-body">
+            <h3 class="panel-title">{f.title}</h3>
+            <span class="panel-link">Explore <Icon name="arrow-up-right" size={16} /></span>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <div class="fac-foot" data-reveal>
+      <p class="muted">Smart classes, advanced science labs, computer labs, an expansive library and a spacious playground.</p>
+      <a href="/facilities" class="btn btn-gold">View All Facilities <Icon name="arrow" class="arrow" /></a>
+    </div>
+  </div>
+</section>
+
+<script>
+  const panels = document.querySelectorAll<HTMLElement>('[data-panel]');
+  const open = (p: HTMLElement) => panels.forEach((x) => x.classList.toggle('is-open', x === p));
+  panels.forEach((p) => {
+    p.addEventListener('mouseenter', () => { if (window.innerWidth > 992) open(p); });
+    p.addEventListener('focus', () => open(p));
+    p.addEventListener('click', () => open(p));
+  });
+</script>
+
+<style>
+  .panels {
+    display: flex;
+    gap: .9rem;
+    height: clamp(420px, 38vw, 540px);
+  }
+  .panel {
+    position: relative;
+    flex: 1;
+    min-width: 0;
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    cursor: pointer;
+    color: #fff;
+    background: #111;
+    transition: flex 1s var(--ease);
+    outline: none;
+  }
+  .panel:focus-visible { box-shadow: 0 0 0 3px var(--gold); }
+  .panel.is-open { flex: 3.2; }
+  .panel img {
+    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+    transform: scale(1.15);
+    filter: saturate(.85);
+    transition: transform 1.4s var(--ease), filter .8s var(--ease);
+  }
+  .panel.is-open img { transform: scale(1); filter: saturate(1.05); }
+  .panel-shade {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(8,10,13,.1) 30%, rgba(8,10,13,.85) 100%);
+    transition: background .6s;
+  }
+  .panel:not(.is-open) .panel-shade { background: rgba(8,10,13,.55); }
+  .panel-num {
+    position: absolute; top: 1.25rem; left: 1.25rem;
+    font-family: var(--font-display); font-style: italic; font-size: 1rem;
+    width: 44px; height: 44px; border-radius: 50%;
+    display: grid; place-items: center;
+    border: 1px solid rgba(255,255,255,.35);
+    transition: background .4s, color .4s, border-color .4s;
+  }
+  .panel.is-open .panel-num { background: var(--gold); color: #101216; border-color: var(--gold); }
+  .panel-vertical {
+    position: absolute; left: 50%; bottom: 1.5rem;
+    writing-mode: vertical-rl; transform: translateX(-50%) rotate(180deg);
+    font-size: 1.35rem; color: #fff; white-space: nowrap;
+    transition: opacity .4s var(--ease);
+  }
+  .panel.is-open .panel-vertical { opacity: 0; }
+  .panel-body {
+    position: absolute; left: 0; right: 0; bottom: 0;
+    padding: clamp(1.25rem, 2.5vw, 2rem);
+    display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem;
+    opacity: 0; transform: translateY(20px);
+    transition: opacity .5s var(--ease), transform .7s var(--ease);
+  }
+  .panel.is-open .panel-body { opacity: 1; transform: none; transition-delay: .25s; }
+  .panel-title { color: #fff; font-size: clamp(1.6rem, 2.6vw, 2.4rem); white-space: nowrap; }
+  .panel-link {
+    display: inline-flex; align-items: center; gap: .4rem;
+    font-size: .85rem; font-weight: 700; padding: .6rem 1rem; min-height: 44px;
+    border-radius: var(--r-pill); background: rgba(255,255,255,.14);
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    white-space: nowrap;
+  }
+
+  .fac-foot {
+    margin-top: clamp(2rem, 4vw, 3rem);
+    display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; flex-wrap: wrap;
+  }
+  .fac-foot p { max-width: 52ch; }
+
+  @media (max-width: 992px) {
+    .panels { flex-wrap: wrap; height: auto; }
+    .panel, .panel.is-open { flex: 1 1 calc(50% - .45rem); aspect-ratio: 4 / 3.4; }
+    .panel img { transform: none; filter: none; }
+    .panel-shade, .panel:not(.is-open) .panel-shade { background: linear-gradient(180deg, rgba(8,10,13,0) 35%, rgba(8,10,13,.85) 100%); }
+    .panel-vertical { display: none; }
+    .panel-body { opacity: 1; transform: none; }
+    .panel-num { background: var(--gold); color: #101216; border-color: var(--gold); }
+  }
+  @media (max-width: 560px) {
+    .panel, .panel.is-open { flex-basis: 100%; }
+    .panel-title { font-size: 1.5rem; white-space: normal; }
+  }
+  @media (max-width: 480px) {
+    .fac-foot { flex-direction: column; align-items: stretch; gap: 1rem; }
+    .fac-foot .btn { width: 100%; justify-content: center; }
+  }
+</style>

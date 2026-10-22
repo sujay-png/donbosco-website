@@ -1,0 +1,420 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const achievements = [
+  {
+    img: '/achievements/1-40.jpg',
+    event: 'Taekwondo championship',
+    date: '18th january 2025',
+    venue: 'Vishwa Vidyapeeth Nekkundi Dommasandra, Bengaluru',
+    desc: 'Inter school and open state level Taekwondo championship (Kyorugi and Poomsae)'
+  },
+  {
+    img: '/achievements/2-26.jpg',
+    event: 'Inter School Basketball Tournament',
+    date: '09 November 2024',
+    venue: 'Sri Sharada Residential School Udupi'
+  },
+  {
+    img: '/achievements/3-20.jpg',
+    event: 'National karate championship 2025',
+    date: '18 January 2025',
+    venue: 'Udyavara Grama Panchayath stadium',
+    desc: 'KATA: 3rd place, KUMITE: 3rd place.'
+  },
+  {
+    img: '/achievements/4-14.jpg',
+    event: 'Karate Championship 2025',
+    venue: 'Udyavar Grama panchayat',
+    desc: 'Kubudo Budokan Association (R) Karnataka, 7th National level open invitational Tulunadu Karate Championship. Secured II prize in Kata below 9 years category.'
+  },
+  {
+    img: '/achievements/5-8.jpg',
+    event: 'Karate Championship 2025',
+    date: '18th January 2025',
+    venue: 'Udyavara Grama Panchayat Stadium',
+    desc: '7th National Level Open Invitational Tulunadu Karate Championship. Secured 1st place and 2nd place in Kata And 3rd place in Kumite.'
+  },
+  {
+    img: '/achievements/6-7.jpg',
+    event: 'Yakshagana Competition',
+    venue: 'Pavanje',
+    desc: 'Won “Yaksha Rajyotsava Prashasti”.'
+  },
+  {
+    img: '/achievements/7-6.jpg',
+    name: 'Sean Joyvin Mendonca',
+    event: 'Bible story telling competition'
+  },
+  {
+    img: '/achievements/8-3.jpg',
+    event: 'Karate Championship 2025',
+    venue: 'Udyavar Grama panchayat',
+    desc: 'Kubudo Budokan Association (R) Karnataka, 7th National level open invitational Tulunadu Karate Championship. Secured III prize in Kata.'
+  },
+  {
+    img: '/achievements/9-1.jpg',
+    name: 'Ian Alva',
+    event: 'Karate Championship 2024',
+    venue: 'Sacred Heart Church Sabha Bhavan Surathkal',
+    desc: 'Participated in individual Kata and Kumite Event in Male GREEN BELT 8 to 9 years group and won 1st and 3rd place in 35th State Level Inter Dojo Karate Championship.'
+  },
+  {
+    img: '/achievements/10-1.jpg',
+    name: 'Ronel Terrance Fernandes',
+    event: 'Karate Championship 2024',
+    date: 'Aug - Nov 2024',
+    venue: 'UDUPI',
+    desc: '2nd Invitational National Level Karate Championship Compete -4.0 Secured First place in KUMITE. 4th National Level open Karate Championship Secured 2nd place in KATA.'
+  },
+  {
+    img: '/achievements/11.jpg',
+    name: 'Arvin',
+    event: 'Karate championships 2025',
+    date: '18th Jan 2025',
+    venue: 'Udhyavar',
+    desc: 'Organised by KOBUDO BUDOKON KARATE -DO Association Karnataka (R.) Secured 1st place in Kata competition.'
+  },
+  {
+    img: '/achievements/12.jpg',
+    name: 'Aaif Ahemmed',
+    event: 'Karate championships 2024',
+    date: 'Sept - Nov 2024',
+    venue: 'Surathkal & Udupi',
+    desc: '35th State level Inter Dejo Karate championship Won II place in Individual kata. 4th National level open Karate championship "UDUPI TROPHY - 2024" secured I place in Kumite and III place in Kata.'
+  }
+];
+---
+
+<Layout title="Achievements - Don Bosco School Shirva">
+  <Header />
+  
+  <section class="page-hero on-image">
+    <div class="ph-media" data-parallax="-0.12"><img src="/about/old-school.jpg" alt="" fetchpriority="high" /></div>
+    <div class="ph-shade" aria-hidden="true"></div>
+    <div class="container ph-inner">
+      <nav class="breadcrumb" aria-label="Breadcrumb" data-reveal="fade">
+        <a href="/">Home</a>
+        <span aria-hidden="true">/</span>
+        <span>Academics</span>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page" class="crumb-current">Achievements</span>
+      </nav>
+      <h1 class="h1 ph-title" data-split>Our <em>Achievements</em></h1>
+    </div>
+  </section>
+
+  <main class="inner-main section">
+    <div class="container">
+      <div class="intro-text" data-reveal>
+        <h2 class="h2">Celebrating Student Excellence</h2>
+        <p class="muted">We are proud of our students who have brought laurels to our school across various fields including academics, sports, and cultural events. We wish them well so that they may excel and shine brightly in the future.</p>
+      </div>
+
+      <div class="gallery-grid">
+        {achievements.map((item, idx) => (
+          <div class="gallery-card" data-reveal="slide-up" style={`--delay: ${idx * 0.05}s`}>
+            <div class="card-img-wrap">
+              <img src={item.img} alt={`Student Achievement ${idx + 1}`} loading="lazy" />
+              <div class="card-badge">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z"/>
+                </svg>
+                Achievement
+              </div>
+            </div>
+            <div class="card-content">
+              {item.name ? (
+                <h3 class="card-title">{item.name}</h3>
+              ) : (
+                <h3 class="card-title">{item.event}</h3>
+              )}
+              
+              <div class="card-meta">
+                {item.name && item.event && (
+                  <div class="meta-item event-tag">
+                    <span class="meta-icon">🏆</span>
+                    <span>{item.event}</span>
+                  </div>
+                )}
+                {item.date && (
+                  <div class="meta-item">
+                    <span class="meta-icon">📅</span>
+                    <span>{item.date}</span>
+                  </div>
+                )}
+                {item.venue && (
+                  <div class="meta-item">
+                    <span class="meta-icon">📍</span>
+                    <span>{item.venue}</span>
+                  </div>
+                )}
+              </div>
+
+              {item.desc && (
+                <div class="card-desc">
+                  <p>"{item.desc}"</p>
+                </div>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </main>
+  
+  <Footer />
+</Layout>
+
+<style>
+  /* Hero Styles */
+  .page-hero {
+    position: relative;
+    min-height: clamp(460px, 62vh, 640px);
+    display: flex; align-items: flex-end;
+    color: #fff;
+    overflow: hidden;
+    isolation: isolate;
+    background: #0b0d10;
+  }
+  .ph-media { position: absolute; inset: -10% 0; z-index: -2; }
+  .ph-media img { width: 100%; height: 100%; object-fit: cover; animation: phZoom 2.2s var(--ease) both; }
+  @keyframes phZoom { from { transform: scale(1.12); } to { transform: scale(1); } }
+  .ph-shade {
+    position: absolute; inset: 0; z-index: -1;
+    background: linear-gradient(180deg, rgba(8,10,13,.78) 0%, rgba(8,10,13,.55) 45%, rgba(8,10,13,.92) 100%);
+  }
+  .ph-inner {
+    padding-top: calc(var(--header-h) + 90px);
+    padding-bottom: clamp(2.5rem, 6vw, 4.5rem);
+    display: flex; flex-direction: column; gap: 1.1rem;
+  }
+  .breadcrumb {
+    display: flex; flex-wrap: wrap; align-items: center; gap: .6rem;
+    font-size: .8rem; font-weight: 600; letter-spacing: .04em;
+    color: rgba(255,255,255,.6);
+  }
+  .breadcrumb a { color: rgba(255,255,255,.85); transition: color .2s; min-height: 32px; display: inline-flex; align-items: center; }
+  .breadcrumb a:hover { color: var(--gold); }
+  .crumb-current { color: var(--gold); }
+  .ph-title { color: #fff; max-width: 18ch; text-transform: uppercase; }
+  .ph-title :global(em) { color: var(--gold); }
+
+  /* Page Styles */
+  .inner-main { width: 100%; overflow-x: clip; padding-block: clamp(4rem, 8vw, 6rem); background: var(--bg-alt); }
+  
+  .intro-text {
+    text-align: center;
+    max-width: 800px;
+    margin-inline: auto;
+    margin-bottom: clamp(3rem, 6vw, 5rem);
+  }
+  .intro-text .h2 {
+    margin-bottom: 1.5rem;
+    color: var(--gold-text);
+  }
+  .intro-text .muted {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--ink-muted, var(--ink));
+  }
+
+  /* Gallery Grid - Redesigned */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(2rem, 3vw, 3rem);
+  }
+  
+  .gallery-card {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    background: var(--surface);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+    transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+    animation-delay: var(--delay, 0s);
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--line);
+  }
+  
+  .gallery-card:hover {
+    transform: translateY(-12px) scale(1.01);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.08), 0 5px 15px rgba(0, 0, 0, 0.04);
+  }
+
+  :global(.dark) .gallery-card {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  }
+  :global(.dark) .gallery-card:hover {
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 0 1px var(--gold);
+  }
+
+  .card-img-wrap {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .card-img-wrap::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.1) 100%);
+    pointer-events: none;
+  }
+
+  .card-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  
+  .gallery-card:hover .card-img-wrap img {
+    transform: scale(1.08);
+  }
+
+  .card-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: var(--gold);
+    color: #111;
+    padding: 0.4rem 0.8rem;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+    z-index: 2;
+    backdrop-filter: blur(4px);
+  }
+
+  .card-content {
+    padding: 2rem 1.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    flex-grow: 1;
+    position: relative;
+  }
+  
+  .card-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 1.8rem;
+    right: 1.8rem;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    border-radius: 0 0 3px 3px;
+  }
+
+  .card-title {
+    color: var(--ink);
+    margin: 0;
+    font-size: 1.35rem;
+    font-weight: 800;
+    line-height: 1.3;
+    font-family: var(--font-heading);
+  }
+
+  :global([data-theme="dark"]) .card-title {
+    color: #f1eee7;
+  }
+  :global([data-theme="dark"]) .meta-item {
+    color: #e2e8f0;
+  }
+  :global([data-theme="dark"]) .card-desc p {
+    color: #cbd5e1;
+  }
+
+  .card-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .meta-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    font-size: 0.9rem;
+    color: var(--ink);
+    opacity: 0.85;
+    line-height: 1.4;
+  }
+  
+  .meta-item.event-tag {
+    background: rgba(212, 175, 55, 0.1);
+    color: var(--gold-text);
+    padding: 0.5rem 0.8rem;
+    border-radius: 8px;
+    font-weight: 600;
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    opacity: 1;
+  }
+
+  :global([data-theme="dark"]) .meta-item.event-tag {
+    background: rgba(212, 175, 55, 0.15);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    color: var(--gold);
+  }
+
+  .meta-icon {
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+
+  .card-desc {
+    margin-top: auto;
+    padding-top: 1.2rem;
+    border-top: 1px dashed var(--line);
+  }
+  
+  .card-desc p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--ink);
+    opacity: 0.85;
+    font-style: italic;
+    line-height: 1.6;
+    position: relative;
+    padding-left: 1rem;
+  }
+  
+  .card-desc p::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.4rem;
+    bottom: 0.4rem;
+    width: 3px;
+    background: var(--gold);
+    border-radius: 2px;
+    opacity: 0.7;
+  }
+
+  @media (max-width: 1024px) {
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+  }
+  @media (max-width: 768px) {
+    .page-hero { min-height: 420px; }
+    .ph-inner { padding-top: calc(var(--header-h) + 60px); }
+  }
+  @media (max-width: 600px) {
+    .gallery-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    .card-content { padding: 1.5rem 1.25rem; }
+  }
+</style>

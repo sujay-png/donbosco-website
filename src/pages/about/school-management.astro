@@ -1,0 +1,295 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageLayout from '../../components/PageLayout.astro';
+import Icon from '../../components/Icon.astro';
+
+const management = [
+  {
+    role: 'President (CESU)',
+    name: 'Most Rev. Dr Gerald Isaac Lobo',
+    img: '/about/mgmt-1.jpg',
+    details: [
+      { label: 'Designation', value: 'President of Catholic Educational Society of Udupi (CESU)' },
+      { label: 'Father Name', value: 'Mr Aloysius Lobo' },
+      { label: 'Occupation', value: 'Religious' },
+      { label: 'Address', value: "Bishop's House, Udupi" },
+      { label: 'Phone No', value: '0820-2531908' }
+    ]
+  },
+  {
+    role: 'Vice President (CESU)',
+    name: 'Msgr Ferdinand Roque Gonsalves',
+    img: '/about/mgmt-2.jpg',
+    details: [
+      { label: 'Designation', value: 'Vice President of Catholic Educational Society of Udupi (CESU)' },
+      { label: 'Father Name', value: 'Mr John Gonsalves' },
+      { label: 'Occupation', value: 'Religious' },
+      { label: 'Address', value: "Bishop's House, Udupi" },
+      { label: 'Phone No', value: '0820-2531908' }
+    ]
+  },
+  {
+    role: 'Secretary (CESU)',
+    name: 'Rev Fr Vincent Robert Crasta',
+    img: '/about/mgmt-3.jpg',
+    details: [
+      { label: 'Designation', value: 'Secretary (CESU)' },
+      { label: 'Father Name', value: 'Mr Philip Crasta' },
+      { label: 'Occupation', value: 'Religious (CESU Secretary)' },
+      { label: 'Address', value: 'Diocese of Udupi, Udupi' },
+      { label: 'Phone No', value: '9880072036' }
+    ]
+  },
+  {
+    role: 'Correspondent',
+    name: 'Very Rev. Dr Leslie Clifford DSouza',
+    img: '/about/mgmt-4.jpg',
+    details: [
+      { label: 'Designation', value: "Correspondent of Don Bosco & St Mary's Institutions" },
+      { label: 'Father Name', value: 'Mr Lawrence Dsouza' },
+      { label: 'Occupation', value: 'Religious' },
+      { label: 'Address', value: 'Our Lady of Health Church, Shirva' },
+      { label: 'Phone No', value: '9845700683' }
+    ]
+  },
+  {
+    role: 'Principal',
+    name: 'Rev. Fr. Rolwyn Joy Aranha',
+    img: '/about/mgmt-mh.jpg',
+    details: [
+      { label: 'Designation', value: 'Principal' },
+      { label: 'Father Name', value: 'Mr Ignatious Aranha' },
+      { label: 'Occupation', value: 'Religious' },
+      { label: 'Address', value: 'Our Lady of Health Church, Shirva' },
+      { label: 'Phone No', value: '8880292453' }
+    ]
+  },
+  {
+    role: 'Vice-President, PPC',
+    name: 'Mr Melwyn Aranha',
+    img: '/about/mgmt-6.jpg',
+    details: [
+      { label: 'Designation', value: 'Vice-President, PPC, Our Lady of Health Church' },
+      { label: 'Father Name', value: 'Mr Lewis Aranha' },
+      { label: 'Occupation', value: 'Bank Employee' },
+      { label: 'Address', value: 'Nyarma House, Shirva' },
+      { label: 'Phone No', value: '9980057585' }
+    ]
+  },
+  {
+    role: 'Elected Member',
+    name: 'Mrs Jackeline Mendonca',
+    img: '/about/mgmt-7.jpg',
+    details: [
+      { label: 'Designation', value: 'Elected Member' },
+      { label: 'Spouse Name', value: 'Mr Maurice Mendonca' },
+      { label: 'Occupation', value: 'Retired Second Division Clerk' },
+      { label: 'Address', value: 'Behind Telephone Exchange Office, Shirva' },
+      { label: 'Phone No', value: '9900406700' }
+    ]
+  },
+  {
+    role: 'Parent Representative',
+    name: 'Mr Rayan S Menezes',
+    img: '/about/mgmt-8.jpg',
+    details: [
+      { label: 'Designation', value: 'Parent Representative' },
+      { label: 'Spouse Name', value: 'Mrs Lona Maria Menezes' },
+      { label: 'Occupation', value: 'Accountant' },
+      { label: 'Address', value: 'Tuppe Pade House, Shirva' },
+      { label: 'Phone No', value: '8495803161' }
+    ]
+  },
+  {
+    role: 'Parent Representative',
+    name: 'Mrs Rita Gomes',
+    img: '/about/mgmt-9.jpg',
+    details: [
+      { label: 'Designation', value: 'Parent Representative' },
+      { label: 'Spouse Name', value: 'Mr Philip Felix Gomes' },
+      { label: 'Occupation', value: 'House Wife' },
+      { label: 'Address', value: 'Palame, Darkhas House, Shirva' },
+      { label: 'Phone No', value: '9663431628' }
+    ]
+  },
+  {
+    role: 'Nominated Member',
+    name: 'Mr Anil Dsouza',
+    img: '/about/mgmt-10.jpg',
+    details: [
+      { label: 'Designation', value: 'Nominated Member' },
+      { label: 'Spouse Name', value: 'Mrs Preethi Reshma Dsouza' },
+      { label: 'Occupation', value: 'Advisor for Finance Affairs' },
+      { label: 'Address', value: 'Divine Grace, Sorpu House, Shirva' },
+      { label: 'Phone No', value: '7338499259' }
+    ]
+  },
+  {
+    role: 'Nominated Member',
+    name: 'Mr Ronald Joseph Moras',
+    img: '/about/mgmt-11.jpg',
+    details: [
+      { label: 'Designation', value: 'Nominated Member' },
+      { label: 'Spouse Name', value: 'Mrs Jacintha Winfred Fernandes' },
+      { label: 'Occupation', value: 'Rtd. Associate Professor' },
+      { label: 'Address', value: 'Opposite Jeevan Asha Old Age Home Road, Shirva' },
+      { label: 'Phone No', value: '9731144163' }
+    ]
+  },
+  {
+    role: 'Nominated Member',
+    name: 'Mr Wilson H Rodrigues',
+    img: '/about/mgmt-12.jpg',
+    details: [
+      { label: 'Designation', value: 'Nominated Member' },
+      { label: 'Father Name', value: 'Mr Peter I. Rodrigues' },
+      { label: 'Occupation', value: 'Lawyer' },
+      { label: 'Address', value: 'Daddinahithlu, Shirva' },
+      { label: 'Phone No', value: '9448409734' }
+    ]
+  },
+  {
+    role: 'Nominated Member',
+    name: 'Mrs Jacintha Castelino',
+    img: '/about/mgmt-13.jpg',
+    details: [
+      { label: 'Designation', value: 'Nominated Member' },
+      { label: 'Spouse Name', value: 'Mr. Francis Castelino' },
+      { label: 'Occupation', value: 'Retd. Teacher' },
+      { label: 'Address', value: 'Nishika, Behind Post Office, Shirva' },
+      { label: 'Phone No', value: '9731190245' }
+    ]
+  },
+  {
+    role: 'Staff Representative',
+    name: 'Mrs Irine Cardoza',
+    img: '/about/mgmt-14.jpg',
+    details: [
+      { label: 'Designation', value: 'Staff Representative / Vice Principal' },
+      { label: 'Spouse Name', value: 'Mr Jockim Mendonca' },
+      { label: 'Occupation', value: 'Vice Principal' },
+      { label: 'Address', value: 'Thunduballe, Post Pernal, Via Shirva' },
+      { label: 'Phone No', value: '9448868870' }
+    ]
+  },
+  {
+    role: 'Staff Representative',
+    name: 'Mrs Shyona Dalmeida',
+    img: '/about/mgmt-15.jpg',
+    details: [
+      { label: 'Designation', value: 'Staff Representative' },
+      { label: 'Spouse Name', value: 'Mr Nelson Dalmeida' },
+      { label: 'Occupation', value: 'Teacher' },
+      { label: 'Address', value: 'Kurudai House, Padubelle Post, Via Shirva' },
+      { label: 'Phone No', value: '9008416528' }
+    ]
+  },
+];
+---
+
+<Layout title="School Management – Don Bosco School Shirva">
+  <PageLayout
+    title='School <span>Management</span>'
+    subtitle="Leadership Team"
+    currentPage="School Management"
+    breadcrumb="About Us"
+  >
+    <section class="section">
+      <div class="container">
+        <div class="mg-intro">
+          <span class="ghost" aria-hidden="true">CESU</span>
+          <p class="mg-lead" data-reveal>Don Bosco English Medium School, Shirva is administered by the <em>Catholic Educational Society of Udupi Diocese (CESU)</em>, functioning as a religious minority institution guided by the principles of Don Bosco, under the gracious patronage of Our Lady of Health Church, Shirva.</p>
+        </div>
+
+        <div class="sec-head">
+          <div class="sec-meta" data-reveal><span class="sec-index">(01)</span><span class="eyebrow">Governance</span></div>
+          <div class="sec-title-wrap">
+            <h2 class="h2" data-split>Governing <em>Body</em></h2>
+            <p class="lead" data-reveal>Hover or tap a member to view their details.</p>
+          </div>
+        </div>
+
+        <div class="mg-grid">
+          {management.map((m, index) => (
+            <article
+              class:list={['mg-card', { 'is-key': index === 0 || index === 3 || index === 4 }]}
+              tabindex="0"
+              data-reveal
+              style={`--d:${(index % 4) * 0.06}s`}
+            >
+              <div class="mg-photo">
+                <img src={m.img} alt={m.name} loading="lazy" />
+                <div class="mg-details">
+                  <ul>
+                    {m.details.map((d) => (
+                      <li><span>{d.label}</span>{d.label === 'Phone No' ? <a href={`tel:${d.value.replace(/[^0-9]/g, '')}`}>{d.value}</a> : <strong>{d.value}</strong>}</li>
+                    ))}
+                  </ul>
+                </div>
+                <span class="mg-plus" aria-hidden="true"><Icon name="plus" size={18} /></span>
+              </div>
+              <div class="mg-info">
+                <span class="mg-role">{m.role}</span>
+                <h3 class="mg-name">{m.name}</h3>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  </PageLayout>
+</Layout>
+
+<style>
+  .mg-intro { position: relative; margin-bottom: clamp(3.5rem, 8vw, 6rem); }
+  .ghost {
+    position: absolute; right: -1vw; top: -2.5rem;
+    font-family: var(--font-display); font-size: clamp(7rem, 20vw, 18rem); line-height: .8; letter-spacing: -0.05em;
+    color: transparent; -webkit-text-stroke: 1px var(--line-strong); pointer-events: none; user-select: none;
+  }
+  .mg-lead {
+    position: relative; max-width: 30ch;
+    font-family: var(--font-display); font-weight: 300;
+    font-size: clamp(1.6rem, 3.2vw, 2.7rem); line-height: 1.22; letter-spacing: -0.02em;
+  }
+  .mg-lead em { font-style: italic; color: var(--gold-text); }
+
+  .mg-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(1rem, 2vw, 1.5rem); }
+  .mg-card { display: flex; flex-direction: column; gap: 1rem; outline: none; cursor: pointer; }
+  .mg-photo { position: relative; aspect-ratio: 4 / 5; border-radius: var(--r-lg); overflow: hidden; background: var(--bg-alt); }
+  .mg-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform 1s var(--ease), filter .6s; }
+  .mg-card.is-key .mg-photo { box-shadow: 0 0 0 2px var(--gold); }
+  .mg-details {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(10,12,15,.35), rgba(10,12,15,.94) 45%);
+    color: #fff;
+    display: flex; align-items: flex-end;
+    padding: 1.25rem;
+    opacity: 0; transform: translateY(12px);
+    transition: opacity .45s var(--ease), transform .6s var(--ease);
+  }
+  .mg-details ul { display: flex; flex-direction: column; gap: .55rem; width: 100%; }
+  .mg-details li { display: flex; flex-direction: column; font-size: .85rem; line-height: 1.35; }
+  .mg-details li span { font-size: .64rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); }
+  .mg-details li strong { color: #fff; font-weight: 600; }
+  .mg-details a { color: #fff; font-weight: 700; text-decoration: underline; text-decoration-color: rgba(255,255,255,.35); text-underline-offset: 3px; }
+  .mg-plus {
+    position: absolute; right: .9rem; top: .9rem;
+    width: 40px; height: 40px; border-radius: 50%;
+    background: rgba(255,255,255,.9); color: #101216;
+    display: grid; place-items: center;
+    transition: transform .5s var(--ease), background .3s;
+  }
+  .mg-card:hover .mg-details, .mg-card:focus-within .mg-details { opacity: 1; transform: none; }
+  .mg-card:hover .mg-photo img, .mg-card:focus-within .mg-photo img { transform: scale(1.06); filter: blur(1px); }
+  .mg-card:hover .mg-plus, .mg-card:focus-within .mg-plus { transform: rotate(45deg); background: var(--gold); }
+  .mg-card:focus-visible .mg-photo { box-shadow: 0 0 0 3px var(--gold); }
+
+  .mg-info { display: flex; flex-direction: column; gap: .3rem; }
+  .mg-role { font-size: .72rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--gold-text); }
+  .mg-name { font-size: 1.25rem; line-height: 1.2; }
+
+  @media (max-width: 1100px) { .mg-grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 768px) { .mg-grid { grid-template-columns: repeat(2, 1fr); } .mg-name { font-size: 1.05rem; } .mg-details { padding: .9rem; } .mg-details li { font-size: .76rem; } }
+  @media (max-width: 420px) { .mg-grid { grid-template-columns: 1fr; } .mg-photo { aspect-ratio: 1; } .mg-details li { font-size: .85rem; } }
+</style>

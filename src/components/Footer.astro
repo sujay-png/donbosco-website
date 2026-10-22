@@ -1,0 +1,169 @@
+---
+import Icon from './Icon.astro';
+const cols = [
+  { title: 'About Us', links: [
+    ['Know your Don Bosco', '/about/know-your-don-bosco'],
+    ['School Anthem', '/about/school-anthem'],
+    ['History', '/about/history'],
+    ['Contact', '/contact'],
+  ] },
+  { title: 'Information', links: [
+    ['Mandatory Disclosures', '/mandatory-public-disclosure'],
+    ['CBSE Requirements', '/cbse-requirements'],
+    ['Facilities', '/facilities'],
+    ['Admission', '/admission'],
+  ] },
+  { title: 'Academics', links: [
+    ['Academic Calendar', '/academic-calendar.pdf'],
+    ['Annual report', '/annual-report'],
+    ['Achievements', '/achievements'],
+    ['Board Results', '/board-results'],
+  ] },
+  { title: 'Media', links: [
+    ['Events', '/news-events'],
+    ['Students Gallery', '/students-gallery'],
+    ['Photo Gallery', '/#gallery'],
+    ['Video Gallery', '/#gallery'],
+    ['School Magazine', '/school-magazine'],
+  ] },
+];
+const year = new Date().getFullYear();
+---
+<footer id="contact" class="footer deep">
+  <div class="container">
+    <div class="f-top">
+      <div class="f-brand">
+        <a href="/" class="f-logo" aria-label="Don Bosco School — Home">
+          <span class="f-mark"><img src="/logo.jpg" alt="" width="64" height="64" loading="lazy" /></span>
+          <span>
+            <span class="f-name">Don Bosco</span>
+            <span class="f-sub">English Medium School Shirva</span>
+          </span>
+        </a>
+        <p class="f-motto">“Growing in Truth and Purity”</p>
+      </div>
+
+      <div class="f-contact">
+        <h2 class="f-heading">Contact Us</h2>
+        <ul>
+          <li><a href="tel:+918722089715"><Icon name="phone" size={18} /> +91 87220 89715</a></li>
+          <li><a href="mailto:shirvadonboscoschool@gmail.com"><Icon name="mail" size={18} /> shirvadonboscoschool@gmail.com</a></li>
+          <li><span><Icon name="pin" size={18} /> Shirva, Udupi District<br />Pincode – 574116</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="f-links">
+      {cols.map((c) => (
+        <nav aria-label={c.title}>
+          <h2 class="f-heading">{c.title}</h2>
+          <ul>
+            {c.links.map(([label, href]) => <li><a href={href}>{label}</a></li>)}
+          </ul>
+        </nav>
+      ))}
+    </div>
+
+    <div class="f-wordmark" aria-hidden="true">
+      <span>Don Bosco</span><em>Shirva</em>
+    </div>
+
+    <div class="f-bottom">
+      <p>Copyright &copy; {year}. All Rights Reserved by Don Bosco Shirva.</p>
+      <div class="f-social">
+        <a href="https://www.facebook.com/donboscocbseshirva" aria-label="Facebook" target="_blank" rel="noopener"><Icon name="facebook" size={18} /></a>
+        <a href="https://x.com/DonBoscoSchoolShirva" aria-label="X (Twitter)" target="_blank" rel="noopener"><Icon name="x" size={16} /></a>
+        <a href="https://www.instagram.com/donboscoshoolshirva/" aria-label="Instagram" target="_blank" rel="noopener"><Icon name="instagram" size={18} /></a>
+        <button type="button" class="f-top-btn" aria-label="Back to top" data-to-top>
+          <Icon name="arrow" size={18} />
+        </button>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.querySelector('[data-to-top]')?.addEventListener('click', () => {
+    const l = (window as any).__lenis;
+    if (l) l.scrollTo(0); else window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+
+<style>
+  .footer { padding-top: clamp(4rem, 8vw, 6.5rem); overflow: hidden; }
+  .f-top {
+    display: grid; grid-template-columns: 1.4fr 1fr; gap: 3rem;
+    padding-bottom: clamp(2.5rem, 5vw, 4rem);
+    border-bottom: 1px solid var(--on-deep-line);
+  }
+  .f-logo { display: inline-flex; align-items: center; gap: 1rem; }
+  .f-mark { width: 72px; height: 72px; border-radius: 50%; background: #fff; display: grid; place-items: center; flex-shrink: 0; }
+  .f-mark img { width: 58px; height: 58px; object-fit: contain; }
+  .f-name { display: block; font-family: var(--font-display); font-size: 1.9rem; line-height: 1; letter-spacing: -0.02em; }
+  .f-sub { display: block; font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--on-deep-muted); margin-top: .35rem; }
+  .f-motto {
+    margin-top: 2rem;
+    font-family: var(--font-display); font-style: italic; font-weight: 300;
+    font-size: clamp(1.5rem, 2.8vw, 2.4rem); line-height: 1.2; color: var(--gold);
+    font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+  }
+  .f-heading {
+    font-family: var(--font-body); font-size: .74rem; font-weight: 800; letter-spacing: .2em; text-transform: uppercase;
+    color: var(--on-deep-muted); margin-bottom: 1.25rem;
+  }
+  .f-contact ul { display: flex; flex-direction: column; gap: .9rem; }
+  .f-contact a, .f-contact span { display: inline-flex; align-items: flex-start; gap: .8rem; font-size: 1.02rem; color: var(--on-deep); min-height: 32px; word-break: break-word; }
+  .f-contact :global(svg) { color: var(--gold); margin-top: 4px; flex-shrink: 0; }
+  .f-contact a:hover { color: var(--gold); }
+
+  .f-links {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem;
+    padding-block: clamp(2.5rem, 5vw, 3.5rem);
+  }
+  .f-links ul { display: flex; flex-direction: column; gap: .2rem; }
+  .f-links a {
+    display: inline-block; padding: .35rem 0; color: var(--on-deep); opacity: .82;
+    transition: opacity .2s, color .2s, transform .35s var(--ease);
+  }
+  .f-links a:hover { opacity: 1; color: var(--gold); transform: translateX(4px); }
+
+  .f-wordmark {
+    display: flex; align-items: baseline; gap: 2vw;
+    font-family: var(--font-display);
+    font-size: clamp(3.5rem, 15vw, 15rem);
+    line-height: .85; letter-spacing: -0.05em; font-weight: 300;
+    color: var(--on-deep);
+    padding-top: 1rem;
+    white-space: nowrap;
+    user-select: none;
+  }
+  .f-wordmark span { opacity: .95; }
+  .f-wordmark em { color: var(--gold); font-weight: 300; font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1; font-size: .45em; }
+
+  .f-bottom {
+    display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap;
+    padding-block: 1.75rem 2rem; margin-top: 1.5rem;
+    border-top: 1px solid var(--on-deep-line);
+    font-size: .88rem; color: var(--on-deep-muted);
+  }
+  .f-social { display: flex; gap: .5rem; }
+  .f-social a, .f-top-btn {
+    width: 46px; height: 46px; border-radius: 50%;
+    border: 1px solid var(--on-deep-line); color: var(--on-deep);
+    display: grid; place-items: center;
+    transition: background .3s, color .3s, border-color .3s;
+  }
+  .f-social a:hover, .f-top-btn:hover { background: var(--gold); color: #101216; border-color: var(--gold); }
+  .f-top-btn :global(svg) { transform: rotate(-90deg); }
+
+  @media (max-width: 992px) {
+    .f-top { grid-template-columns: 1fr; }
+    .f-links { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 480px) {
+    .f-links { grid-template-columns: 1fr; gap: 1.75rem; }
+    .f-bottom { flex-direction: column-reverse; align-items: flex-start; gap: 1.25rem; }
+    .f-wordmark { font-size: 16vw; }
+    .f-wordmark em { display: none; }
+  }
+</style>

@@ -1,0 +1,178 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const activities = [
+  {
+    "title": "Indoor Games",
+    "image": "/sports/3-15.jpg",
+    "content": "We provide an excellent platform for students to engage in various indoor games. Our facilities include Chess, Carrom (Singles & Doubles), Table Tennis (Singles & Doubles), Shuttle Badminton (Singles & Doubles), and Archery. These games help improve concentration, strategic thinking, and quick reflexes."
+  },
+  {
+    "title": "Outdoor Games",
+    "image": "/sports/7-4.jpg",
+    "content": "Our vast outdoor sports facilities encourage physical fitness and teamwork. We offer professional coaching and courts for Volleyball, Throwball, Basketball, Football, Tennikoit, and Hockey. Students actively participate and build their endurance, agility, and sportsmanship."
+  },
+  {
+    "title": "Wellness & Fitness Activities",
+    "image": "/sports/1-34.jpg",
+    "content": "Holistic development requires a healthy body and mind. We conduct Yoga, Meditation, Physical Fitness Drills, Mass Drill, and Aerobics to ensure our students maintain excellent physical and mental well-being throughout their academic journey."
+  },
+  {
+    "title": "Track and Field Events",
+    "image": "/sports/2-21.jpg",
+    "content": "Athletics is a major part of our sports curriculum. We train students in Short Distance Races (60m, 100m, 200m, 400m), Middle Distance Races (600m, 800m, 1500m), Long Distance Races (3000m, 5000m, Walk Race), Throw Events (Shot Put, Discus Throw, Javelin Throw), Jump Events (Long Jump, High Jump, Triple Jump), and Relay & Hurdles."
+  },
+  {
+    "title": "House-wise Sports & Intramural Games",
+    "image": "/sports/5-5.jpg",
+    "content": "Our school encourages a spirit of healthy competition through house-wise sports activities, where students compete in various games and events to earn points for their houses. These activities help instill leadership, cooperation, and sportsmanship among participants."
+  },
+  {
+    "title": "Annual Sports Meet & Early Activities",
+    "image": "/sports/6-4.jpg",
+    "content": "A much-awaited event, our Annual Sports Meet is a celebration of talent, perseverance, and teamwork. Additionally, to instill a love for sports from an early age, we organize fun and engaging sports activities for Grade 1 to 4 & Kindergarten students, focusing on motor skills and coordination."
+  }
+];
+---
+
+<Layout title="Sports & Games - Don Bosco School Shirva">
+  <Header />
+  
+  <section class="page-hero on-image">
+    <div class="ph-media" data-parallax="-0.12"><img src="/about/old-school.jpg" alt="" fetchpriority="high" /></div>
+    <div class="ph-shade" aria-hidden="true"></div>
+    <div class="container ph-inner">
+      <nav class="breadcrumb" aria-label="Breadcrumb" data-reveal="fade">
+        <a href="/">Home</a>
+        <span aria-hidden="true">/</span>
+        <span>Academics</span>
+        <span aria-hidden="true">/</span>
+        <span>Activities</span>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page" class="crumb-current">Sports & Games</span>
+      </nav>
+      <h1 class="h1 ph-title" data-split>Sports <em>& Games</em></h1>
+    </div>
+  </section>
+
+  <main class="inner-main section">
+    <div class="container">
+      <div class="intro-text" data-reveal>
+        <h2 class="h2">Exciting Sports Activities at Our School</h2>
+        <p class="muted">Sports and games are an integral part of education, fostering physical fitness, teamwork, and discipline among students. Our school is dedicated to providing a well-rounded sports curriculum that encourages active participation and nurtures talent. From indoor games to outdoor athletics, we offer a wide range of activities to cater to every student’s interests and abilities.</p>
+        <p class="muted">At our school, we believe that sports and physical education are essential for holistic development. By participating in these activities, students not only stay fit but also learn valuable life skills that prepare them for the future.</p>
+      </div>
+
+      <div class="eca-list">
+        {activities.map((act, i) => (
+          <article class:list={['eca-item', { 'is-reverse': i % 2 === 1 }]}>
+            <div class="media eca-media" data-reveal="clip">
+              <img src={act.image} alt={act.title} loading="lazy" />
+            </div>
+            <div class="eca-body" data-reveal>
+              <span class="eca-num">{String(i + 1).padStart(2, '0')} / {String(activities.length).padStart(2, '0')}</span>
+              <h3 class="h3 eca-title">{act.title}</h3>
+              <div class="eca-desc">
+                <p>{act.content}</p>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </main>
+  
+  <Footer />
+</Layout>
+
+<style>
+  /* Hero Styles */
+  .page-hero {
+    position: relative;
+    min-height: clamp(460px, 62vh, 640px);
+    display: flex; align-items: flex-end;
+    color: #fff;
+    overflow: hidden;
+    isolation: isolate;
+    background: #0b0d10;
+  }
+  .ph-media { position: absolute; inset: -10% 0; z-index: -2; }
+  .ph-media img { width: 100%; height: 100%; object-fit: cover; animation: phZoom 2.2s var(--ease) both; }
+  @keyframes phZoom { from { transform: scale(1.12); } to { transform: scale(1); } }
+  .ph-shade {
+    position: absolute; inset: 0; z-index: -1;
+    background: linear-gradient(180deg, rgba(8,10,13,.78) 0%, rgba(8,10,13,.55) 45%, rgba(8,10,13,.92) 100%);
+  }
+  .ph-inner {
+    padding-top: calc(var(--header-h) + 90px);
+    padding-bottom: clamp(2.5rem, 6vw, 4.5rem);
+    display: flex; flex-direction: column; gap: 1.1rem;
+  }
+  .breadcrumb {
+    display: flex; flex-wrap: wrap; align-items: center; gap: .6rem;
+    font-size: .8rem; font-weight: 600; letter-spacing: .04em;
+    color: rgba(255,255,255,.6);
+  }
+  .breadcrumb a { color: rgba(255,255,255,.85); transition: color .2s; min-height: 32px; display: inline-flex; align-items: center; }
+  .breadcrumb a:hover { color: var(--gold); }
+  .crumb-current { color: var(--gold); }
+  .ph-title { color: #fff; max-width: 18ch; text-transform: uppercase; }
+  .ph-title :global(em) { color: var(--gold); }
+
+  /* Page Styles */
+  .inner-main { width: 100%; overflow-x: clip; padding-block: clamp(3rem, 6vw, 5rem); }
+  
+  .intro-text {
+    text-align: center;
+    max-width: 800px;
+    margin-inline: auto;
+    margin-bottom: clamp(3rem, 6vw, 5rem);
+  }
+  .intro-text .h2 {
+    margin-bottom: 1.5rem;
+    color: var(--gold-text);
+  }
+  .intro-text .muted {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+  }
+
+  .eca-list-layout {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(2.5rem, 5vw, 4rem);
+    max-width: 1000px;
+    margin-inline: auto;
+  }
+
+  /* ECA List Layout */
+  .eca-list { display: flex; flex-direction: column; gap: clamp(4rem, 8vw, 7rem); }
+  .eca-item { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 6vw, 5.5rem); align-items: center; }
+  .eca-item.is-reverse .eca-media { order: 2; }
+  .eca-media { aspect-ratio: 4 / 3; border-radius: var(--r-lg); width: 100%; object-fit: cover; }
+  .eca-body { display: flex; flex-direction: column; gap: 1.25rem; }
+  .eca-num { font-family: var(--font-display); font-style: italic; color: var(--gold-text); font-size: 1.15rem; font-weight: 600; }
+  .eca-title { font-family: var(--font-heading); font-size: 1.7rem; font-weight: 800; color: #1a237e; margin: 0; }
+  .eca-desc p { color: var(--muted); font-size: 1.1rem; line-height: 1.8; margin-bottom: 0; }
+
+  @media (max-width: 992px) {
+    .eca-item { grid-template-columns: 1fr; gap: 2rem; }
+    .eca-item.is-reverse .eca-media { order: 0; }
+  }
+  @media (max-width: 768px) {
+    .page-hero { min-height: 420px; }
+    .ph-inner { padding-top: calc(var(--header-h) + 60px); }
+    .eca-title { font-size: 1.45rem; }
+  }
+
+  :global([data-theme="dark"]) .eca-title {
+    color: var(--gold) !important;
+  }
+  :global([data-theme="dark"]) .eca-desc p,
+  :global([data-theme="dark"]) .intro-text .muted {
+    color: #cbd5e1 !important;
+  }
+</style>

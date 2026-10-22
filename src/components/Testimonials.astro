@@ -1,0 +1,191 @@
+---
+import Icon from './Icon.astro';
+const testimonials = [
+  { name: 'Mohammed Fauzan', role: 'Alumnus', image: '/testimonials/t1.jpg',
+    quote: 'I am proud to be an alumnus of Don Bosco English Medium School, Shirva. Reflecting on my journey, I am filled with gratitude for the foundational years I spent within those vibrant walls. Focus on developing practical skills and embracing opportunities.' },
+  { name: 'Ancha Oshin Dsouza', role: 'Chartered Accountant & Public Speaker', image: '/testimonials/t2.jpg',
+    quote: 'My journey to becoming a Chartered Accountant, poet, and public speaker was firmly rooted in the strong foundation laid during my primary and high school years at Don Bosco. The excellent teaching and unwavering support were instrumental in my successes.' },
+  { name: 'Dr. Edlin Glane Mathias', role: 'Ph.D.', image: '/testimonials/t3.jpg',
+    quote: 'My time there provided a strong academic foundation and taught me important life lessons in discipline, responsibility, and integrity. The dedicated teachers instilled in me a love for learning, which has guided me throughout my career.' },
+  { name: 'Sarah Dsouza', role: 'Alumnus', image: '/testimonials/t4.jpg',
+    quote: 'When I first entered Don Bosco School, I was shy and struggling with English, but the school gave me a voice, a stage, and the courage to dream big. Today, I am a lecturer in nursing at the University of Worcester, UK, thanks to the transformative education.' },
+  { name: 'Shreya Achar', role: 'Alumnus', image: '/testimonials/t5.jpg',
+    quote: 'As a proud alumna of Don Bosco School, I attribute my academic excellence and discovery of my passion for dance to the nurturing environment provided by the school. The unwavering support from teachers has been invaluable.' },
+  { name: 'Xanely Dsouza', role: 'Alumnus', image: '/testimonials/t6.jpg',
+    quote: 'The Knowledge, skills and connections I gained in academics or extracurricular activities during my time here have been invaluable in shaping who I am today. All my teachers were incredibly supportive.' },
+  { name: 'Roline Stapny Saldanha', role: 'Software Development Engineer, Amazon Seattle', image: '/testimonials/t7.jpg',
+    quote: 'Attending Don Bosco from pre-school to 10th standard was a transformative experience for me, shaping my personal growth and instilling strong moral values. Don Bosco gifted me with invaluable confidence in my abilities.' },
+];
+const total = String(testimonials.length).padStart(2, '0');
+---
+<section id="testimonials" class="section deep testimonials" aria-roledescription="carousel" aria-label="Student testimonials">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-meta" data-reveal>
+        <span class="sec-index">(06)</span>
+        <span class="eyebrow">What They Say</span>
+      </div>
+      <div class="sec-title-wrap">
+        <h2 class="h2" data-split>Student <em>Testimonials</em></h2>
+      </div>
+    </div>
+
+    <div class="t-grid" data-reveal>
+      <div class="t-stage" aria-live="polite">
+        <span class="t-mark" aria-hidden="true"><Icon name="quote" size={44} /></span>
+        {testimonials.map((t, i) => (
+          <figure class:list={['t-slide', { 'is-active': i === 0 }]} data-slide={i} aria-hidden={i === 0 ? 'false' : 'true'}>
+            <blockquote class="t-quote">{t.quote}</blockquote>
+            <figcaption class="t-author">
+              <img src={t.image} alt="" loading="lazy" width="56" height="56" />
+              <span>
+                <span class="t-name">{t.name}</span>
+                <span class="t-role">{t.role}</span>
+              </span>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+
+      <div class="t-side">
+        <div class="t-avatars" role="tablist" aria-label="Choose testimonial">
+          {testimonials.map((t, i) => (
+            <button class:list={['t-av', { 'is-active': i === 0 }]} role="tab" aria-selected={i === 0 ? 'true' : 'false'} aria-label={t.name} data-go={i}>
+              <img src={t.image} alt="" loading="lazy" />
+            </button>
+          ))}
+        </div>
+
+        <div class="t-controls">
+          <span class="t-count"><span data-count>01</span> / {total}</span>
+          <div class="t-progress"><span data-progress></span></div>
+          <div class="t-btns">
+            <button class="t-btn" aria-label="Previous testimonial" data-prev><Icon name="arrow-left" size={20} /></button>
+            <button class="t-btn" aria-label="Next testimonial" data-next><Icon name="arrow" size={20} /></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const root = document.querySelector<HTMLElement>('.testimonials');
+  if (root) {
+    const slides = Array.from(root.querySelectorAll<HTMLElement>('.t-slide'));
+    const avs = Array.from(root.querySelectorAll<HTMLButtonElement>('.t-av'));
+    const count = root.querySelector<HTMLElement>('[data-count]');
+    const bar = root.querySelector<HTMLElement>('[data-progress]');
+    const stage = root.querySelector<HTMLElement>('.t-stage');
+    const DURATION = 7000;
+    let idx = 0, timer = 0, start = 0, paused = false, visible = false;
+
+    const fitHeight = () => {
+      if (!stage) return;
+      const h = Math.max(...slides.map((s) => s.scrollHeight));
+      stage.style.minHeight = h + 'px';
+    };
+    const go = (n: number) => {
+      idx = (n + slides.length) % slides.length;
+      slides.forEach((s, i) => { s.classList.toggle('is-active', i === idx); s.setAttribute('aria-hidden', String(i !== idx)); });
+      avs.forEach((a, i) => { a.classList.toggle('is-active', i === idx); a.setAttribute('aria-selected', String(i === idx)); });
+      if (count) count.textContent = String(idx + 1).padStart(2, '0');
+      start = performance.now();
+    };
+    const tick = (t: number) => {
+      if (!paused && visible) {
+        const p = Math.min((t - start) / DURATION, 1);
+        if (bar) bar.style.transform = `scaleX(${p})`;
+        if (p >= 1) go(idx + 1);
+      } else {
+        start = t - (parseFloat(bar?.style.transform.replace(/[^\d.]/g, '') || '0') * DURATION);
+      }
+      timer = requestAnimationFrame(tick);
+    };
+
+    root.querySelector('[data-next]')?.addEventListener('click', () => go(idx + 1));
+    root.querySelector('[data-prev]')?.addEventListener('click', () => go(idx - 1));
+    avs.forEach((a) => a.addEventListener('click', () => go(parseInt(a.dataset.go!, 10))));
+    root.addEventListener('mouseenter', () => (paused = true));
+    root.addEventListener('mouseleave', () => (paused = false));
+    new IntersectionObserver((e) => (visible = e[0].isIntersecting), { threshold: 0.3 }).observe(root);
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) { start = performance.now(); timer = requestAnimationFrame(tick); }
+    fitHeight();
+    window.addEventListener('resize', fitHeight);
+    document.fonts?.ready.then(fitHeight);
+  }
+</script>
+
+<style>
+  .t-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+    gap: clamp(2.5rem, 6vw, 6rem);
+    align-items: end;
+  }
+  .t-stage { position: relative; display: grid; }
+  .t-mark { color: var(--gold); margin-bottom: 1.5rem; display: block; grid-area: 1 / 1; align-self: start; }
+  .t-slide {
+    grid-area: 1 / 1;
+    margin: 0;
+    padding-top: 4.5rem;
+    display: flex; flex-direction: column; gap: 2rem;
+    opacity: 0; transform: translateY(18px);
+    transition: opacity .7s var(--ease), transform .9s var(--ease);
+    pointer-events: none;
+  }
+  .t-slide.is-active { opacity: 1; transform: none; pointer-events: auto; transition-delay: .15s; }
+  .t-quote {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 2.5vw, 2.15rem);
+    line-height: 1.32; letter-spacing: -0.015em; font-weight: 300;
+    color: var(--on-deep);
+  }
+  .t-author { display: flex; align-items: center; gap: 1rem; }
+  .t-author img { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; border: 2px solid var(--gold); }
+  .t-author > span { display: flex; flex-direction: column; }
+  .t-name { font-weight: 700; font-size: 1.05rem; color: var(--on-deep); }
+  .t-role { font-size: .85rem; color: var(--on-deep-muted); }
+
+  .t-side { display: flex; flex-direction: column; gap: 2rem; }
+  .t-avatars { display: grid; grid-template-columns: repeat(4, 1fr); gap: .75rem; }
+  .t-av {
+    aspect-ratio: 1; border-radius: var(--r); overflow: hidden; position: relative;
+    filter: grayscale(1); opacity: .55;
+    transition: filter .5s, opacity .5s, transform .5s var(--ease);
+    min-height: 44px;
+  }
+  .t-av img { width: 100%; height: 100%; object-fit: cover; }
+  .t-av::after { content: ""; position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 0 0 0 var(--gold); transition: box-shadow .4s var(--ease); }
+  .t-av:hover { opacity: .9; filter: grayscale(.3); }
+  .t-av.is-active { filter: none; opacity: 1; transform: translateY(-4px); }
+  .t-av.is-active::after { box-shadow: inset 0 0 0 3px var(--gold); }
+
+  .t-controls { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 1.25rem; }
+  .t-count { font-family: var(--font-display); font-style: italic; color: var(--on-deep-muted); font-variant-numeric: tabular-nums; }
+  .t-count span { color: var(--on-deep); font-style: normal; }
+  .t-progress { height: 1px; background: var(--on-deep-line); position: relative; overflow: hidden; }
+  .t-progress span { position: absolute; inset: 0; background: var(--gold); transform-origin: 0 50%; transform: scaleX(0); }
+  .t-btns { display: flex; gap: .5rem; }
+  .t-btn {
+    width: 52px; height: 52px; border-radius: 50%;
+    border: 1px solid var(--on-deep-line); color: var(--on-deep);
+    display: grid; place-items: center;
+    transition: background .3s, color .3s, border-color .3s;
+  }
+  .t-btn:hover { background: var(--gold); color: #101216; border-color: var(--gold); }
+
+  @media (max-width: 992px) {
+    .t-grid { grid-template-columns: 1fr; }
+    .t-avatars { grid-template-columns: repeat(7, 1fr); }
+  }
+  @media (max-width: 560px) {
+    .t-avatars { grid-template-columns: repeat(7, minmax(0, 1fr)); gap: .35rem; }
+    .t-av { min-height: 0; }
+    .t-av { border-radius: 10px; }
+  }
+  @media (max-width: 480px) {
+    .t-slide { padding-top: 3.5rem; gap: 1.25rem; }
+    .t-quote { font-size: 1.25rem; }
+  }
+</style>
