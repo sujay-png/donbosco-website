@@ -4,7 +4,9 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Icon from '../components/Icon.astro';
 import Collaborations from '../components/Collaborations.astro';
-import { activitiesList, kgActivitiesList } from '../data/news-events';
+import { getNewsCollections } from '../lib/news';
+
+const { activities: activitiesList, kgActivities: kgActivitiesList } = await getNewsCollections();
 ---
 
 <Layout 

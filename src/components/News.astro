@@ -1,20 +1,9 @@
 ---
 import Icon from './Icon.astro';
-const news = [
-  { title: "Patron's Day Celebration", date: 'February 28, 2026', category: '2025-2026',
-    image: 'https://donboscoschoolshirva.com/wp-content/uploads/2026/02/MG_1325-scaled-500x352.jpg',
-    excerpt: 'Don Bosco School celebrated its Patron’s Day with great joy and devotion on the feast day of St. John Bosco.' },
-  { title: 'Farewell Ceremony of Grade 10', date: 'February 22, 2026', category: '2025-2026',
-    image: 'https://donboscoschoolshirva.com/wp-content/uploads/2026/02/MG_0902-scaled-500x352.jpg',
-    excerpt: 'The Farewell Ceremony for the Grade 10 students of the 2025–26 batch was held on 28th January 2026.' },
-  { title: 'Republic Day Celebration', date: 'January 26, 2026', category: '2025-2026',
-    image: '/events/event3.png',
-    excerpt: 'The 76th Republic Day was celebrated with patriotic fervor in the school premises.' },
-  { title: 'Christmas Celebration', date: 'December 23, 2025', category: '2025-2026',
-    image: '/events/event4.png',
-    excerpt: 'The joyous festival of Christmas was celebrated with a special assembly and cultural programs.' },
-];
-const [feature, ...rest] = news;
+import { getLatestNews } from '../lib/news';
+
+const latest = await getLatestNews(4);
+const [feature, ...rest] = latest;
 ---
 <section id="news" class="section news">
   <div class="container">
@@ -29,10 +18,11 @@ const [feature, ...rest] = news;
     </div>
 
     <div class="news-grid">
+      {feature && (
       <article class="news-feature" data-reveal>
-        <a href="#" class="nf-link">
+        <a href={`/news-events/${feature.slug}`} class="nf-link">
           <div class="media nf-media">
-            <img src={feature.image} alt={feature.title} loading="lazy" onerror="this.style.visibility='hidden'" />
+            <img src={feature.localImg} alt={feature.title} loading="lazy" onerror="this.style.visibility='hidden'" />
             <span class="tag tag-gold nf-tag">{feature.category}</span>
           </div>
           <div class="nf-body">
@@ -43,13 +33,14 @@ const [feature, ...rest] = news;
           </div>
         </a>
       </article>
+      )}
 
       <div class="news-list">
         {rest.map((n, i) => (
           <article class="news-item" data-reveal style={`--d:${0.1 * (i + 1)}s`}>
-            <a href="#" class="ni-link">
+            <a href={`/news-events/${n.slug}`} class="ni-link">
               <div class="media ni-media">
-                <img src={n.image} alt={n.title} loading="lazy" onerror="this.style.visibility='hidden'" />
+                <img src={n.localImg} alt={n.title} loading="lazy" onerror="this.style.visibility='hidden'" />
               </div>
               <div class="ni-body">
                 <div class="ni-meta">

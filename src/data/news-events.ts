@@ -10,9 +10,11 @@ export interface NewsEventItem {
   originalImg?: string;
   excerpt: string;
   paragraphs: string[];
+  htmlContent?: string;
   albumUrl?: string | null;
   author: string;
   readingTime: string;
+  source?: 'local' | 'wordpress';
 }
 
 export const activitiesList: NewsEventItem[] = [

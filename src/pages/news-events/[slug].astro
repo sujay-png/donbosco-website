@@ -4,9 +4,11 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import Icon from '../../components/Icon.astro';
 import Collaborations from '../../components/Collaborations.astro';
-import { allNewsEvents, getRelatedEvents, type NewsEventItem } from '../../data/news-events';
+import { getAllNewsEvents, getRelatedEvents } from '../../lib/news';
+import type { NewsEventItem } from '../../data/news-events';
 
 export async function getStaticPaths() {
+  const allNewsEvents = await getAllNewsEvents();
   return allNewsEvents.map((event) => ({
     params: { slug: event.slug },
     props: { event },
@@ -18,7 +20,7 @@ interface Props {
 }
 
 const { event } = Astro.props;
-const relatedEvents = getRelatedEvents(event.slug, 3);
+const relatedEvents = await getRelatedEvents(event.slug, 3);
 const parentTabHash = event.categorySlug === 'kg-activities' ? '#kg-activities' : '#activities';
 const categoryName = event.categorySlug === 'kg-activities' ? 'KG Activities' : 'Activities';
 ---
@@ -97,13 +99,17 @@ const categoryName = event.categorySlug === 'kg-activities' ? 'KG Activities' : 
         </div>
 
         <!-- Article Prose Content -->
-        <div class="article-body">
-          {event.paragraphs.map((p, idx) => (
-            <p class:list={[{ 'lead-paragraph': idx === 0 }]}>
-              {p}
-            </p>
-          ))}
-        </div>
+        {event.htmlContent ? (
+          <div class="article-body wp-content" set:html={event.htmlContent} />
+        ) : (
+          <div class="article-body">
+            {event.paragraphs.map((p, idx) => (
+              <p class:list={[{ 'lead-paragraph': idx === 0 }]}>
+                {p}
+              </p>
+            ))}
+          </div>
+        )}
 
         <!-- Google Photos Album Callout if available -->
         {event.albumUrl && (
@@ -382,7 +388,8 @@ const categoryName = event.categorySlug === 'kg-activities' ? 'KG Activities' : 
   .article-body p {
     margin: 0;
   }
-  .article-body .lead-paragraph {
+  .article-body .lead-paragraph,
+  .article-body.wp-content > p:first-of-type {
     font-size: clamp(1.12rem, 1.4vw, 1.25rem);
     line-height: 1.8;
     color: var(--ink);
@@ -390,6 +397,20 @@ const categoryName = event.categorySlug === 'kg-activities' ? 'KG Activities' : 
     padding-left: 1.25rem;
     border-left: 4px solid var(--gold);
     margin-bottom: 0.5rem;
+  }
+  .article-body.wp-content :global(img) {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--r);
+    margin: 0.5rem 0 1rem;
+  }
+  .article-body.wp-content :global(ul),
+  .article-body.wp-content :global(ol) {
+    margin: 0;
+    padding-left: 1.25rem;
+  }
+  .article-body.wp-content :global(figure) {
+    margin: 0;
   }
 
   /* Google Photos Album Callout */
