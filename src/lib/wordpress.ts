@@ -1,9 +1,19 @@
+import fs from 'node:fs';
+import path from 'node:path';
 import type { NewsEventItem } from '../data/news-events';
 
 const DEFAULT_WP_API = 'https://dashboard.donboscoschoolshirva.com/wp-json/wp/v2';
 const FALLBACK_IMAGE = '/about/old-school.jpg';
 const SKIP_SLUGS = new Set(['hello-world']);
 const CACHE_TTL_MS = 60_000;
+const REQUEST_TIMEOUT_MS = 15_000;
+const CACHE_FILE = path.resolve(process.cwd(), 'src/data/wordpress-cache.json');
+
+const DEFAULT_HEADERS = {
+  'User-Agent':
+    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 DonBoscoSchool/1.0',
+  'Accept': 'application/json, text/plain, */*',
+};
 
 type WpRendered = { rendered?: string };
 type WpTerm = { taxonomy?: string; slug?: string; name?: string };
@@ -30,7 +40,13 @@ let cachedPosts: NewsEventItem[] | null = null;
 let cachedAt = 0;
 
 function wpApiBase() {
-  return (import.meta.env.WORDPRESS_API_URL as string | undefined)?.replace(/\/$/, '') || DEFAULT_WP_API;
+  const raw = (import.meta.env.WORDPRESS_API_URL as string | undefined)?.trim();
+  if (!raw) return DEFAULT_WP_API;
+  const cleaned = raw.replace(/\/$/, '');
+  if (!cleaned.includes('/wp-json')) {
+    return `${cleaned}/wp-json/wp/v2`;
+  }
+  return cleaned;
 }
 
 function decodeHtml(value: string) {
@@ -121,8 +137,6 @@ function mapCategory(post: WpPost): Pick<NewsEventItem, 'category' | 'categorySl
     };
   }
 
-  // Any other category (School Activities, Uncategorized, new ones staff add)
-  // shows under Activities with the same badge as the hardcoded posts.
   return {
     category: 'School Activity',
     categorySlug: 'activities',
@@ -144,7 +158,6 @@ function mapPost(post: WpPost): NewsEventItem | null {
   const htmlContent = sanitizeHtml(post.content?.rendered ?? '').trim();
   const paragraphs = htmlToParagraphs(htmlContent);
   const excerptSource = post.excerpt?.rendered || paragraphs[0] || '';
-  // WordPress auto-excerpts end with "[…]" — drop it so cards match the hardcoded style.
   const excerpt = stripHtml(excerptSource).replace(/\s*\[(?:…|\.\.\.)\]\s*$/, '').trim();
   const { category, categorySlug } = mapCategory(post);
 
@@ -167,6 +180,68 @@ function mapPost(post: WpPost): NewsEventItem | null {
   };
 }
 
+function readDiskCache(): NewsEventItem[] | null {
+  try {
+    if (fs.existsSync(CACHE_FILE)) {
+      const raw = fs.readFileSync(CACHE_FILE, 'utf-8');
+      const data = JSON.parse(raw);
+      if (Array.isArray(data) && data.length > 0) {
+        return data as NewsEventItem[];
+      }
+    }
+  } catch (err) {
+    console.warn('[wordpress] Could not read disk cache:', err);
+  }
+  return null;
+}
+
+function writeDiskCache(items: NewsEventItem[]) {
+  try {
+    const dir = path.dirname(CACHE_FILE);
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
+    }
+    fs.writeFileSync(CACHE_FILE, JSON.stringify(items, null, 2), 'utf-8');
+  } catch (err) {
+    console.warn('[wordpress] Could not write disk cache:', err);
+  }
+}
+
+async function fetchWithRetry(url: string, retries = 3, delayMs = 1000): Promise<Response> {
+  let lastError: unknown;
+  for (let attempt = 1; attempt <= retries; attempt++) {
+    try {
+      const response = await fetch(url, {
+        headers: DEFAULT_HEADERS,
+        signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
+      });
+
+      if (response.ok) {
+        return response;
+      }
+
+      // Retry on 429 rate limit or 5xx server errors
+      if (response.status === 429 || response.status >= 500) {
+        console.warn(`[wordpress] Attempt ${attempt} failed with HTTP ${response.status}. Retrying in ${delayMs}ms...`);
+        if (attempt < retries) {
+          await new Promise((resolve) => setTimeout(resolve, delayMs * attempt));
+          continue;
+        }
+      }
+      return response;
+    } catch (err) {
+      lastError = err;
+      console.warn(
+        `[wordpress] Attempt ${attempt} network error: ${err instanceof Error ? err.message : String(err)}. Retrying in ${delayMs}ms...`
+      );
+      if (attempt < retries) {
+        await new Promise((resolve) => setTimeout(resolve, delayMs * attempt));
+      }
+    }
+  }
+  throw lastError instanceof Error ? lastError : new Error(String(lastError));
+}
+
 async function fetchAllWpPosts() {
   const posts: WpPost[] = [];
   const perPage = 100;
@@ -175,11 +250,11 @@ async function fetchAllWpPosts() {
 
   while (page <= 20) {
     const url = `${base}/posts?per_page=${perPage}&page=${page}&_embed=1`;
-    const response = await fetch(url);
+    const response = await fetchWithRetry(url);
 
     if (!response.ok) {
       if (page === 1) {
-        throw new Error(`WordPress API responded with ${response.status}`);
+        throw new Error(`WordPress API responded with HTTP ${response.status}`);
       }
       break;
     }
@@ -197,20 +272,42 @@ async function fetchAllWpPosts() {
 
 export async function fetchWordPressNews(): Promise<NewsEventItem[]> {
   const now = Date.now();
+
+  // 1. In-memory cache valid within CACHE_TTL_MS
   if (cachedPosts && now - cachedAt < CACHE_TTL_MS) {
     return cachedPosts;
   }
 
+  // 2. Try fetching from WordPress API
   try {
-    const mapped = (await fetchAllWpPosts())
+    const rawPosts = await fetchAllWpPosts();
+    const mapped = rawPosts
       .map(mapPost)
       .filter((item): item is NewsEventItem => item !== null);
 
-    cachedPosts = mapped;
-    cachedAt = now;
-    return mapped;
+    if (mapped.length > 0) {
+      cachedPosts = mapped;
+      cachedAt = now;
+      writeDiskCache(mapped);
+      return mapped;
+    }
   } catch (error) {
-    console.error('[wordpress] Failed to fetch posts:', error);
-    return cachedPosts ?? [];
+    console.error('[wordpress] Failed to fetch posts from API:', error);
   }
+
+  // 3. Fall back to memory cache if we had one previously
+  if (cachedPosts && cachedPosts.length > 0) {
+    return cachedPosts;
+  }
+
+  // 4. Fall back to persistent disk cache (e.g. build environment or offline)
+  const diskCached = readDiskCache();
+  if (diskCached && diskCached.length > 0) {
+    console.log(`[wordpress] Using fallback disk cache (${diskCached.length} posts)`);
+    cachedPosts = diskCached;
+    cachedAt = now;
+    return diskCached;
+  }
+
+  return [];
 }

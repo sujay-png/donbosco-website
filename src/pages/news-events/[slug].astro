@@ -4,23 +4,34 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import Icon from '../../components/Icon.astro';
 import Collaborations from '../../components/Collaborations.astro';
-import { getAllNewsEvents, getRelatedEvents } from '../../lib/news';
+import { getAllNewsEvents, getRelatedEvents, getEventBySlug } from '../../lib/news';
 import type { NewsEventItem } from '../../data/news-events';
 
 export async function getStaticPaths() {
   const allNewsEvents = await getAllNewsEvents();
   return allNewsEvents.map((event) => ({
     params: { slug: event.slug },
-    props: { event },
+    props: {
+      event,
+      relatedEvents: allNewsEvents
+        .filter((item) => item.slug !== event.slug && item.categorySlug === event.categorySlug)
+        .slice(0, 3),
+    },
   }));
 }
 
 interface Props {
-  event: NewsEventItem;
+  event?: NewsEventItem;
+  relatedEvents?: NewsEventItem[];
 }
 
-const { event } = Astro.props;
-const relatedEvents = await getRelatedEvents(event.slug, 3);
+const { slug } = Astro.params;
+const event = Astro.props.event ?? (slug ? await getEventBySlug(slug) : undefined);
+if (!event) {
+  return Astro.redirect('/news-events');
+}
+
+const relatedEvents = Astro.props.relatedEvents ?? (await getRelatedEvents(event.slug, 3));
 const parentTabHash = event.categorySlug === 'kg-activities' ? '#kg-activities' : '#activities';
 const categoryName = event.categorySlug === 'kg-activities' ? 'KG Activities' : 'Activities';
 ---
