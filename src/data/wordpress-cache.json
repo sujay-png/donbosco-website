@@ -1,29 +1,22 @@
 [
   {
-    "id": 11,
-    "slug": "parents-teachers-sports",
-    "title": "Parents teachers sports",
-    "date": "November 3, 2026",
-    "rawDate": "2026-11-03T09:57:42",
-    "category": "School Activity",
-    "categorySlug": "activities",
-    "localImg": "https://dashboard.donboscoschoolshirva.com/wp-content/uploads/2026/11/don-bosco-1024x572.jpg",
-    "excerpt": "This is the test paragraph test paragraph This is the test paragraph test paragraph This is the test paragraph test paragraph The Parents Sports Meet – “Synergy 2.0” was organiz...",
+    "id": 14,
+    "slug": "test-blog-page",
+    "title": "test blog page",
+    "date": "November 4, 2026",
+    "rawDate": "2026-11-04T10:29:19",
+    "category": "KG Activity",
+    "categorySlug": "kg-activities",
+    "localImg": "https://dashboard.donboscoschoolshirva.com/wp-content/uploads/2026/11/WhatsApp-Image-2026-08-03-at-11.39.24-AM-1024x576.jpeg",
+    "excerpt": "testing the blog page testing the blog pagetesting the blog pagetesting the blog pagetesting the blog pagetesting the blog pagetesting the blog pagetesting the blog pagetesting...",
     "paragraphs": [
-      "This is the test paragraph test paragraph This is the test paragraph test paragraph This is the test paragraph test paragraph",
-      "The Parents Sports Meet – “Synergy 2.0” was organized by Don Bosco English Medium School, Shirva, on 8th November 2025 at the school ground.",
-      "The event aimed to foster a stronger sense of community and connection among parents, students, and the school management. It also sought to promote fitness, teamwork, and healthy competition within the parent community.",
-      "The meet commenced with a formal inauguration ceremony, graced by Mr. Ganesh Nayak, Businessman, Shirva, as the Chief Guest, along with Very Rev. Dr. Leslie Clifford D’Souza, Correspondent, Don Bosco & St. Mary’s Institutions; Mrs. Anitha Priya D’Souza, President of the Parent-Teacher Association; and Rev. Fr. Rolwyn Joy Aranha, Principal of the school.",
-      "In his address, Mr. Ganesh Nayak encouraged parents to participate actively in the sports meet to inspire their children to engage enthusiastically in school activities. He emphasized that winning or losing is secondary—the true spirit lies in participation and togetherness. By seeing their parents as role models, children too will learn the value of effort and sportsmanship.",
-      "In his presidential address, Very Rev. Dr. Leslie Clifford D’Souza expressed his gratitude to the parents for their overwhelming participation and enthusiasm. He highlighted that such initiatives strengthen the bond between parents and teachers, fostering better collaboration and understanding.",
-      "The sports meet featured a variety of exciting events, thoughtfully categorized by age groups to encourage inclusive participation. With the dedicated efforts of the Principal, Vice Principal, teaching and non-teaching staff, and student volunteers, the event turned out to be a grand success.",
-      "The day proved to be a memorable celebration of unity and joy, reinforcing the strong partnership between parents and the school, and setting a high benchmark for future community-building initiatives.",
-      "The event was compered by Ms. Sushmitha Prabhu, with a warm welcome delivered by Mrs. Cynthia Pereira, and words of appreciation and gratitude expressed by Sr. Diana Lobo."
+      "testing the blog page",
+      "testing the blog pagetesting the blog pagetesting the blog pagetesting the blog pagetesting the blog pagetesting the blog pagetesting the blog pagetesting the blog pagetesting the blog pagetesting the blog pagetesting the blog pagetesting the blog pagetesting the blog page"
     ],
-    "htmlContent": "<p class=\"wp-block-paragraph\">This is the test paragraph test paragraph This is the test paragraph test paragraph This is the test paragraph test paragraph</p>\n\n\n\n<p class=\"wp-block-paragraph\">The Parents Sports Meet – “Synergy 2.0” was organized by Don Bosco English Medium School, Shirva, on 8th November 2025 at the school ground.</p>\n\n\n\n<p class=\"wp-block-paragraph\">The event aimed to foster a stronger sense of community and connection among parents, students, and the school management. It also sought to promote fitness, teamwork, and healthy competition within the parent community.</p>\n\n\n\n<p class=\"wp-block-paragraph\">The meet commenced with a formal inauguration ceremony, graced by Mr. Ganesh Nayak, Businessman, Shirva, as the Chief Guest, along with Very Rev. Dr. Leslie Clifford D’Souza, Correspondent, Don Bosco &amp; St. Mary’s Institutions; Mrs. Anitha Priya D’Souza, President of the Parent-Teacher Association; and Rev. Fr. Rolwyn Joy Aranha, Principal of the school.</p>\n\n\n\n<p class=\"wp-block-paragraph\">In his address, Mr. Ganesh Nayak encouraged parents to participate actively in the sports meet to inspire their children to engage enthusiastically in school activities. He emphasized that winning or losing is secondary—the true spirit lies in participation and togetherness. By seeing their parents as role models, children too will learn the value of effort and sportsmanship.</p>\n\n\n\n<p class=\"wp-block-paragraph\">In his presidential address, Very Rev. Dr. Leslie Clifford D’Souza expressed his gratitude to the parents for their overwhelming participation and enthusiasm. He highlighted that such initiatives strengthen the bond between parents and teachers, fostering better collaboration and understanding.</p>\n\n\n\n<p class=\"wp-block-paragraph\">The sports meet featured a variety of exciting events, thoughtfully categorized by age groups to encourage inclusive participation. With the dedicated efforts of the Principal, Vice Principal, teaching and non-teaching staff, and student volunteers, the event turned out to be a grand success.</p>\n\n\n\n<p class=\"wp-block-paragraph\">The day proved to be a memorable celebration of unity and joy, reinforcing the strong partnership between parents and the school, and setting a high benchmark for future community-building initiatives.</p>\n\n\n\n<p class=\"wp-block-paragraph\">The event was compered by Ms. Sushmitha Prabhu, with a warm welcome delivered by Mrs. Cynthia Pereira, and words of appreciation and gratitude expressed by Sr. Diana Lobo.</p>",
+    "htmlContent": "<p class=\"wp-block-paragraph\">testing the blog page</p>\n\n\n\n<p class=\"wp-block-paragraph\">testing the blog pagetesting the blog pagetesting the blog pagetesting the blog pagetesting the blog pagetesting the blog pagetesting the blog pagetesting the blog pagetesting the blog pagetesting the blog pagetesting the blog pagetesting the blog pagetesting the blog page</p>\n\n\n\n<p class=\"wp-block-paragraph\"></p>",
     "albumUrl": null,
     "author": "DBEMS Team",
-    "readingTime": "2 min read",
+    "readingTime": "1 min read",
     "source": "wordpress"
   },
   {
