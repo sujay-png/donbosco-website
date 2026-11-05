@@ -1,25 +1,5 @@
 [
   {
-    "id": 14,
-    "slug": "test-blog-page",
-    "title": "test blog page",
-    "date": "November 4, 2026",
-    "rawDate": "2026-11-04T10:29:19",
-    "category": "KG Activity",
-    "categorySlug": "kg-activities",
-    "localImg": "https://dashboard.donboscoschoolshirva.com/wp-content/uploads/2026/11/WhatsApp-Image-2026-08-03-at-11.39.24-AM-1024x576.jpeg",
-    "excerpt": "testing the blog page testing the blog pagetesting the blog pagetesting the blog pagetesting the blog pagetesting the blog pagetesting the blog pagetesting the blog pagetesting...",
-    "paragraphs": [
-      "testing the blog page",
-      "testing the blog pagetesting the blog pagetesting the blog pagetesting the blog pagetesting the blog pagetesting the blog pagetesting the blog pagetesting the blog pagetesting the blog pagetesting the blog pagetesting the blog pagetesting the blog pagetesting the blog page"
-    ],
-    "htmlContent": "<p class=\"wp-block-paragraph\">testing the blog page</p>\n\n\n\n<p class=\"wp-block-paragraph\">testing the blog pagetesting the blog pagetesting the blog pagetesting the blog pagetesting the blog pagetesting the blog pagetesting the blog pagetesting the blog pagetesting the blog pagetesting the blog pagetesting the blog pagetesting the blog pagetesting the blog page</p>\n\n\n\n<p class=\"wp-block-paragraph\"></p>",
-    "albumUrl": null,
-    "author": "DBEMS Team",
-    "readingTime": "1 min read",
-    "source": "wordpress"
-  },
-  {
     "id": 8,
     "slug": "patrons-day-celebration",
     "title": "Patron’s Day Celebration",
