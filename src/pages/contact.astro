@@ -1451,7 +1451,7 @@ const socialLinks = [
 
         if (response.ok && data && (data.success === 'true' || data.success === true)) {
           feedback.className = 'form-feedback success';
-          feedback.innerHTML = `<strong>Thank you, ${nameVal}!</strong> Your message has been sent successfully to <em>enquires.wrnxt@gmail.com</em> and <em>shirvadonboscoschool@gmail.com</em>. Our administration team will get back to you at <em>${emailVal}</em> shortly.`;
+          feedback.innerHTML = `<strong>Thank you, ${nameVal}!</strong> Your message has been sent successfully. Our administration team will get back to you at <em>${emailVal}</em> shortly.`;
           form.reset();
         } else if (data && data.message && data.message.toLowerCase().includes('activate')) {
           feedback.className = 'form-feedback success';
